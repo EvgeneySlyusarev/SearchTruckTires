@@ -11,8 +11,8 @@
         
         <Label Text="Счетчик нажатий кнопки" />
       
-        <Button Text="Press Me" Clicked="Button_Clicked" />
-        <Button Text="Уменьшение счетчика" Clicked="Button_Clicked_1"/>
+        <Button Text="Press Me + " Clicked="Button_Clicked" />
+        <Button Text="Press Me - " Clicked="Button_Clicked_1"/>
     </StackLayout>
 
 </ContentPage>
