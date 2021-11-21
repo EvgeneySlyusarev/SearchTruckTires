@@ -18,12 +18,12 @@ namespace SearchTruckTires
         void Button_Clicked(object sender, System.EventArgs e)
         {
             count++;
-            ((Button)sender).Text = $"You clicked {count} times.";
+            ((Button)sender).Text = $"You clicked + {count} times.";
         }
         private void Button_Clicked_1(object sender, EventArgs e)
         {
             count--;
-            ((Button)sender).Text = $"You clicked {count} times.";
+            ((Button)sender).Text = $"You clicked - {count} times.";
         }
     }
 }
