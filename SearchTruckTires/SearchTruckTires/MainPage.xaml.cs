@@ -14,8 +14,10 @@ namespace SearchTruckTires
         {
             InitializeComponent();
         }
-        int count = 0;
-        void Button_Clicked(object sender, System.EventArgs e)
+
+        public int count = 0;
+
+        private void Button_Clicked(object sender, EventArgs e)
         {
             count++;
             ((Button)sender).Text = $"You clicked + {count} times.";
@@ -24,6 +26,11 @@ namespace SearchTruckTires
         {
             count--;
             ((Button)sender).Text = $"You clicked - {count} times.";
+        }
+        private void Button_Clicked_2(object sender, EventArgs e)
+        {
+            count *= count;
+            ((Button)sender).Text = $"Count - {count} times.";
         }
     }
 }
