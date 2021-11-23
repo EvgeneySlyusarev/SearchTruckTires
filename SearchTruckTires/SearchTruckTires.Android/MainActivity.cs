@@ -4,11 +4,12 @@ using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
 using Android.Widget;
+using HtmlAgilityPack;
 
 namespace SearchTruckTires.Droid
 {
     [Activity(Label = "FindTires", Icon = "@mipmap/logo_parsing", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+    public class MainActivity : Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
         {
@@ -37,6 +38,21 @@ namespace SearchTruckTires.Droid
             Spinner spinner = (Spinner)sender;
             string toast = string.Format("Selected tire size {0}", spinner.GetItemAtPosition(e.Position));
             Toast.MakeText(this, toast, ToastLength.Long).Show();
+            Parser(toast);
+        }
+        private void Parser(string toast)
+        {
+            var standardSize = toast;
+            var web = new HtmlWeb();//переменная класса (HtmlAgilityPack) для работы с web страницами 
+            var htmlDocument = web.Load("http://mpk-tyres.com.ua/catalog/" + standardSize + "/");// переменная получающая HTML код заданный в скобках адрес
+            var page = htmlDocument.DocumentNode;// переменная страниц сайта
+
+            using (StreamWriter file = new StreamWriter("DataParsingMPK.html"))//записываем данные в фаил HTML
+            {
+                file.Write(page.OuterHtml);
+            }
         }
     }
+
+
 }

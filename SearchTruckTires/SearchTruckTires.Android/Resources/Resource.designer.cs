@@ -13310,92 +13310,89 @@ namespace SearchTruckTires.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7F0F0001
-			public const int abc_action_bar_home_description = 2131689473;
-			
 			// aapt resource value: 0x7F0F0002
-			public const int abc_action_bar_up_description = 2131689474;
+			public const int abc_action_bar_home_description = 2131689474;
 			
 			// aapt resource value: 0x7F0F0003
-			public const int abc_action_menu_overflow_description = 2131689475;
+			public const int abc_action_bar_up_description = 2131689475;
 			
 			// aapt resource value: 0x7F0F0004
-			public const int abc_action_mode_done = 2131689476;
-			
-			// aapt resource value: 0x7F0F0006
-			public const int abc_activitychooserview_choose_application = 2131689478;
+			public const int abc_action_menu_overflow_description = 2131689476;
 			
 			// aapt resource value: 0x7F0F0005
-			public const int abc_activity_chooser_view_see_all = 2131689477;
+			public const int abc_action_mode_done = 2131689477;
 			
 			// aapt resource value: 0x7F0F0007
-			public const int abc_capital_off = 2131689479;
+			public const int abc_activitychooserview_choose_application = 2131689479;
+			
+			// aapt resource value: 0x7F0F0006
+			public const int abc_activity_chooser_view_see_all = 2131689478;
 			
 			// aapt resource value: 0x7F0F0008
-			public const int abc_capital_on = 2131689480;
+			public const int abc_capital_off = 2131689480;
 			
 			// aapt resource value: 0x7F0F0009
-			public const int abc_menu_alt_shortcut_label = 2131689481;
+			public const int abc_capital_on = 2131689481;
 			
 			// aapt resource value: 0x7F0F000A
-			public const int abc_menu_ctrl_shortcut_label = 2131689482;
+			public const int abc_menu_alt_shortcut_label = 2131689482;
 			
 			// aapt resource value: 0x7F0F000B
-			public const int abc_menu_delete_shortcut_label = 2131689483;
+			public const int abc_menu_ctrl_shortcut_label = 2131689483;
 			
 			// aapt resource value: 0x7F0F000C
-			public const int abc_menu_enter_shortcut_label = 2131689484;
+			public const int abc_menu_delete_shortcut_label = 2131689484;
 			
 			// aapt resource value: 0x7F0F000D
-			public const int abc_menu_function_shortcut_label = 2131689485;
+			public const int abc_menu_enter_shortcut_label = 2131689485;
 			
 			// aapt resource value: 0x7F0F000E
-			public const int abc_menu_meta_shortcut_label = 2131689486;
+			public const int abc_menu_function_shortcut_label = 2131689486;
 			
 			// aapt resource value: 0x7F0F000F
-			public const int abc_menu_shift_shortcut_label = 2131689487;
+			public const int abc_menu_meta_shortcut_label = 2131689487;
 			
 			// aapt resource value: 0x7F0F0010
-			public const int abc_menu_space_shortcut_label = 2131689488;
+			public const int abc_menu_shift_shortcut_label = 2131689488;
 			
 			// aapt resource value: 0x7F0F0011
-			public const int abc_menu_sym_shortcut_label = 2131689489;
+			public const int abc_menu_space_shortcut_label = 2131689489;
 			
 			// aapt resource value: 0x7F0F0012
-			public const int abc_prepend_shortcut_label = 2131689490;
-			
-			// aapt resource value: 0x7F0F0014
-			public const int abc_searchview_description_clear = 2131689492;
-			
-			// aapt resource value: 0x7F0F0015
-			public const int abc_searchview_description_query = 2131689493;
-			
-			// aapt resource value: 0x7F0F0016
-			public const int abc_searchview_description_search = 2131689494;
-			
-			// aapt resource value: 0x7F0F0017
-			public const int abc_searchview_description_submit = 2131689495;
-			
-			// aapt resource value: 0x7F0F0018
-			public const int abc_searchview_description_voice = 2131689496;
+			public const int abc_menu_sym_shortcut_label = 2131689490;
 			
 			// aapt resource value: 0x7F0F0013
-			public const int abc_search_hint = 2131689491;
+			public const int abc_prepend_shortcut_label = 2131689491;
+			
+			// aapt resource value: 0x7F0F0015
+			public const int abc_searchview_description_clear = 2131689493;
+			
+			// aapt resource value: 0x7F0F0016
+			public const int abc_searchview_description_query = 2131689494;
+			
+			// aapt resource value: 0x7F0F0017
+			public const int abc_searchview_description_search = 2131689495;
+			
+			// aapt resource value: 0x7F0F0018
+			public const int abc_searchview_description_submit = 2131689496;
 			
 			// aapt resource value: 0x7F0F0019
-			public const int abc_shareactionprovider_share_with = 2131689497;
+			public const int abc_searchview_description_voice = 2131689497;
+			
+			// aapt resource value: 0x7F0F0014
+			public const int abc_search_hint = 2131689492;
 			
 			// aapt resource value: 0x7F0F001A
-			public const int abc_shareactionprovider_share_with_application = 2131689498;
+			public const int abc_shareactionprovider_share_with = 2131689498;
 			
 			// aapt resource value: 0x7F0F001B
-			public const int abc_toolbar_collapse_description = 2131689499;
+			public const int abc_shareactionprovider_share_with_application = 2131689499;
+			
+			// aapt resource value: 0x7F0F001C
+			public const int abc_toolbar_collapse_description = 2131689500;
 			
 			// aapt resource value: 0x7F0F001D
 			public const int appbar_scrolling_view_behavior = 2131689501;
-			
-			// aapt resource value: 0x7F0F001C
-			public const int app_name = 2131689500;
 			
 			// aapt resource value: 0x7F0F001E
 			public const int bottom_sheet_behavior = 2131689502;
@@ -13577,14 +13574,17 @@ namespace SearchTruckTires.Droid
 			// aapt resource value: 0x7F0F0059
 			public const int path_password_strike_through = 2131689561;
 			
+			// aapt resource value: 0x7F0F0000
+			public const int ProgramName = 2131689472;
+			
 			// aapt resource value: 0x7F0F005A
 			public const int search_menu_title = 2131689562;
 			
 			// aapt resource value: 0x7F0F005B
 			public const int status_bar_notification_info_overflow = 2131689563;
 			
-			// aapt resource value: 0x7F0F0000
-			public const int Tires_prompt = 2131689472;
+			// aapt resource value: 0x7F0F0001
+			public const int Tires = 2131689473;
 			
 			static String()
 			{
