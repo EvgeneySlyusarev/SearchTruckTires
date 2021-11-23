@@ -3,27 +3,41 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:padding="30dip"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:background="@drawable/discsbackground"
+    android:padding="20dip"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/linearLayout1">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/abc_text_size_large_material"
-        android:gravity="center"
+        android:gravity="left"
+        android:textColor="@android:color/white"
+        android:textSize="20dip"
         android:text="@string/ProgramName"
+        android:id="@+id/textView1" 
         />
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dip"
+        android:textColor="@android:color/white"
+        android:textSize="20dip"
         android:text="@string/Tires"
+        android:id="@+id/textView2" 
     />
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/abc_text_size_display_1_material"
         android:prompt="@string/Tires"
-    />
+        android:background="@color/material_grey_100"
+        android:layout_marginBottom="32.5dp" 
+        />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="396.0dp"
+        android:id="@+id/textView3"
+        />
 </LinearLayout>

@@ -5,6 +5,8 @@ using Android.Runtime;
 using Android.OS;
 using Android.Widget;
 using HtmlAgilityPack;
+using System.IO;
+
 
 namespace SearchTruckTires.Droid
 {
@@ -15,7 +17,7 @@ namespace SearchTruckTires.Droid
         {
             base.OnCreate(bundle);
 
-            // Set our view from the "Main" layout resource
+            // Set our view from the "Main" layout resource 
             SetContentView(Resource.Layout.Main);
 
             Spinner spinner = FindViewById<Spinner>(Resource.Id.spinner);
@@ -27,7 +29,7 @@ namespace SearchTruckTires.Droid
             adapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
             spinner.Adapter = adapter;
         }
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
@@ -38,19 +40,18 @@ namespace SearchTruckTires.Droid
             Spinner spinner = (Spinner)sender;
             string toast = string.Format("Selected tire size {0}", spinner.GetItemAtPosition(e.Position));
             Toast.MakeText(this, toast, ToastLength.Long).Show();
-            Parser(toast);
+            PathParsing(toast);
         }
-        private void Parser(string toast)
+        private void PathParsing(string toast)
         {
+           
             var standardSize = toast;
             var web = new HtmlWeb();//переменная класса (HtmlAgilityPack) для работы с web страницами 
             var htmlDocument = web.Load("http://mpk-tyres.com.ua/catalog/" + standardSize + "/");// переменная получающая HTML код заданный в скобках адрес
             var page = htmlDocument.DocumentNode;// переменная страниц сайта
-
-            using (StreamWriter file = new StreamWriter("DataParsingMPK.html"))//записываем данные в фаил HTML
-            {
-                file.Write(page.OuterHtml);
-            }
+            string folderPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData);
+            string filename = "DataParsingMPK.html";
+            File.WriteAllText(Path.Combine(folderPath, filename), page.InnerText);
         }
     }
 
