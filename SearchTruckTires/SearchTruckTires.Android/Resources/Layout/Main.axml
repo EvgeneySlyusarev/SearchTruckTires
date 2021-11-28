@@ -35,9 +35,10 @@
         android:background="@color/material_grey_100"
         android:layout_marginBottom="32.5dp" 
         />
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="396.0dp"
-        android:id="@+id/textView3"
-        />
+    <ListView
+        android:textSize="20dip"
+        android:textColor="@android:color/white"
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </LinearLayout>

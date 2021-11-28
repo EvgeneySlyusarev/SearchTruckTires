@@ -1,36 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <string name="ProductTitle"></string>
+  <string name="ProductPrice"></string>
   <string name="ProgramName">FindTires</string>
   <string name="Tires">ChengedSize</string>
   <string-array name="TireSizes_array">
-    <item>205/75R17,5</item>
-    <item>215/75R17,5</item>
-    <item>225/75R17,5</item>
-    <item>235/75R17,5</item>
-    <item>245/70R17,5</item>
-    <item>225/70R19,5</item>
-    <item>245/70R19,5</item>
-    <item>265/70R19,5</item>
-    <item>285/70R19,5</item>
-    <item>385/55R19,5</item>
-    <item>435/50R19,5</item>
-    <item>445/45R19,5</item>
+    <item>205/75R17.5</item>
+    <item>215/75R17.5</item>
+    <item>225/75R17.5</item>
+    <item>235/75R17.5</item>
+    <item>245/70R17.5</item>
+    <item>225/70R19.5</item>
+    <item>245/70R19.5</item>
+    <item>265/70R19.5</item>
+    <item>285/70R19.5</item>
+    <item>385/55R19.5</item>
+    <item>435/50R19.5</item>
+    <item>445/45R19.5</item>
     <item>8.25R20</item>
     <item>9.00R20</item>
     <item>10.00R20</item>
     <item>11.00R20</item>
     <item>12.00R20</item>
-    <item>11R22,5</item>
-    <item>13R22,5</item>
-    <item>275/70R22,5</item>
-    <item>295/60R22,5</item>
-    <item>315/60R22,5</item>
-    <item>295/80R22,5</item>
-    <item>315/70R22,5</item> 
-    <item>315/80R22,5</item>
-    <item>385/55R22,5</item>
-    <item>385/65R22,5</item>
-    <item>425/65R22,5</item>
+    <item>11R22.5</item>
+    <item>13R22.5</item>
+    <item>275/70R22.5</item>
+    <item>295/60R22.5</item>
+    <item>315/60R22.5</item>
+    <item>295/80R22.5</item>
+    <item>315/70R22.5</item> 
+    <item>315/80R22.5</item>
+    <item>385/55R22.5</item>
+    <item>385/65R22.5</item>
+    <item>425/65R22.5</item>
   </string-array>
 </resources>
 
