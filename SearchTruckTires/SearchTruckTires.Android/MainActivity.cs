@@ -32,10 +32,9 @@ namespace SearchTruckTires.Droid
             spinner.Adapter = adapter;
 
             // set listView
-            
+            produkt = new List<string>();
             listView = FindViewById<ListView>(Resource.Id.listView);
             //produkt.AddRange(new string[] { "sdkjbskjd", "dhajehdaje" });
-            produkt = new List<string>();
             produkt.AddRange(produkt);
             ArrayAdapter<string> adapter1 = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, produkt);
             listView.Adapter = adapter1;
