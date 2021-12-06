@@ -37,7 +37,6 @@ namespace SearchTruckTires.Droid
             listView = FindViewById<ListView>(Resource.Id.listView);
             ArrayAdapter<string> adapter1 = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, produkt);
             listView.Adapter = adapter1;
-          
 
         }
 
@@ -70,8 +69,13 @@ namespace SearchTruckTires.Droid
             foreach (var item in page.QuerySelectorAll("li.product")) // поиск в файле данных
             {
                 string title = item.QuerySelector("div.product_info a").InnerText.Trim();
-                string prise = item.QuerySelector("td.price-td").InnerText.Trim();
-                produkt.Add(title + " - "+ prise);
+                string strPrice = item.QuerySelector("td.price-td").InnerText.Trim();
+                strPrice = strPrice.Replace(" ", "");
+                strPrice = strPrice.
+                double price = Convert.ToDouble(strPrice);
+                double margin = 1.1;
+                price *= margin;
+                produkt.Add(title + " - "+ strPrice + " + " + (price * margin));
             }
             ArrayAdapter<string> adapter1 = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, produkt);
             listView.Adapter = adapter1;
