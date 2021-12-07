@@ -136,10 +136,16 @@
     <AndroidResource Include="Resources\drawable\DiscsBackground.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\TiresBackground1.png" />
+    <AndroidResource Include="Resources\Layout\ListItem.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\Layout\ListItem.xml" />
+    <AndroidResource Include="Resources\drawable\WheelMark1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\WheelMark2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\WheelMark3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>

@@ -51,9 +51,9 @@ namespace SearchTruckTires.Droid
             Spinner spinner = (Spinner)sender;
             string toast = string.Format((string)spinner.GetItemAtPosition(e.Position));
             //Toast.MakeText(this, toast, ToastLength.Long).Show();
-            Parsing(toast);
+            ParsingMPK(toast);
         }
-        private void Parsing(string toast)
+        private void ParsingMPK(string toast)
         {
             produkt.Clear();
             string standardSize;
@@ -71,11 +71,14 @@ namespace SearchTruckTires.Droid
                 string title = item.QuerySelector("div.product_info a").InnerText.Trim();
                 string strPrice = item.QuerySelector("td.price-td").InnerText.Trim();
                 strPrice = strPrice.Replace(" ", "");
-                strPrice = strPrice.
-                double price = Convert.ToDouble(strPrice);
-                double margin = 1.1;
-                price *= margin;
-                produkt.Add(title + " - "+ strPrice + " + " + (price * margin));
+                strPrice = strPrice.Replace("грн", "");
+                double priceBN = Convert.ToDouble(strPrice);
+                double priceN = Convert.ToDouble(strPrice);
+                double marginBN = 1.1;
+                double marginN = 1.05;
+                priceBN *= marginBN;
+                priceN *= marginN;
+                produkt.Add(title + " НАЛ - " + Convert.ToString(Convert.ToInt32(priceN)) + " ГРН , " + " с НДС - " + Convert.ToString(Convert.ToInt32(priceBN)) + " ГРН.");
             }
             ArrayAdapter<string> adapter1 = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, produkt);
             listView.Adapter = adapter1;
