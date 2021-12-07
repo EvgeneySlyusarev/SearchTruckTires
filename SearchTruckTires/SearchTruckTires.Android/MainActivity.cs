@@ -37,7 +37,13 @@ namespace SearchTruckTires.Droid
             listView = FindViewById<ListView>(Resource.Id.listView);
             ArrayAdapter<string> adapter1 = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, produkt);
             listView.Adapter = adapter1;
-
+        }
+        public int RoundUP(int value)
+        {
+            int temp = value;
+            temp = temp + 100 - (temp % 100);
+            value = temp;
+            return value;
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
@@ -78,6 +84,8 @@ namespace SearchTruckTires.Droid
                 double marginN = 1.05;
                 priceBN *= marginBN;
                 priceN *= marginN;
+                priceN = RoundUP(Convert.ToInt32(priceN));
+                priceBN = RoundUP(Convert.ToInt32(priceBN));
                 produkt.Add(title + " НАЛ - " + Convert.ToString(Convert.ToInt32(priceN)) + " ГРН , " + " с НДС - " + Convert.ToString(Convert.ToInt32(priceBN)) + " ГРН.");
             }
             ArrayAdapter<string> adapter1 = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, produkt);
