@@ -3,7 +3,7 @@
   <string name="ProductTitle"></string>
   <string name="ProductPrice"></string>
   <string name="ProgramName">Find Track Tires</string>
-  <string name="Tires">Chenged Size</string>
+  <string name="Tires">Выбор размера</string>
   <string-array name="TireSizes_array">
     <item>- - -/- - R - - , -</item>
     <item>205/75R17.5</item>
