@@ -40,9 +40,7 @@ namespace SearchTruckTires.Droid
         }
         public int RoundUP(int value)
         {
-            int temp = value;
-            temp = temp + 100 - (temp % 100);
-            value = temp;
+            value = value + 100 - (value % 100);
             return value;
         }
 
@@ -58,6 +56,16 @@ namespace SearchTruckTires.Droid
             string toast = string.Format((string)spinner.GetItemAtPosition(e.Position));
             //Toast.MakeText(this, toast, ToastLength.Long).Show();
             ParsingMPK(toast);
+            ParsingOmega(toast);
+            Parsing100Shin(toast);
+        }
+        private void ParsingOmega(string toast)
+        { 
+        
+        }
+        private void Parsing100Shin(string toast)
+        {
+
         }
         private void ParsingMPK(string toast)
         {
