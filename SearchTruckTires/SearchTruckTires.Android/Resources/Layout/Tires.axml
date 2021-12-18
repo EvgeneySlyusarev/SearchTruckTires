@@ -9,6 +9,7 @@
     android:layout_height="fill_parent"
     android:id="@+id/linearLayout1"
     >
+   
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,7 +28,7 @@
         android:padding="@dimen/abc_text_size_body_1_material"
         android:text="@string/Tires"
         android:id="@+id/textView2" 
-        />
+    />
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="fill_parent"

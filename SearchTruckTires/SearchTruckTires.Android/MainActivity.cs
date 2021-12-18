@@ -27,7 +27,6 @@ namespace SearchTruckTires.Droid
             Window.SetStatusBarColor(Android.Graphics.Color.Argb(255, 0, 0, 0));
             SetContentView(Resource.Layout.Main);
 
-
             //set spiner
             Spinner spinner = FindViewById<Spinner>(Resource.Id.spinner);
             spinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(spinner_ItemSelected);
