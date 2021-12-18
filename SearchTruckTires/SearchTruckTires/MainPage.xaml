@@ -4,8 +4,7 @@
              xmlns:local="clr-namespace:SearchTruckTires;assembly=SearchTruckTires"
              x:Class="SearchTruckTires.MainPage">
     <TabbedPage.Children>
-        <local:Tires />
-        <local:Disc />
-        <local:AboutTheProgram />
+        <local:Tires></local:Tires>
+        <local:Disc></local:Disc>
     </TabbedPage.Children>
 </TabbedPage>

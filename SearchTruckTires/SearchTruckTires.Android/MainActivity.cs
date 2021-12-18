@@ -9,10 +9,11 @@ using Fizzler.Systems.HtmlAgilityPack;
 using System.IO;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Plugin.CurrentActivity;
 
 namespace SearchTruckTires.Droid
 {
-    [Activity(Label = "FindTires", Icon = "@mipmap/logo_parsing", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
+    [Activity(Label = "FindTires", Icon = "@mipmap/logo_parsing", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
 
     public class MainActivity : Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
@@ -22,7 +23,8 @@ namespace SearchTruckTires.Droid
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            // Set our view from the "Main" layout resource 
+            // Set our view from the "Main" layout resource
+            Window.SetStatusBarColor(Android.Graphics.Color.Argb(255, 0, 0, 0));
             SetContentView(Resource.Layout.Main);
 
 

@@ -5,10 +5,9 @@
              Title="Tires">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Tires"
+            <Label Text="This is pege for Tires"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
-    
