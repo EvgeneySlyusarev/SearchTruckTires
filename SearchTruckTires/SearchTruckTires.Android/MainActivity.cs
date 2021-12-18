@@ -25,6 +25,7 @@ namespace SearchTruckTires.Droid
             // Set our view from the "Main" layout resource 
             SetContentView(Resource.Layout.Main);
 
+
             //set spiner
             Spinner spinner = FindViewById<Spinner>(Resource.Id.spinner);
             spinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(spinner_ItemSelected);
@@ -43,7 +44,6 @@ namespace SearchTruckTires.Droid
             value = value + 100 - (value % 100);
             return value;
         }
-
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);

@@ -10,7 +10,6 @@
     android:id="@+id/linearLayout1"
     tools:gridSpec="0|8|#0093eeff|K:#ee8700ff:16,l:72,l:16,r|S:#83ee00ff:16,0,l:16,56,l:16,0,r">
 
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
