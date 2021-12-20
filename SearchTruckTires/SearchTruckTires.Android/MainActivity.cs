@@ -15,6 +15,7 @@ namespace SearchTruckTires.Droid
 {
     [Activity(Label = "FindTires", Icon = "@mipmap/logo_parsing", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
 
+
     public class MainActivity : Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         public ListView listView;

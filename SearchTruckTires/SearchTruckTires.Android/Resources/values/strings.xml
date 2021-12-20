@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
+	<string name="Tire"></string>
+	<string name="Disc"></string>
   <string name="ProductTitle"></string>
   <string name="ProductPrice"></string>
   <string name="ProgramName">Find Track Tires</string>
@@ -35,7 +37,7 @@
     <item>385/65R22.5</item>
     <item>425/65R22.5</item>
   </string-array>
-  <string name="Disc">ChengedSize</string>
+  <string name="Discs">ChengedSize</string>
   <string-array name="DiscSizes_array">
     <item>11.75X22.5</item>
     <item>9.00X22.5</item>
