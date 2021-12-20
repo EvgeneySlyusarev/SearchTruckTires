@@ -18159,9 +18159,6 @@ namespace SearchTruckTires.Droid
 			// aapt resource value: 0x7F0901E2
 			public const int vertical_only = 2131296738;
 			
-			// aapt resource value: 0x7F0901E8
-			public const int viewpager = 2131296744;
-			
 			// aapt resource value: 0x7F0901E3
 			public const int view_offset_helper = 2131296739;
 			
@@ -18177,11 +18174,14 @@ namespace SearchTruckTires.Droid
 			// aapt resource value: 0x7F0901E7
 			public const int view_tree_view_model_store_owner = 2131296743;
 			
+			// aapt resource value: 0x7F0901E8
+			public const int visible = 2131296744;
+			
 			// aapt resource value: 0x7F0901E9
-			public const int visible = 2131296745;
+			public const int visible_removing_fragment_view_tag = 2131296745;
 			
 			// aapt resource value: 0x7F0901EA
-			public const int visible_removing_fragment_view_tag = 2131296746;
+			public const int vpPager = 2131296746;
 			
 			// aapt resource value: 0x7F0901EB
 			public const int west = 2131296747;

@@ -10,36 +10,40 @@ using System.IO;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Plugin.CurrentActivity;
+using Android.Support.V4.View;
+using Android.Support.V4.App;
 
 namespace SearchTruckTires.Droid
 {
     [Activity(Label = "FindTires", Icon = "@mipmap/logo_parsing", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
-
 
     public class MainActivity : Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         public ListView listView;
         public List<string> produkt;
 
-        protected override void OnCreate(Bundle bundle)
+        protected override void OnCreate(Bundle savedInstanceState)
+            //protected override void OnCreate(Bundle bundle)
         {
-            base.OnCreate(bundle);
+            //base.OnCreate(bundle);
+            base.OnCreate(savedInstanceState);
             // Set our view from the "Main" layout resource
             Window.SetStatusBarColor(Android.Graphics.Color.Argb(255, 0, 0, 0));
-            SetContentView(Resource.Layout.Main);
+            //SetContentView(Resource.Layout.Main);
+            LoadApplication(new App());
 
             //set spiner
-            Spinner spinner = FindViewById<Spinner>(Resource.Id.spinner);
-            spinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(spinner_ItemSelected);
-            ArrayAdapter adapter = ArrayAdapter.CreateFromResource(this, Resource.Array.TireSizes_array, Android.Resource.Layout.SimpleSpinnerItem);
-            adapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
-            spinner.Adapter = adapter;
+            //Spinner spinner = FindViewById<Spinner>(Resource.Id.spinner);
+            //spinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(spinner_ItemSelected);
+            //ArrayAdapter adapter = ArrayAdapter.CreateFromResource(this, Resource.Array.TireSizes_array, Android.Resource.Layout.SimpleSpinnerItem);
+            //adapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            //spinner.Adapter = adapter;
 
-            // set listView
-            produkt = new List<string>();
-            listView = FindViewById<ListView>(Resource.Id.listView);
-            ArrayAdapter<string> adapter1 = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, produkt);
-            listView.Adapter = adapter1;
+            //// set listView
+            //produkt = new List<string>();
+            //listView = FindViewById<ListView>(Resource.Id.listView);
+            //ArrayAdapter<string> adapter1 = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, produkt);
+            //listView.Adapter = adapter1;
         }
         public int RoundUP(int value)
         {
