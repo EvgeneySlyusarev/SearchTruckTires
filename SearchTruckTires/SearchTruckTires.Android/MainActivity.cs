@@ -66,7 +66,7 @@ namespace SearchTruckTires.Droid
             Spinner spinner = (Spinner)sender;
             string toast = string.Format((string)spinner.GetItemAtPosition(e.Position));
             //Toast.MakeText(this, toast, ToastLength.Long).Show();
-            ParsingMPK(toast);
+            //ParsingMPK(toast);
             ParsingOmega(toast);
             Parsing100Shin(toast);
         }
@@ -78,37 +78,37 @@ namespace SearchTruckTires.Droid
         {
 
         }
-        private void ParsingMPK(string toast)
-        {
-            produkt.Clear();
-            string standardSize;
-            standardSize = toast.Replace("/", "");
-            standardSize = standardSize.Replace(".", "");
-            standardSize = standardSize.ToLower();
-            var url = "http://mpk-tyres.com.ua/catalog/" + standardSize + "/";
+        //private void ParsingMPK(string toast)
+        //{
+        //    produkt.Clear();
+        //    string standardSize;
+        //    standardSize = toast.Replace("/", "");
+        //    standardSize = standardSize.Replace(".", "");
+        //    standardSize = standardSize.ToLower();
+        //    var url = "http://mpk-tyres.com.ua/catalog/" + standardSize + "/";
         
-            HtmlWeb web = new HtmlWeb();
-            var htmlDoc = web.Load(url);
-            var page = htmlDoc.DocumentNode;
+        //    HtmlWeb web = new HtmlWeb();
+        //    var htmlDoc = web.Load(url);
+        //    var page = htmlDoc.DocumentNode;
 
-            foreach (var item in page.QuerySelectorAll("li.product")) // поиск в файле данных
-            {
-                string title = item.QuerySelector("div.product_info a").InnerText.Trim();
-                string strPrice = item.QuerySelector("td.price-td").InnerText.Trim();
-                strPrice = strPrice.Replace(" ", "");
-                strPrice = strPrice.Replace("грн", "");
-                double priceBN = Convert.ToDouble(strPrice);
-                double priceN = Convert.ToDouble(strPrice);
-                double marginBN = 1.1;
-                double marginN = 1.05;
-                priceBN *= marginBN;
-                priceN *= marginN;
-                priceN = RoundUP(Convert.ToInt32(priceN));
-                priceBN = RoundUP(Convert.ToInt32(priceBN));
-                produkt.Add(title + " НАЛ - " + Convert.ToString(Convert.ToInt32(priceN)) + " ГРН , " + " с НДС - " + Convert.ToString(Convert.ToInt32(priceBN)) + " ГРН.");
-            }
-            ArrayAdapter<string> adapter1 = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, produkt);
-            listView.Adapter = adapter1;
-        }
+        //    foreach (var item in page.QuerySelectorAll("li.product")) // поиск в файле данных
+        //    {
+        //        string title = item.QuerySelector("div.product_info a").InnerText.Trim();
+        //        string strPrice = item.QuerySelector("td.price-td").InnerText.Trim();
+        //        strPrice = strPrice.Replace(" ", "");
+        //        strPrice = strPrice.Replace("грн", "");
+        //        double priceBN = Convert.ToDouble(strPrice);
+        //        double priceN = Convert.ToDouble(strPrice);
+        //        double marginBN = 1.1;
+        //        double marginN = 1.05;
+        //        priceBN *= marginBN;
+        //        priceN *= marginN;
+        //        priceN = RoundUP(Convert.ToInt32(priceN));
+        //        priceBN = RoundUP(Convert.ToInt32(priceBN));
+        //        produkt.Add(title + " НАЛ - " + Convert.ToString(Convert.ToInt32(priceN)) + " ГРН , " + " с НДС - " + Convert.ToString(Convert.ToInt32(priceBN)) + " ГРН.");
+        //    }
+        //    ArrayAdapter<string> adapter1 = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, produkt);
+        //    listView.Adapter = adapter1;
+        //}
     }
 }
