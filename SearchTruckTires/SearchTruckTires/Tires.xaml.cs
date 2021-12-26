@@ -1,4 +1,4 @@
-﻿using HtmlAgilityPack;
+﻿using Fizzler.Systems.HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.IO;
+using HtmlAgilityPack;
 
 namespace SearchTruckTires
 {
@@ -21,11 +22,15 @@ namespace SearchTruckTires
             BackgroundImageSource = "@Resources/Drawable/WheelMark3.png";
             InitializeComponent();
             produkt = new List<string>();
-            listView = new ListView();
+            listView = new ListView
+            {
+                ItemsSource = produkt.ToList()
+            };
+            BindingContext = this;
         }
         void picker_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DisplayAlert("Уведомление", "Вы выбрали: " + picker.Items[picker.SelectedIndex], "ОK");
+            //DisplayAlert("Уведомление", "Вы выбрали: " + picker.Items[picker.SelectedIndex], "ОK");
             ParsingMPK(picker.Items[picker.SelectedIndex].ToString());
         }
         public int RoundUP(int value)
@@ -42,14 +47,14 @@ namespace SearchTruckTires
             standardSize = standardSize.ToLower();
             var url = "http://mpk-tyres.com.ua/catalog/" + standardSize + "/";
 
-            HtmlWeb web = new HtmlWeb();
+            var web = new HtmlWeb();
             var htmlDoc = web.Load(url);
             var page = htmlDoc.DocumentNode;
 
-            foreach (var item in page.SelectNodes("li.product")) // поиск в файле данных
+            foreach (var item in page.QuerySelectorAll("li.product")) // поиск в файле данных
             {
-                string title = item.SelectNodes("div.product_info a").ToString().Trim();
-                string strPrice = item.SelectNodes("td.price-td").ToString().Trim();
+                string title = item.QuerySelector("div.product_info a").InnerText.Trim();
+                string strPrice = item.QuerySelector("td.price-td").InnerText.Trim();
                 strPrice = strPrice.Replace(" ", "");
                 strPrice = strPrice.Replace("грн", "");
                 double priceBN = Convert.ToDouble(strPrice);
@@ -62,6 +67,7 @@ namespace SearchTruckTires
                 priceBN = RoundUP(Convert.ToInt32(priceBN));
                 produkt.Add(title + " НАЛ - " + Convert.ToString(Convert.ToInt32(priceN)) + " ГРН , " + " с НДС - " + Convert.ToString(Convert.ToInt32(priceBN)) + " ГРН.");
             }
+            OnBindingContextChanged();
         }
     }
 }
