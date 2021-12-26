@@ -25,11 +25,16 @@ namespace SearchTruckTires.Droid
         protected override void OnCreate(Bundle savedInstanceState)
             //protected override void OnCreate(Bundle bundle)
         {
+            Window.SetStatusBarColor(Android.Graphics.Color.Argb(255, 0, 0, 0));
+            TabLayoutResource = Resource.Layout.Tabbar;
+            ToolbarResource = Resource.Layout.Toolbar;
             //base.OnCreate(bundle);
             base.OnCreate(savedInstanceState);
             // Set our view from the "Main" layout resource
-            Window.SetStatusBarColor(Android.Graphics.Color.Argb(255, 0, 0, 0));
+            
             //SetContentView(Resource.Layout.Main);
+            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+            global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
 
             //set spiner

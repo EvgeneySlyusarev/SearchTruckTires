@@ -10,11 +10,10 @@ using Xamarin.Forms.Xaml;
 namespace SearchTruckTires
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Disc : ContentPage
+    public partial class AboutProgram : ContentPage
     {
-        public Disc()
+        public AboutProgram()
         {
-            BackgroundImageSource = "@Resources/Drawable/DiscsBackground.png";
             InitializeComponent();
         }
     }

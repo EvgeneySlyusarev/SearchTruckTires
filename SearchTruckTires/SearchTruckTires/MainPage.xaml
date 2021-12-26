@@ -6,5 +6,6 @@
     <TabbedPage.Children>
         <local:Tires></local:Tires>
         <local:Disc></local:Disc>
+        <local:AboutProgram></local:AboutProgram>
     </TabbedPage.Children>
 </TabbedPage>
