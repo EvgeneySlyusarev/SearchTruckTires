@@ -3,31 +3,12 @@ using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using HtmlAgilityPack;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;
 
 namespace SearchTruckTires
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public class Produkt : INotifyPropertyChanged
-    {
-        private string produktProperty;
-        public string ProduktProperty
-        {
-            get => produktProperty.ToString();
-            set { produktProperty = value; NotifyPropertyChanged(); }
-        }
-        public override string ToString()
-        {
-            return produktProperty.ToString();
-        }
-        private void NotifyPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-        public event PropertyChangedEventHandler PropertyChanged;
-    }
+
     public partial class Tires : ContentPage
     {
         private readonly ObservableCollection<Produkt> produkts = new ObservableCollection<Produkt>();
@@ -36,6 +17,34 @@ namespace SearchTruckTires
             BackgroundImageSource = "@Resources/Drawable/WheelMark3.png";
             InitializeComponent();
             myListView.ItemsSource = produkts;
+            BindingContext = this;
+            myListView.HasUnevenRows = true;
+            // Определяем формат отображения данных
+            myListView.ItemTemplate = new DataTemplate(() =>
+            {
+                // привязка к свойству Title
+                Label title = new Label { FontSize = 18 };
+                title.SetBinding(Label.TextProperty, "Title");
+
+                // привязка к свойству PriseN
+                Label priseN = new Label();
+                priseN.SetBinding(Label.TextProperty, "PriseN");
+
+                // привязка к свойству PriceBN
+                Label priceBN = new Label();
+                priceBN.SetBinding(Label.TextProperty, "PriseBN");
+
+                // создаем объект ViewCell.
+                return new ViewCell
+                {
+                    View = new StackLayout
+                    {
+                        Padding = new Thickness(0, 10),
+                        Orientation = StackOrientation.Vertical,
+                        Children = { title, priseN, priceBN }
+                    }
+                };
+            });
         }
         private void Picker_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -73,8 +82,11 @@ namespace SearchTruckTires
                 priceN *= marginN;
                 priceN = RoundUP(Convert.ToInt32(priceN));
                 priceBN = RoundUP(Convert.ToInt32(priceBN));
-                string tempObjekt = title + " НАЛ - " + Convert.ToString(Convert.ToInt32(priceN)) + " ГРН , " + " с НДС - " + Convert.ToString(Convert.ToInt32(priceBN)) + " ГРН.";
-                produkts.Add(new Produkt { ProduktProperty = tempObjekt });
+                string priseNUP = " НАЛ - " + Convert.ToString(Convert.ToInt32(priceN)) + " ГРН , ";
+                string priseBNUP = " с НДС - " + Convert.ToString(Convert.ToInt32(priceBN)) + " ГРН.";
+                //string tempObjekt = title + " НАЛ - " + Convert.ToString(Convert.ToInt32(priceN)) + " ГРН , " + " с НДС - " + Convert.ToString(Convert.ToInt32(priceBN)) + " ГРН.";
+                //produkts.Add(new Produkt { ProduktProperty = tempObjekt });
+                produkts.Add(new Produkt { Title = title, PriseN = priseNUP, PriseBN = priseBNUP });
             }
 
         }

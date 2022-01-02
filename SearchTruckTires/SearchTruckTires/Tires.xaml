@@ -23,10 +23,26 @@
             <Picker x:Name="picker" Title="- - -/- - R - - , -" SelectedIndexChanged="Picker_SelectedIndexChanged" VerticalOptions="Center" FontSize="Subtitle" BackgroundColor="Gainsboro">
                 <Picker.Items>
                     <x:String>215/75R17.5</x:String>
+                    <x:String>315/80R22.5</x:String>
                     <x:String>385/65R22.5</x:String>
                 </Picker.Items>
             </Picker>
-            <ListView x:Name="myListView" ItemsSource= "{Binding ProduktProperty}"/>
+            <ListView x:Name="myListView" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout>
+                                    <Label Text="{Binding Title}" FontSize="18" />
+                                    <Label Text="{Binding PriseN}" />
+                                    <Label Text="{Binding PriseBN}" />
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
