@@ -8,27 +8,37 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.IO;
 using HtmlAgilityPack;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Collections.ObjectModel;
 
 namespace SearchTruckTires
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+    public class Produkt : INotifyPropertyChanged
+    {
+        private string produktProperty;
+        public string ProduktProperty
+        {
+            get => produktProperty;
+            set { produktProperty = value; NotifyPropertyChanged(); }
+        }
+        private void NotifyPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+    }
     public partial class Tires : ContentPage
     {
-        public ListView listView;
-        public List<string> produkt;
-
+        private readonly ObservableCollection<Produkt> produkts = new ObservableCollection<Produkt>();
         public Tires()
         {
             BackgroundImageSource = "@Resources/Drawable/WheelMark3.png";
             InitializeComponent();
-            produkt = new List<string>();
-            listView = new ListView
-            {
-                ItemsSource = produkt.ToList()
-            };
-            BindingContext = this;
+            myListView.ItemsSource = produkts;
         }
-        void picker_SelectedIndexChanged(object sender, EventArgs e)
+        private void Picker_SelectedIndexChanged(object sender, EventArgs e)
         {
             //DisplayAlert("Уведомление", "Вы выбрали: " + picker.Items[picker.SelectedIndex], "ОK");
             ParsingMPK(picker.Items[picker.SelectedIndex].ToString());
@@ -40,18 +50,18 @@ namespace SearchTruckTires
         }
         private void ParsingMPK(string toast)
         {
-            produkt.Clear();
+            produkts.Clear();
             string standardSize;
             standardSize = toast.Replace("/", "");
             standardSize = standardSize.Replace(".", "");
             standardSize = standardSize.ToLower();
-            var url = "http://mpk-tyres.com.ua/catalog/" + standardSize + "/";
+            string url = "http://mpk-tyres.com.ua/catalog/" + standardSize + "/";
 
-            var web = new HtmlWeb();
-            var htmlDoc = web.Load(url);
-            var page = htmlDoc.DocumentNode;
+            HtmlWeb web = new HtmlWeb();
+            HtmlDocument htmlDoc = web.Load(url);
+            HtmlNode page = htmlDoc.DocumentNode;
 
-            foreach (var item in page.QuerySelectorAll("li.product")) // поиск в файле данных
+            foreach (HtmlNode item in page.QuerySelectorAll("li.product")) // поиск в файле данных
             {
                 string title = item.QuerySelector("div.product_info a").InnerText.Trim();
                 string strPrice = item.QuerySelector("td.price-td").InnerText.Trim();
@@ -65,9 +75,10 @@ namespace SearchTruckTires
                 priceN *= marginN;
                 priceN = RoundUP(Convert.ToInt32(priceN));
                 priceBN = RoundUP(Convert.ToInt32(priceBN));
-                produkt.Add(title + " НАЛ - " + Convert.ToString(Convert.ToInt32(priceN)) + " ГРН , " + " с НДС - " + Convert.ToString(Convert.ToInt32(priceBN)) + " ГРН.");
+                string tempObjekt = title + " НАЛ - " + Convert.ToString(Convert.ToInt32(priceN)) + " ГРН , " + " с НДС - " + Convert.ToString(Convert.ToInt32(priceBN)) + " ГРН.";
+                produkts.Add(new Produkt { ProduktProperty = tempObjekt });
             }
-            OnBindingContextChanged();
+
         }
     }
 }

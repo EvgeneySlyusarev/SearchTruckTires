@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:searchtrucktires="clr-namespace:SearchTruckTires" x:DataType="searchtrucktires:Produkt"
              x:Class="SearchTruckTires.Tires"
              Title="Tires"
              Padding="10,15,10,10">
@@ -20,15 +20,17 @@
                 Text="Выбор размера"
                 TextColor="Black"/>
 
-            <Picker x:Name="picker" SelectedIndexChanged="picker_SelectedIndexChanged" VerticalOptions="Center" FontSize="Subtitle" BackgroundColor="Gainsboro">
+            <Picker x:Name="picker" SelectedIndexChanged="Picker_SelectedIndexChanged" VerticalOptions="Center" FontSize="Subtitle" BackgroundColor="Gainsboro">
                 <Picker.Items>
                     <x:String>- - -/- - R - - , -</x:String>
                     <x:String>215/75R17.5</x:String>
                     <x:String>385/65R22.5</x:String>
                 </Picker.Items>
             </Picker>
-            <ListView x:Name="ListView" ItemsSource="{Binding produkt}" BackgroundColor="Gainsboro" 
-                      />
+            <!--<ListView x:Name="ListView" ItemsSource="{Binding produkt }" BackgroundColor="Gainsboro" 
+                      />-->
+
+            <ListView x:Name="myListView" ItemsSource= "{Binding ProduktProperty}"/>
 
         </StackLayout>
     </ContentPage.Content>
