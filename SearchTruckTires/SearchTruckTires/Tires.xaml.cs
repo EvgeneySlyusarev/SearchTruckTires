@@ -39,7 +39,6 @@ namespace SearchTruckTires
         }
         private void Picker_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //DisplayAlert("Уведомление", "Вы выбрали: " + picker.Items[picker.SelectedIndex], "ОK");
             ParsingMPK(picker.Items[picker.SelectedIndex].ToString());
         }
         public int RoundUP(int value)
