@@ -27,9 +27,6 @@
                     <x:String>385/65R22.5</x:String>
                 </Picker.Items>
             </Picker>
-            <!--<ListView x:Name="ListView" ItemsSource="{Binding produkt }" BackgroundColor="Gainsboro" 
-                      />-->
-
             <ListView x:Name="myListView" ItemsSource= "{Binding ProduktProperty}"/>
 
         </StackLayout>

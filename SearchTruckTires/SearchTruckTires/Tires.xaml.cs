@@ -1,12 +1,7 @@
 ﻿using Fizzler.Systems.HtmlAgilityPack;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using System.IO;
 using HtmlAgilityPack;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -20,8 +15,12 @@ namespace SearchTruckTires
         private string produktProperty;
         public string ProduktProperty
         {
-            get => produktProperty;
+            get => produktProperty.ToString();
             set { produktProperty = value; NotifyPropertyChanged(); }
+        }
+        public override string ToString()
+        {
+            return produktProperty.ToString();
         }
         private void NotifyPropertyChanged([CallerMemberName] string propertyName = null)
         {
