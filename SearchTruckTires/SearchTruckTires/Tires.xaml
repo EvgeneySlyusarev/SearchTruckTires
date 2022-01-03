@@ -27,7 +27,7 @@
                     <x:String>385/65R22.5</x:String>
                 </Picker.Items>
             </Picker>
-            <ListView x:Name="myListView" HasUnevenRows="True">
+            <ListView x:Name="myListView" HasUnevenRows="True" ItemTapped="OnItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

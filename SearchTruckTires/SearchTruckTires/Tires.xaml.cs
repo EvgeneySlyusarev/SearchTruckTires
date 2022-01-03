@@ -46,6 +46,17 @@ namespace SearchTruckTires
                 };
             });
         }
+        public async void OnItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (e.Item is Produkt selectedProdukt)
+            {
+                await DisplayAlert("Выбранная модель", $"{selectedProdukt.Title} - {selectedProdukt.ImageURL}", "OK");
+                //Image webImage = new Image
+                //{
+                //    Source = ImageSource.FromUri(new Uri(selectedProdukt.ImageURL))
+                //};
+            }
+        }
         private void Picker_SelectedIndexChanged(object sender, EventArgs e)
         {
             ParsingMPK(picker.Items[picker.SelectedIndex].ToString());
@@ -63,13 +74,14 @@ namespace SearchTruckTires
             standardSize = standardSize.Replace(".", "");
             standardSize = standardSize.ToLower();
             string url = "http://mpk-tyres.com.ua/catalog/" + standardSize + "/";
-
+            
             HtmlWeb web = new HtmlWeb();
             HtmlDocument htmlDoc = web.Load(url);
             HtmlNode page = htmlDoc.DocumentNode;
 
             foreach (HtmlNode item in page.QuerySelectorAll("li.product")) // поиск в файле данных
             {
+                string imageURL = item.QuerySelector("img").GetAttributeValue("src", null);
                 string title = item.QuerySelector("div.product_info a").InnerText.Trim();
                 string strPrice = item.QuerySelector("td.price-td").InnerText.Trim();
                 strPrice = strPrice.Replace(" ", "");
@@ -86,7 +98,7 @@ namespace SearchTruckTires
                 string priseBNUP = " с НДС - " + Convert.ToString(Convert.ToInt32(priceBN)) + " ГРН.";
                 //string tempObjekt = title + " НАЛ - " + Convert.ToString(Convert.ToInt32(priceN)) + " ГРН , " + " с НДС - " + Convert.ToString(Convert.ToInt32(priceBN)) + " ГРН.";
                 //produkts.Add(new Produkt { ProduktProperty = tempObjekt });
-                produkts.Add(new Produkt { Title = title, PriseN = priseNUP, PriseBN = priseBNUP });
+                produkts.Add(new Produkt { Title = title, PriseN = priseNUP, PriseBN = priseBNUP, ImageURL = imageURL });
             }
 
         }
