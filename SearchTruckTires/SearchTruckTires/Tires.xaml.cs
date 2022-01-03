@@ -46,15 +46,13 @@ namespace SearchTruckTires
                 };
             });
         }
+
         public async void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
             if (e.Item is Produkt selectedProdukt)
             {
                 await DisplayAlert("Выбранная модель", $"{selectedProdukt.Title} - {selectedProdukt.ImageURL}", "OK");
-                //Image webImage = new Image
-                //{
-                //    Source = ImageSource.FromUri(new Uri(selectedProdukt.ImageURL))
-                //};
+
             }
         }
         private void Picker_SelectedIndexChanged(object sender, EventArgs e)
@@ -74,7 +72,7 @@ namespace SearchTruckTires
             standardSize = standardSize.Replace(".", "");
             standardSize = standardSize.ToLower();
             string url = "http://mpk-tyres.com.ua/catalog/" + standardSize + "/";
-            
+
             HtmlWeb web = new HtmlWeb();
             HtmlDocument htmlDoc = web.Load(url);
             HtmlNode page = htmlDoc.DocumentNode;

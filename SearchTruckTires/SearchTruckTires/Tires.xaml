@@ -27,6 +27,7 @@
                     <x:String>385/65R22.5</x:String>
                 </Picker.Items>
             </Picker>
+            
             <ListView x:Name="myListView" HasUnevenRows="True" ItemTapped="OnItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -36,13 +37,13 @@
                                     <Label Text="{Binding Title}" FontSize="18" />
                                     <Label Text="{Binding PriseN}" />
                                     <Label Text="{Binding PriseBN}" />
+                                    <Image Source="{Binding ImageURL}" WidthRequest="20" HeightRequest="20"></Image>
                                 </StackLayout>
                             </ViewCell.View>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
