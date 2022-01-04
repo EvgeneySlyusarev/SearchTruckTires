@@ -34,6 +34,10 @@ namespace SearchTruckTires
                 Label priceBN = new Label();
                 priceBN.SetBinding(Label.TextProperty, "PriseBN");
 
+                Image imageURL = new Image();
+                //imageURL.SetBinding(Image.AspectProperty, "ImageURL");
+
+
                 // создаем объект ViewCell.
                 return new ViewCell
                 {
@@ -41,7 +45,7 @@ namespace SearchTruckTires
                     {
                         Padding = new Thickness(0, 10),
                         Orientation = StackOrientation.Vertical,
-                        Children = { title, priseN, priceBN }
+                        Children = { title, priseN, priceBN, imageURL }
                     }
                 };
             });
@@ -52,18 +56,13 @@ namespace SearchTruckTires
             if (e.Item is Produkt selectedProdukt)
             {
                 await DisplayAlert("Выбранная модель", $"{selectedProdukt.Title} - {selectedProdukt.ImageURL}", "OK");
-
             }
         }
         private void Picker_SelectedIndexChanged(object sender, EventArgs e)
         {
             ParsingMPK(picker.Items[picker.SelectedIndex].ToString());
         }
-        public int RoundUP(int value)
-        {
-            value = value + 100 - (value % 100);
-            return value;
-        }
+      
         private void ParsingMPK(string toast)
         {
             produkts.Clear();
@@ -76,6 +75,12 @@ namespace SearchTruckTires
             HtmlWeb web = new HtmlWeb();
             HtmlDocument htmlDoc = web.Load(url);
             HtmlNode page = htmlDoc.DocumentNode;
+
+            int RoundUP(int value)
+            {
+                value = value + 100 - (value % 100);
+                return value;
+            }
 
             foreach (HtmlNode item in page.QuerySelectorAll("li.product")) // поиск в файле данных
             {
@@ -94,8 +99,6 @@ namespace SearchTruckTires
                 priceBN = RoundUP(Convert.ToInt32(priceBN));
                 string priseNUP = " НАЛ - " + Convert.ToString(Convert.ToInt32(priceN)) + " ГРН , ";
                 string priseBNUP = " с НДС - " + Convert.ToString(Convert.ToInt32(priceBN)) + " ГРН.";
-                //string tempObjekt = title + " НАЛ - " + Convert.ToString(Convert.ToInt32(priceN)) + " ГРН , " + " с НДС - " + Convert.ToString(Convert.ToInt32(priceBN)) + " ГРН.";
-                //produkts.Add(new Produkt { ProduktProperty = tempObjekt });
                 produkts.Add(new Produkt { Title = title, PriseN = priseNUP, PriseBN = priseBNUP, ImageURL = imageURL });
             }
 

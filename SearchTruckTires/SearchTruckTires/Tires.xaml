@@ -37,7 +37,7 @@
                                     <Label Text="{Binding Title}" FontSize="18" />
                                     <Label Text="{Binding PriseN}" />
                                     <Label Text="{Binding PriseBN}" />
-                                    <Image Source="{Binding ImageURL}" WidthRequest="20" HeightRequest="20"></Image>
+                                    <Image Source="{Binding ImageURL}" Aspect="AspectFit"></Image>
                                 </StackLayout>
                             </ViewCell.View>
                         </ViewCell>
