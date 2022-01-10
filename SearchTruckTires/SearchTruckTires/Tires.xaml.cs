@@ -35,7 +35,13 @@ namespace SearchTruckTires
                 priceBN.SetBinding(Label.TextProperty, "PriseBN");
 
                 Image imageURL = new Image();
-                //imageURL.SetBinding(Image.AspectProperty, "ImageURL");
+                imageURL.Source = new UriImageSource
+                {
+                    CachingEnabled = false,
+                    Uri = new Uri("http://mpk-tyres.com.ua/files/products/stormers216_2021.200x200.jpg")
+                };
+                imageURL.SetBinding(Image.AspectProperty, "ImageURL");
+
 
 
                 // создаем объект ViewCell.
@@ -50,6 +56,8 @@ namespace SearchTruckTires
                 };
             });
         }
+
+
 
         public async void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
