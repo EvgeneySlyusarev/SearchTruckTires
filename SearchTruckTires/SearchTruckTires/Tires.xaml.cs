@@ -34,15 +34,13 @@ namespace SearchTruckTires
                 Label priceBN = new Label();
                 priceBN.SetBinding(Label.TextProperty, "PriseBN");
 
-                Image imageURL = new Image();
-                imageURL.Source = new UriImageSource
+                Image imageURL = new Image
                 {
-                    CachingEnabled = false,
-                    Uri = new Uri("http://mpk-tyres.com.ua/files/products/stormers216_2021.200x200.jpg")
+                    Source = ImageSource.FromUri(new Uri("http://mpk-tyres.com.ua/files/products/stormers216_2021.200x200.jpg"))// эта ссылка не работает
+                    //http://mpk-tyres.com.ua/files/products/stormers216_2021.200x200.jpg?be6e55ef64de826f63e78dc19421fe5f и эта ссылка не работает
+                    //https://aka.ms/campus.jpg - Эта ссылка работает!!!!!!!!!!!!!!!!!!
+                    //https://i.ytimg.com/an_webp/0EsUUeW6V-8/mqdefault_6s.webp?du=3000&sqp=CNiY8o4G&rs=AOn4CLD_tqKpVedvB8-rjbQCO6tF8C2FLQ и даже эта работает!!!!!!!!!!!!!!!!!!!!!!!!!
                 };
-                imageURL.SetBinding(Image.AspectProperty, "ImageURL");
-
-
 
                 // создаем объект ViewCell.
                 return new ViewCell
@@ -55,9 +53,8 @@ namespace SearchTruckTires
                     }
                 };
             });
+
         }
-
-
 
         public async void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
@@ -93,6 +90,7 @@ namespace SearchTruckTires
             foreach (HtmlNode item in page.QuerySelectorAll("li.product")) // поиск в файле данных
             {
                 string imageURL = item.QuerySelector("img").GetAttributeValue("src", null);
+                imageURL = imageURL.Substring(0, imageURL.IndexOf('?'));
                 string title = item.QuerySelector("div.product_info a").InnerText.Trim();
                 string strPrice = item.QuerySelector("td.price-td").InnerText.Trim();
                 strPrice = strPrice.Replace(" ", "");
