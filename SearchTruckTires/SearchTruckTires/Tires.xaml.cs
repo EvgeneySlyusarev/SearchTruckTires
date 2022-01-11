@@ -60,10 +60,10 @@ namespace SearchTruckTires
        
         public async void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
-            if (e.Item is Produkt selectedProdukt)
-            {
-                //await DisplayAlert("Выбранная модель", $"{selectedProdukt.Title} - {selectedProdukt.ImageURL}", "OK");
-            }
+            //if (e.Item is Produkt selectedProdukt)
+            //{
+            //    await DisplayAlert("Выбранная модель", $"{selectedProdukt.Title} - {selectedProdukt.ImageURL}", "OK");
+            //}
         }
         private void Picker_SelectedIndexChanged(object sender, EventArgs e)
         {
