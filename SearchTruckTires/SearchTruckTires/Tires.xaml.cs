@@ -23,24 +23,19 @@ namespace SearchTruckTires
             myListView.ItemTemplate = new DataTemplate(() =>
             {
                 // привязка к свойству Title
-                Label title = new Label { FontSize = 18 };
+                Label title = new Label { FontSize = 18, FontAttributes = FontAttributes.Bold };
                 title.SetBinding(Label.TextProperty, "Title");
 
                 // привязка к свойству PriseN
-                Label priseN = new Label();
+                Label priseN = new Label { FontAttributes = FontAttributes.Bold};
                 priseN.SetBinding(Label.TextProperty, "PriseN");
 
                 // привязка к свойству PriceBN
-                Label priceBN = new Label();
-                priceBN.SetBinding(Label.TextProperty, "PriseBN");
+                Label priseBN = new Label { FontAttributes = FontAttributes.Bold };
+                priseBN.SetBinding(Label.TextProperty, "PriseBN");
 
-                Image imageURL = new Image
-                {
-                    Source = ImageSource.FromUri(new Uri("http://mpk-tyres.com.ua/files/products/stormers216_2021.200x200.jpg"))// эта ссылка не работает
-                    //http://mpk-tyres.com.ua/files/products/stormers216_2021.200x200.jpg?be6e55ef64de826f63e78dc19421fe5f и эта ссылка не работает
-                    //https://aka.ms/campus.jpg - Эта ссылка работает!!!!!!!!!!!!!!!!!!
-                    //https://i.ytimg.com/an_webp/0EsUUeW6V-8/mqdefault_6s.webp?du=3000&sqp=CNiY8o4G&rs=AOn4CLD_tqKpVedvB8-rjbQCO6tF8C2FLQ и даже эта работает!!!!!!!!!!!!!!!!!!!!!!!!!
-                };
+                Image imageURL = new Image();
+                imageURL.SetBinding(BindingContextProperty, "ImageProdukt");
 
                 // создаем объект ViewCell.
                 return new ViewCell
@@ -49,18 +44,25 @@ namespace SearchTruckTires
                     {
                         Padding = new Thickness(0, 10),
                         Orientation = StackOrientation.Vertical,
-                        Children = { title, priseN, priceBN, imageURL }
+                        Children = { title, priseN, priseBN, imageURL }
                     }
                 };
             });
-
         }
-
+        public Image LoadImage(string ImageURL)
+        {
+            Image image = new Image
+            {
+                Source = ImageSource.FromUri(new Uri(ImageURL))
+            };
+            return image;
+        }
+       
         public async void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
             if (e.Item is Produkt selectedProdukt)
             {
-                await DisplayAlert("Выбранная модель", $"{selectedProdukt.Title} - {selectedProdukt.ImageURL}", "OK");
+                //await DisplayAlert("Выбранная модель", $"{selectedProdukt.Title} - {selectedProdukt.ImageURL}", "OK");
             }
         }
         private void Picker_SelectedIndexChanged(object sender, EventArgs e)
@@ -105,8 +107,11 @@ namespace SearchTruckTires
                 priceBN = RoundUP(Convert.ToInt32(priceBN));
                 string priseNUP = " НАЛ - " + Convert.ToString(Convert.ToInt32(priceN)) + " ГРН , ";
                 string priseBNUP = " с НДС - " + Convert.ToString(Convert.ToInt32(priceBN)) + " ГРН.";
-                produkts.Add(new Produkt { Title = title, PriseN = priseNUP, PriseBN = priseBNUP, ImageURL = imageURL });
-            }
+                produkts.Add(new Produkt { Title = title, PriseN = priseNUP, PriseBN = priseBNUP, ImageURL = imageURL , ImageProdukt = LoadImage("https://aka.ms/campus.jpg")});
+                //http://mpk-tyres.com.ua/files/products/stormers216_2021.200x200.jpg?be6e55ef64de826f63e78dc19421fe5f и эта ссылка не работает
+                //https://aka.ms/campus.jpg - Эта ссылка работает!!!!!!!!!!!!!!!!!!
+                //https://i.ytimg.com/an_webp/0EsUUeW6V-8/mqdefault_6s.webp?du=3000&sqp=CNiY8o4G&rs=AOn4CLD_tqKpVedvB8-rjbQCO6tF8C2FLQ и даже эта работает!!!!!!!!!!!!!!!!!!!!!!!!!
+                }
 
         }
     }

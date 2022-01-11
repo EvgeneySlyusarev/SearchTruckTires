@@ -1,4 +1,7 @@
-﻿namespace SearchTruckTires
+﻿using System;
+using Xamarin.Forms;
+
+namespace SearchTruckTires
 {
     public class Produkt
     {
@@ -6,5 +9,6 @@
         public string PriseN { get; set; }
         public string PriseBN { get; set; }
         public string ImageURL { get; set; }
+        public Image ImageProdukt { get; set; }
     }
 }

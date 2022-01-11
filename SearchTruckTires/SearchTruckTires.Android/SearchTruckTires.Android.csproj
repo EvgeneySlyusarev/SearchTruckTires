@@ -113,9 +113,6 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\values\strings.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\SearchTruckTires\SearchTruckTires.csproj">
       <Project>{43E9ABB8-C1DC-469E-B516-C022CE748223}</Project>
       <Name>SearchTruckTires</Name>
