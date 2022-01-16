@@ -16,6 +16,7 @@ namespace SearchTruckTires
         {
             BackgroundImageSource = "@Resources/Drawable/DiscsBackground.png";
             InitializeComponent();
+            Application.Current.UserAppTheme = OSAppTheme.Unspecified;
             ListViewDiscs.ItemsSource = produktsDiscs;
             BindingContext = this;
             ListViewDiscs.HasUnevenRows = true;
@@ -36,6 +37,7 @@ namespace SearchTruckTires
             produktsDiscs.Clear();
             string standardSize = toast;
             standardSize = standardSize.Replace(".", "");
+            standardSize = standardSize.Replace("*", "");
             standardSize = standardSize.ToLower();
             string url = "http://mpk-tyres.com.ua/catalog/" + standardSize + "/";
 

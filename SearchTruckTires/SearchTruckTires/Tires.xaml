@@ -18,7 +18,7 @@
                     SelectedIndexChanged="PickerTires_SelectedIndexChanged" 
                     HorizontalOptions="FillAndExpand"
                     FontSize="18"
-                    BackgroundColor="AliceBlue"
+                    BackgroundColor="AliceBlue" Opacity="0.9"
                     >
                 <Picker.Items>
                     <x:String>205/75R17.5</x:String>
@@ -56,7 +56,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal" BackgroundColor="AliceBlue">
+                            <StackLayout Orientation="Horizontal" BackgroundColor="AliceBlue" Opacity="0.9">
                                 <Image Source="{Binding ImageProdukt}" WidthRequest="100" HeightRequest="120"></Image>
                                 <StackLayout>
                                     <Label Text="{Binding Title}" FontSize="18" FontAttributes="Bold" />

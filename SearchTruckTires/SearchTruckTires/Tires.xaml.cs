@@ -16,6 +16,7 @@ namespace SearchTruckTires
         {
             BackgroundImageSource = "@Resources/Drawable/WheelMark3.png";
             InitializeComponent();
+            Application.Current.UserAppTheme = OSAppTheme.Unspecified;
             ListViewTires.ItemsSource = produktsTires;
             BindingContext = this;
             ListViewTires.HasUnevenRows = true;
