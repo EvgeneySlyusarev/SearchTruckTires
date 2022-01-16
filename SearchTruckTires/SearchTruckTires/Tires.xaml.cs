@@ -11,14 +11,14 @@ namespace SearchTruckTires
 
     public partial class Tires : ContentPage
     {
-        private readonly ObservableCollection<Produkt> produkts = new ObservableCollection<Produkt>();
+        private readonly ObservableCollection<ProduktTires> produktsTires = new ObservableCollection<ProduktTires>();
         public Tires()
         {
             BackgroundImageSource = "@Resources/Drawable/WheelMark3.png";
             InitializeComponent();
-            myListView.ItemsSource = produkts;
+            ListViewTires.ItemsSource = produktsTires;
             BindingContext = this;
-            myListView.HasUnevenRows = true;
+            ListViewTires.HasUnevenRows = true;
         }
 
         public async void OnItemTapped(object sender, ItemTappedEventArgs e)
@@ -28,14 +28,14 @@ namespace SearchTruckTires
             //    await DisplayAlert("Выбранная модель", $"{selectedProdukt.Title} - {selectedProdukt.ImageURL}", "OK");
             //}
         }
-        private void Picker_SelectedIndexChanged(object sender, EventArgs e)
+        private void PickerTires_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ParsingMPK(picker.Items[picker.SelectedIndex].ToString());
+            ParsingMPKTires(pickerTires.Items[pickerTires.SelectedIndex].ToString());
         }
       
-        private void ParsingMPK(string toast)
+        private void ParsingMPKTires(string toast)
         {
-            produkts.Clear();
+            produktsTires.Clear();
             string standardSize;
             standardSize = toast.Replace("/", "");
             standardSize = standardSize.Replace(".", "");
@@ -70,7 +70,7 @@ namespace SearchTruckTires
                 priceBN = RoundUP(Convert.ToInt32(priceBN));
                 string priseNUP = " НАЛ - " + Convert.ToString(Convert.ToInt32(priceN)) + " ГРН , ";
                 string priseBNUP = " с НДС - " + Convert.ToString(Convert.ToInt32(priceBN)) + " ГРН.";
-                produkts.Add(new Produkt { Title = title, PriseN = priseNUP, PriseBN = priseBNUP, ImageURL = imageURL });
+                produktsTires.Add(new ProduktTires { Title = title, PriseN = priseNUP, PriseBN = priseBNUP, ImageURL = imageURL });
             }
 
         }

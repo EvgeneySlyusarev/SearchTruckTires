@@ -3,8 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:SearchTruckTires;assembly=SearchTruckTires"
              x:Class="SearchTruckTires.MainPage"
+            SelectedTabColor="Red"
+            UnselectedTabColor="Yellow"
+            BarBackgroundColor="DarkSlateGray"
+            BackgroundColor="DarkSlateGray"
             >
-    <TabbedPage.Children>
+    <TabbedPage.Children >
         <local:Tires></local:Tires>
         <local:Disc></local:Disc>
         <local:AboutProgram></local:AboutProgram>

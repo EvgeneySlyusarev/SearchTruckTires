@@ -1,17 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:searchtrucktires="clr-namespace:SearchTruckTires" x:DataType="searchtrucktires:ProduktDisc"
              x:Class="SearchTruckTires.Disc"
-             Title="Disc">
-    <!--BackgroundImageSource="Resources.Drawable.DiscsBackground">-->
+             Title="ДИСКИ"
+             Padding="10,10,10,10">
     <ContentPage.Content>
-        
         <StackLayout>
-            <Label Text="This is pege for Disc"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            
+            <Label
+                HorizontalOptions="CenterAndExpand"
+                FontSize="Title"
+                FontAttributes="Bold"
+                Text="Выбор размера диска"
+                TextColor="White"
+                />
+
+            <Picker x:Name="pickerDiscs" Title="- - -/- - R - - , -" 
+                    SelectedIndexChanged="PickerDiscs_SelectedIndexChanged" 
+                    HorizontalOptions="FillAndExpand"
+                    FontSize="18"
+                    BackgroundColor="AliceBlue"
+                    >
+                <Picker.Items>
+                    <x:String>11.75X22.5</x:String>
+                    <x:String>9.00X22.5</x:String>
+                    <x:String>8.25X22.5</x:String>
+                    <x:String>7.5X22.5</x:String>
+                    <x:String>6.00X17.5</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <ListView x:Name="ListViewDiscs" ItemTapped="OnItemTapped" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" BackgroundColor="AliceBlue">
+                                <Image Source="{Binding ImageProduktDisc}" WidthRequest="100" HeightRequest="120"></Image>
+                                <StackLayout>
+                                    <Label Text="{Binding TitleDisc}" FontSize="18" FontAttributes="Bold" />
+                                    <Label Text="{Binding PriseNDisc}" FontSize="Body" FontAttributes="Bold"/>
+                                    <Label Text="{Binding PriseBNDisc}" FontSize="Body" FontAttributes= "Bold"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
-    

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:searchtrucktires="clr-namespace:SearchTruckTires" x:DataType="searchtrucktires:Produkt"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:searchtrucktires="clr-namespace:SearchTruckTires" x:DataType="searchtrucktires:ProduktTires"
              x:Class="SearchTruckTires.Tires"
-             Title="Tires"
+             Title="ШИНЫ"
              Padding="10,10,10,10">
     <ContentPage.Content>
         <StackLayout>
@@ -10,12 +10,12 @@
                 HorizontalOptions="CenterAndExpand"
                 FontSize="Title"
                 FontAttributes="Bold"
-                Text="Выбор размера"
+                Text="Выбор размера шины"
                 TextColor="White"
                 />
 
-            <Picker x:Name="picker" Title="- - -/- - R - - , -" 
-                    SelectedIndexChanged="Picker_SelectedIndexChanged" 
+            <Picker x:Name="pickerTires" Title="- - -/- - R - - , -" 
+                    SelectedIndexChanged="PickerTires_SelectedIndexChanged" 
                     HorizontalOptions="FillAndExpand"
                     FontSize="18"
                     BackgroundColor="AliceBlue"
@@ -52,14 +52,14 @@
                 </Picker.Items>
             </Picker>
 
-            <ListView x:Name="myListView" ItemTapped="OnItemTapped" >
+            <ListView x:Name="ListViewTires" ItemTapped="OnItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" BackgroundColor="AliceBlue">
                                 <Image Source="{Binding ImageProdukt}" WidthRequest="100" HeightRequest="120"></Image>
                                 <StackLayout>
-                                    <Label Text="{Binding Title}" FontSize="18" FontAttributes="Bold" />Изменения в 
+                                    <Label Text="{Binding Title}" FontSize="18" FontAttributes="Bold" />
                                     <Label Text="{Binding PriseN}" FontSize="Body" FontAttributes="Bold"/>
                                     <Label Text="{Binding PriseBN}" FontSize="Body" FontAttributes= "Bold"/>
                                 </StackLayout>

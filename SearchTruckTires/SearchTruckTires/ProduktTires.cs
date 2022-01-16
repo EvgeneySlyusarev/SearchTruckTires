@@ -4,7 +4,7 @@ using Xamarin.Forms;
 
 namespace SearchTruckTires
 {
-    public class Produkt
+    public class ProduktTires
     {
         public string Title { get; set; }
         public string PriseN { get; set; }
