@@ -54,7 +54,7 @@
             </Picker>
             
             <ListView x:Name="myListView" ItemTapped="OnItemTapped">
-                <!--<ListView.ItemTemplate>
+                <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <ViewCell.View>
@@ -62,12 +62,13 @@
                                     <Label Text="{Binding Title}" FontSize="18" />
                                     <Label Text="{Binding PriseN}" />
                                     <Label Text="{Binding PriseBN}" />
-                                    <Image Source="{Binding ImageURL}" BackgroundColor="AliceBlue" Aspect="AspectFit" ></Image>
+                                    <Label Text="{Binding ImageURL}" />
+                                    <Image Source="{Binding ImageProdukt}" BackgroundColor="AliceBlue" Aspect="AspectFit" ></Image>
                                 </StackLayout>
                             </ViewCell.View>
                         </ViewCell>
                     </DataTemplate>
-                </ListView.ItemTemplate>-->
+                </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
     </ContentPage.Content>
