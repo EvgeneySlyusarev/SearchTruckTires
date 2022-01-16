@@ -1,5 +1,4 @@
-﻿
-using System.IO;
+﻿using System.IO;
 using System.Net;
 using Xamarin.Forms;
 
@@ -16,10 +15,8 @@ namespace SearchTruckTires
             get
             {
                 WebClient Client = new WebClient();
-
-                var byteArray = Client.DownloadData(ImageURL);
+                byte[] byteArray = Client.DownloadData(ImageURL);
                 return ImageSource.FromStream(() => new MemoryStream(byteArray));
-                //return ImageSource.FromUri(new System.Uri("https://mpk-tyres.com.ua/files/products/stormers216_2021.200x200.jpg"));
             }
         }
     }

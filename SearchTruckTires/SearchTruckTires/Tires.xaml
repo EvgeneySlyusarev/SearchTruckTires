@@ -3,24 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:searchtrucktires="clr-namespace:SearchTruckTires" x:DataType="searchtrucktires:Produkt"
              x:Class="SearchTruckTires.Tires"
              Title="Tires"
-             Padding="10,15,10,10">
+             Padding="10,10,10,10">
     <ContentPage.Content>
         <StackLayout>
             <Label
-                Margin="15"
-                HorizontalOptions="Center"
-                Text="Подбор шин"
+                HorizontalOptions="CenterAndExpand"
                 FontSize="Title"
-                TextColor="Black"/>
-
-            <Label
-                Margin="5"
-                VerticalOptions= "Center"
-                FontSize="Title"
+                FontAttributes="Bold"
                 Text="Выбор размера"
-                TextColor="Black"/>
+                TextColor="White"
+                />
 
-            <Picker x:Name="picker" Title="- - -/- - R - - , -" SelectedIndexChanged="Picker_SelectedIndexChanged" VerticalOptions="Center" FontSize="Subtitle">
+            <Picker x:Name="picker" Title="- - -/- - R - - , -" 
+                    SelectedIndexChanged="Picker_SelectedIndexChanged" 
+                    HorizontalOptions="FillAndExpand"
+                    FontSize="18"
+                    BackgroundColor="AliceBlue"
+                    >
                 <Picker.Items>
                     <x:String>205/75R17.5</x:String>
                     <x:String>215/75R17.5</x:String>
@@ -52,20 +51,19 @@
                     <x:String>425/65R22.5</x:String>
                 </Picker.Items>
             </Picker>
-            
-            <ListView x:Name="myListView" ItemTapped="OnItemTapped">
+
+            <ListView x:Name="myListView" ItemTapped="OnItemTapped" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <ViewCell.View>
+                            <StackLayout Orientation="Horizontal" BackgroundColor="AliceBlue">
+                                <Image Source="{Binding ImageProdukt}" WidthRequest="100" HeightRequest="120"></Image>
                                 <StackLayout>
-                                    <Label Text="{Binding Title}" FontSize="18" />
-                                    <Label Text="{Binding PriseN}" />
-                                    <Label Text="{Binding PriseBN}" />
-                                    <Label Text="{Binding ImageURL}" />
-                                    <Image Source="{Binding ImageProdukt}" BackgroundColor="AliceBlue" Aspect="AspectFit" ></Image>
+                                    <Label Text="{Binding Title}" FontSize="18" FontAttributes="Bold" />Изменения в 
+                                    <Label Text="{Binding PriseN}" FontSize="Body" FontAttributes="Bold"/>
+                                    <Label Text="{Binding PriseBN}" FontSize="Body" FontAttributes= "Bold"/>
                                 </StackLayout>
-                            </ViewCell.View>
+                            </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
