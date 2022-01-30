@@ -20,7 +20,6 @@ namespace SearchTruckTires
             BindingContext = this;
             ListViewTires.HasUnevenRows = true;
         }
-
         public async void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
             if (e.Item is ProduktTires selectedProdukt)
@@ -32,9 +31,8 @@ namespace SearchTruckTires
         private void PickerTires_SelectedIndexChanged(object sender, EventArgs e)
         {
             ParsingMPKTires(pickerTires.Items[pickerTires.SelectedIndex].ToString());
-            ParsingKapitan(pickerTires.Items[pickerTires.SelectedIndex].ToString());
+            //ParsingKapitan(pickerTires.Items[pickerTires.SelectedIndex].ToString());
         }
-      
         private void ParsingMPKTires(string toast)
         {
             produktsTires.Clear();

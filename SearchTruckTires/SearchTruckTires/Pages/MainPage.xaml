@@ -11,6 +11,7 @@
     <TabbedPage.Children >
         <local:Tires></local:Tires>
         <local:Disc></local:Disc>
+        <local:Basket></local:Basket>
         <local:AboutProgram></local:AboutProgram>
     </TabbedPage.Children>
 </TabbedPage>
