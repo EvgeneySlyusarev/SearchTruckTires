@@ -23,10 +23,11 @@ namespace SearchTruckTires
 
         public async void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
-            //if (e.Item is Produkt selectedProdukt)
-            //{
-            //    await DisplayAlert("Выбранная модель", $"{selectedProdukt.Title} - {selectedProdukt.ImageURL}", "OK");
-            //}
+            if (e.Item is ProduktTires selectedProdukt)
+            {
+                bool result = await DisplayAlert("Добавить в корзину: - ", $"{selectedProdukt.Title}", "Да", "Нет");
+                await DisplayAlert("Уведомление", "Вы выбрали: " + (result ? "Добавить" : "Отменить"), "OK");
+            }
         }
         private void PickerTires_SelectedIndexChanged(object sender, EventArgs e)
         {
