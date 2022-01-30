@@ -5,9 +5,29 @@
              Title="About">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Image Source="Resourse/Drawably/logo_parsing"
+                   Margin="50"
+                   VerticalOptions="Center"/>
+            <BoxView 
+                 
+                Color="AliceBlue"
+                VerticalOptions="Center"/>
+            <Label Text="Developer: Slyusarev Evgeney"
+                   Margin="10"
+                   TextColor="AliceBlue"
+                   FontSize="Title"
+                   HorizontalOptions="CenterAndExpand"
+                   />
+            <Label Text="Email: slyusarev.e@gmail.com"
+                   TextColor="AliceBlue"
+                   Margin="10"
+                   FontSize="Title"
+                    HorizontalOptions="CenterAndExpand" />
+            <Label Text="Tel: +380676400122"
+                   TextColor="AliceBlue"
+                   Margin="10"
+                   FontSize="Title"
+                    HorizontalOptions="CenterAndExpand" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

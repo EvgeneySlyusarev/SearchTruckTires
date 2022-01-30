@@ -8,7 +8,6 @@ using System.Collections.ObjectModel;
 namespace SearchTruckTires
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-
     public partial class Tires : ContentPage
     {
         private readonly ObservableCollection<ProduktTires> produktsTires = new ObservableCollection<ProduktTires>();
