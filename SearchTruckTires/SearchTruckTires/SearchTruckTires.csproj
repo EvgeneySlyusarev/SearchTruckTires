@@ -17,14 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Resources\Drawable\stormers216_2021.200x200.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\Drawable\stormers216_2021.200x200.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Fizzler.Systems.HtmlAgilityPack" Version="1.2.1" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.39" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2291" />

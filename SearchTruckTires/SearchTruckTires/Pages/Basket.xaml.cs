@@ -11,7 +11,7 @@ namespace SearchTruckTires
         private readonly ObservableCollection<ProduktBasket> produktsBasket = new ObservableCollection<ProduktBasket>();
         public Basket()
         {
-            BackgroundImageSource = "@Resources/Drawable/WheelMark3.png";
+            BackgroundImageSource = "@Resources/Drawable/TiresBackground.png";
             InitializeComponent();
             Application.Current.UserAppTheme = OSAppTheme.Unspecified;
             ListViewBasket.ItemsSource = produktsBasket;
