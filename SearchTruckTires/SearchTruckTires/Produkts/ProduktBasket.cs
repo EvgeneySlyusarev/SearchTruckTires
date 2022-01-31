@@ -6,6 +6,13 @@ namespace SearchTruckTires
 {
     public class ProduktBasket
     {
+        private ProduktTires selectedProdukt;
+
+        public ProduktBasket(ProduktTires selectedProdukt)
+        {
+            this.selectedProdukt=selectedProdukt;
+        }
+
         public string TitleProduktBasket { get; set; }
         public string PriseNProduktBasket { get; set; }
         public string PriseBNProduktBasket { get; set; }
