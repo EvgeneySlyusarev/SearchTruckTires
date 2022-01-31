@@ -72,7 +72,6 @@ namespace SearchTruckTires
                 string priseBNUP = " с НДС - " + Convert.ToString(Convert.ToInt32(priceBN)) + " ГРН.";
                 produktsTires.Add(new ProduktTires { Title = title, PriseN = priseNUP, PriseBN = priseBNUP, ImageURL = imageURL });
             }
-
         }
         private void ParsingKapitan(string toast)// Нужно изменить для парсинга капитан
         {
