@@ -62,6 +62,8 @@
                                     <Label Text="{Binding Title}" FontSize="18" FontAttributes="Bold" />
                                     <Label Text="{Binding PriseN}" FontSize="Body" FontAttributes="Bold"/>
                                     <Label Text="{Binding PriseBN}" FontSize="Body" FontAttributes= "Bold"/>
+                                    <Button Text="В КОРЗИНУ" 
+                                        HorizontalOptions="CenterAndExpand"/>
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>

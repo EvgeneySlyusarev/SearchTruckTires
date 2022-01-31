@@ -34,12 +34,14 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal" BackgroundColor="AliceBlue">
+                            <StackLayout Orientation="Horizontal" BackgroundColor="AliceBlue" Opacity="0.9">
                                 <Image Source="{Binding ImageProduktDisc}" WidthRequest="100" HeightRequest="120"></Image>
                                 <StackLayout>
                                     <Label Text="{Binding TitleDisc}" FontSize="18" FontAttributes="Bold" />
                                     <Label Text="{Binding PriseNDisc}" FontSize="Body" FontAttributes="Bold"/>
                                     <Label Text="{Binding PriseBNDisc}" FontSize="Body" FontAttributes= "Bold"/>
+                                    <Button Text="В КОРЗИНУ" 
+                                        HorizontalOptions="CenterAndExpand"/>
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>
