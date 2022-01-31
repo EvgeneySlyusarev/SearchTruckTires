@@ -18,6 +18,8 @@
 
   <ItemGroup>
     <None Remove="Resources\Drawable\stormers216_2021.200x200.jpg" />
+    <None Remove="Resources\Drawable\TiresBackground.png" />
+    <None Remove="Resources\Drawable\WheelMark1.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,6 +37,8 @@
 
   <ItemGroup>
     <Resource Include="Resources\Drawable\stormers216_2021.200x200.jpg" />
+    <Resource Include="Resources\Drawable\TiresBackground.png" />
+    <Resource Include="Resources\Drawable\WheelMark1.png" />
   </ItemGroup>
 
   <ItemGroup>
