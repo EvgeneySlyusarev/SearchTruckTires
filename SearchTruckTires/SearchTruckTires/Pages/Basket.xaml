@@ -18,7 +18,6 @@
                                     <Label Text="{Binding TitleProduktBasket}" FontSize="18" FontAttributes="Bold" />
                                     <Label Text="{Binding PriseNProduktBasket}" FontSize="Body" FontAttributes="Bold"/>
                                     <Label Text="{Binding PriseBNProduktBasket}" FontSize="Body" FontAttributes= "Bold"/>
-                                    
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal">
                                     <Button Text="ОТПРАВИТЬ" 
@@ -26,7 +25,6 @@
                                     <Button Text="Удалить" 
                                         HorizontalOptions="End"/>
                                 </StackLayout>
-                                
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

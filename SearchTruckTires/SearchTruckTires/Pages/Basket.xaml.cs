@@ -16,7 +16,7 @@ namespace SearchTruckTires
             Application.Current.UserAppTheme = OSAppTheme.Unspecified;
             ListViewBasket.ItemsSource = produktsBasket;
             BindingContext = this;
-            ListViewBasket.HasUnevenRows = true;
+            ListViewBasket.HasUnevenRows = true; 
         }
         public async void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
