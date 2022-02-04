@@ -26,6 +26,10 @@ namespace SearchTruckTires
             {
                 bool result = await DisplayAlert("Добавить в корзину: - ", $"{selectedProdukt.Title}", "Да", "Нет");
                 await DisplayAlert("Уведомление", "Вы выбрали: " + (result ? "Добавить" : "Отменить"), "OK");
+                if (result == true)
+                {
+                    selectedProdukt.ObjektToBasket = true;
+                }
             }
         }
         private void PickerTires_SelectedIndexChanged(object sender, EventArgs e)
