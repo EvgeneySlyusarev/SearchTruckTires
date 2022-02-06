@@ -27,13 +27,13 @@ namespace SearchTruckTires
         }
         public async void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
-            if (e.Item is ProduktTires selectedProdukt)
+            if (e.Item is ProduktDisc selectedProdukt)
             {
-                bool result = await DisplayAlert("Добавить в корзину: - ", $"{selectedProdukt.Title}", "Да", "Нет");
+                bool result = await DisplayAlert("Добавить в корзину: - ", $"{selectedProdukt.TitleDisc}", "Да", "Нет");
                 await DisplayAlert("Уведомление", "Вы выбрали: " + (result ? "Добавить" : "Отменить"), "OK");
                 if (result == true)
                 {
-                    Basket.produktsBasket.Add(new ProduktBasket { TitleProduktBasket = selectedProdukt.Title, PriseNProduktBasket = selectedProdukt.PriseN, PriseBNProduktBasket = selectedProdukt.PriseBN, ImageURLProduktBasket = selectedProdukt.ImageURL});// to do
+                    Basket.produktsBasket.Add(new ProduktBasket { TitleProduktBasket = selectedProdukt.TitleDisc, PriseNProduktBasket = selectedProdukt.PriseNDisc, PriseBNProduktBasket = selectedProdukt.PriseBNDisc, ImageURLProduktBasket = selectedProdukt.ImageURLDisc});// to do
                 }
             }
         }
