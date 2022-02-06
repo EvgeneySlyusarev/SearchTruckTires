@@ -8,7 +8,7 @@ namespace SearchTruckTires
 
     public partial class Basket : ContentPage
     { 
-        private readonly ObservableCollection<ProduktBasket> produktsBasket = new ObservableCollection<ProduktBasket>();
+        public static readonly ObservableCollection<ProduktBasket> produktsBasket = new ObservableCollection<ProduktBasket>();
         public Basket()
         {
             BackgroundImageSource = "@Resources/Drawable/WheelMark2.png";
@@ -22,15 +22,8 @@ namespace SearchTruckTires
         {
             if (e.Item is ProduktTires selectedProdukt)
             {
-                bool result = await DisplayAlert("Добавить в корзину: - ", $"{selectedProdukt.Title}", "Да", "Нет");
-                await DisplayAlert("Уведомление", "Вы выбрали: " + (result ? "Добавить" : "Отменить"), "OK");
-            }
-        }
-        public void AddToBasket(ProduktTires produkt)
-        {
-            if (produkt.ObjektToBasket == true)
-            {
-                produktsBasket.Add(new ProduktBasket{ TitleProduktBasket = produkt.Title, PriseNProduktBasket = produkt.PriseN, PriseBNProduktBasket = produkt.PriseBN, ImageURLProduktBasket = produkt.ImageURL });
+                bool result = await DisplayAlert("Отправить: - ", $"{selectedProdukt.Title}", "Да", "Нет");
+                await DisplayAlert("Уведомление", "Вы выбрали: " + (result ? "Отправить" : "Отменить"), "OK");
             }
         }
     }

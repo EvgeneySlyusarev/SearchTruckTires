@@ -8,7 +8,7 @@
             BarBackgroundColor="DarkSlateGray"
             BackgroundColor="DarkSlateGray"
             >
-    <TabbedPage.Children >
+    <TabbedPage.Children>
         <local:Tires></local:Tires>
         <local:Disc></local:Disc>
         <local:Basket></local:Basket>
