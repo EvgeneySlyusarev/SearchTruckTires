@@ -10,7 +10,6 @@ namespace SearchTruckTires
         public string PriseN { get; set; }
         public string PriseBN { get; set; }
         public string ImageURL { get; set; }
-        public bool ObjektToBasket{ get; set; }
         public ImageSource ImageProdukt
         {
             get
