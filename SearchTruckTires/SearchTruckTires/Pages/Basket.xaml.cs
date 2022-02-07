@@ -26,12 +26,5 @@ namespace SearchTruckTires
                 await DisplayAlert("Уведомление", "Вы выбрали: " + (result ? "Добавить" : "Отменить"), "OK");
             }
         }
-        public void AddToBasket(ProduktTires produkt)
-        {
-            if (produkt.ObjektToBasket == true)
-            {
-                produktsBasket.Add(new ProduktBasket{ TitleProduktBasket = produkt.Title, PriseNProduktBasket = produkt.PriseN, PriseBNProduktBasket = produkt.PriseBN, ImageURLProduktBasket = produkt.ImageURL });
-            }
-        }
     }
 }
