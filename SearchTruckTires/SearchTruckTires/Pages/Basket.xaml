@@ -4,10 +4,13 @@
              xmlns:searchtrucktires="clr-namespace:SearchTruckTires" 
              x:DataType="searchtrucktires:ProduktBasket"
              x:Class="SearchTruckTires.Basket"
-
              Title="КОРЗИНА">
     <ContentPage.Content>
-    <StackLayout>
+        <StackLayout>
+                <StackLayout Orientation="Vertical">
+                    <Label Text="{Binding Source={x:Reference _stepper}, Path=Value, StringFormat='Колличество товаров в корзине: {0:F0}'}"/>
+                    <Label Text="{Binding Source={x:Reference _stepper}, Path=Value, StringFormat='Сумма товаров: {0:F0}'}"/>
+                </StackLayout>
             <ListView x:Name="ListViewBasket" ItemTapped="OnItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -18,8 +21,12 @@
                                     <Label Text="{Binding TitleProduktBasket}" FontSize="18" FontAttributes="Bold" />
                                     <Label Text="{Binding PriseNProduktBasket}" FontSize="Body" FontAttributes="Bold"/>
                                     <Label Text="{Binding PriseBNProduktBasket}" FontSize="Body" FontAttributes= "Bold"/>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Stepper x:Name="_stepper" Minimum="0" Maximum="10" Increment="1"/>
+                                        <Label Text="{Binding Source={x:Reference _stepper}, Path=Value}"/>
+                                    </StackLayout>        
                                 </StackLayout>
-                                <StackLayout Orientation="Horizontal">
+                                 <StackLayout Orientation="Horizontal">
                                     <Button Text="ОТПРАВИТЬ" 
                                         HorizontalOptions="Start"/>
                                     <Button Text="Удалить" 
