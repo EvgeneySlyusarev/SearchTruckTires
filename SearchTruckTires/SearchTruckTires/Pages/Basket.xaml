@@ -19,7 +19,7 @@
                                     <Label Text="{Binding PriseNProduktBasket}" FontSize="Body" FontAttributes="Bold"/>
                                     <Label Text="{Binding PriseBNProduktBasket}" FontSize="Body" FontAttributes= "Bold"/>
                                 </StackLayout>
-                                <StackLayout Orientation="Horizontal">
+                                <StackLayout Orientation="Horizontal">  
                                     <Button Text="ОТПРАВИТЬ" 
                                         HorizontalOptions="Start"/>
                                     <Button Text="Удалить" 
