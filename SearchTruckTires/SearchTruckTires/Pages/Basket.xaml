@@ -7,10 +7,8 @@
              Title="КОРЗИНА">
     <ContentPage.Content>
         <StackLayout>
-                <StackLayout Orientation="Vertical">
-                    <Label Text="{Binding Source={x:Reference _stepper}, Path=Value, StringFormat='Колличество товаров в корзине: {0:F0}'}"/>
-                    <Label Text="{Binding Source={x:Reference _stepper}, Path=Value, StringFormat='Сумма товаров: {0:F0}'}"/>
-                </StackLayout>
+            <Label Text="Колличество товаров в корзине:" TextColor="AliceBlue" FontSize="Medium"/>
+            <Label Text="Сумма товаров:" TextColor="AliceBlue" FontSize="Medium" />
             <ListView x:Name="ListViewBasket" ItemTapped="OnItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -18,21 +16,19 @@
                             <StackLayout Orientation="Horizontal" BackgroundColor="AliceBlue" Opacity="0.9">
                                 <Image Source="{Binding ImageProduktBasket}" WidthRequest="100" HeightRequest="120"></Image>
                                 <StackLayout>
-                                    <Label Text="{Binding TitleProduktBasket}" FontSize="18" FontAttributes="Bold" />
-                                    <Label Text="{Binding PriseNProduktBasket}" FontSize="Body" FontAttributes="Bold"/>
-                                    <Label Text="{Binding PriseBNProduktBasket}" FontSize="Body" FontAttributes= "Bold"/>
+                                    <Label Text="{Binding TitleProduktBasket}" FontSize="Body" FontAttributes="Italic" TextDecorations="Underline" TextColor="AliceBlue"/>
+                                    <Label Text="{Binding PriseNProduktBasket}" FontSize="Medium" FontAttributes="Bold" TextColor="ForestGreen"/>
+                                    <Label Text="{Binding PriseBNProduktBasket}" FontSize="Medium" FontAttributes= "Bold" TextColor="PaleVioletRed"/>
+                                    <Label Text="Колличество товаров"></Label>
                                     <StackLayout Orientation="Horizontal">
-                                        <Stepper x:Name="_stepper" Minimum="0" Maximum="10" Increment="1"/>
-                                        <Label Text="{Binding Source={x:Reference _stepper}, Path=Value}"/>
+                                        <Stepper x:Name="_stepper" Minimum="0" Maximum="10" Increment="1" />
                                     </StackLayout>        
                                 </StackLayout>
-                                <StackLayout Orientation="Horizontal">
-                                    <Button Text="ОТПРАВИТЬ" 
-                                        HorizontalOptions="Start"/>
-                                    <Button Text="Удалить" 
-                                        HorizontalOptions="End"/>
+                                <StackLayout Orientation="Vertical" VerticalOptions="EndAndExpand">
+                                    <Button Text="Удалить" TextColor="AliceBlue" BackgroundColor="Red" 
+                                        HorizontalOptions="FillAndExpand"/>
+                                    <Label Text="{Binding Source={x:Reference _stepper}, Path=Value}" TextColor="Red" FontSize="35" HorizontalOptions="CenterAndExpand"/>
                                 </StackLayout>
-                                
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

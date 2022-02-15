@@ -57,13 +57,11 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" BackgroundColor="AliceBlue" Opacity="0.9">
-                                <Image Source="{Binding ImageProdukt}" WidthRequest="100" HeightRequest="120"></Image>
-                                <StackLayout>
-                                    <Label Text="{Binding Title}" FontSize="18" FontAttributes="Bold" />
-                                    <Label Text="{Binding PriseN}" FontSize="Body" FontAttributes="Bold"/>
-                                    <Label Text="{Binding PriseBN}" FontSize="Body" FontAttributes= "Bold"/>
-                                    <Button Text="В КОРЗИНУ" 
-                                        HorizontalOptions="CenterAndExpand"/>
+                                <Image Source="{Binding ImageProdukt}" WidthRequest="100" HeightRequest="130"></Image>
+                                <StackLayout VerticalOptions="Center">
+                                    <Label Text="{Binding Title}" FontSize="Body" FontAttributes="Italic" HorizontalOptions="CenterAndExpand" TextColor="AliceBlue" TextDecorations="Underline"/>
+                                    <Label Text="{Binding PriseN}" FontSize="Medium" FontAttributes="Italic" TextColor="Green"/>
+                                    <Label Text="{Binding PriseBN}" FontSize="Medium" FontAttributes= "Italic" TextColor="PaleVioletRed"/>
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>

@@ -30,7 +30,6 @@ namespace SearchTruckTires
             if (e.Item is ProduktDisc selectedProdukt)
             {
                 bool result = await DisplayAlert("Добавить в корзину: - ", $"{selectedProdukt.TitleDisc}", "Да", "Нет");
-                await DisplayAlert("Уведомление", "Вы выбрали: " + (result ? "Добавить" : "Отменить"), "OK");
                 if (result == true)
                 {
                     Basket.produktsBasket.Add(new ProduktBasket { TitleProduktBasket = selectedProdukt.TitleDisc, PriseNProduktBasket = selectedProdukt.PriseNDisc, PriseBNProduktBasket = selectedProdukt.PriseBNDisc, ImageURLProduktBasket = selectedProdukt.ImageURLDisc});// to do

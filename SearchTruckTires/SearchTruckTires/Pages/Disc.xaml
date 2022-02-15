@@ -37,11 +37,10 @@
                             <StackLayout Orientation="Horizontal" BackgroundColor="AliceBlue" Opacity="0.9">
                                 <Image Source="{Binding ImageProduktDisc}" WidthRequest="100" HeightRequest="120"></Image>
                                 <StackLayout>
-                                    <Label Text="{Binding TitleDisc}" FontSize="18" FontAttributes="Bold" />
-                                    <Label Text="{Binding PriseNDisc}" FontSize="Body" FontAttributes="Bold"/>
-                                    <Label Text="{Binding PriseBNDisc}" FontSize="Body" FontAttributes= "Bold"/>
-                                    <Button Text="В КОРЗИНУ" 
-                                        HorizontalOptions="CenterAndExpand"/>
+                                    <Label Text="{Binding TitleDisc}" FontSize="Body" FontAttributes="Italic" HorizontalOptions="CenterAndExpand" TextColor="AliceBlue" TextDecorations="Underline" />
+                                    <Label Text="{Binding PriseNDisc}"  FontSize="Medium" FontAttributes="Italic" TextColor="Green"/>
+                                    <Label Text="{Binding PriseBNDisc}" FontSize="Medium" FontAttributes= "Italic" TextColor="PaleVioletRed"/>
+
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>

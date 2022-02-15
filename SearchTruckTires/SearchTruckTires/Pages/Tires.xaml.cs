@@ -24,8 +24,7 @@ namespace SearchTruckTires
         {
             if (e.Item is ProduktTires selectedProdukt)
             {
-                bool result = await DisplayAlert("Добавить в корзину: - ", $"{selectedProdukt.Title}", "Да", "Нет");
-                await DisplayAlert("Уведомление", "Вы выбрали: " + (result ? "Добавить" : "Отменить"), "OK");
+                bool result = await DisplayAlert("Добавить в корзину: - ", $"{selectedProdukt.Title}?", "Да", "Нет");
                 if (result == true)
                 {
                     Basket.produktsBasket.Add(new ProduktBasket{ TitleProduktBasket = selectedProdukt.Title, PriseNProduktBasket = selectedProdukt.PriseN, PriseBNProduktBasket = selectedProdukt.PriseBN, ImageURLProduktBasket = selectedProdukt.ImageURL});// to do
