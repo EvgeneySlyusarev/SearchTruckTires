@@ -10,7 +10,7 @@ namespace SearchTruckTires
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Tires : ContentPage
     {
-        private readonly ObservableCollection<ProduktTires> produktsTires = new ObservableCollection<ProduktTires>();
+        public readonly ObservableCollection<ProduktTires> produktsTires = new ObservableCollection<ProduktTires>();
         public Tires()
         {
             BackgroundImageSource = "@Resources/Drawable/WheelMark3.png";
@@ -74,7 +74,7 @@ namespace SearchTruckTires
                 priceBN = RoundUP(Convert.ToInt32(priceBN));
                 string priseNUP = " НАЛ - " + Convert.ToString(Convert.ToInt32(priceN)) + " ГРН , ";
                 string priseBNUP = " с НДС - " + Convert.ToString(Convert.ToInt32(priceBN)) + " ГРН.";
-                produktsTires.Add(new ProduktTires { Title = title, PriseN = priseNUP, PriseBN = priseBNUP, ImageURL = imageURL });
+                produktsTires.Add(new ProduktTires { Title = title, PriseN = priseNUP, PriseBN = priseBNUP, ImageURL = imageURL});
             }
         }
         private void ParsingKapitan(string toast)// Нужно изменить для парсинга капитан
