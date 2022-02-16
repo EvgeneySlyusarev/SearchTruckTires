@@ -9,7 +9,7 @@
         <StackLayout>
             <Label Text="Колличество товаров в корзине:" TextColor="AliceBlue" FontSize="Medium"/>
             <Label Text="Сумма товаров:" TextColor="AliceBlue" FontSize="Medium" />
-            <ListView x:Name="ListViewBasket" ItemTapped="OnItemTapped">
+            <ListView x:Name="ListViewBasket">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -21,12 +21,11 @@
                                     <Label Text="{Binding PriseBNProduktBasket}" FontSize="Medium" FontAttributes= "Bold" TextColor="PaleVioletRed"/>
                                     <Label Text="Колличество товаров"></Label>
                                     <StackLayout Orientation="Horizontal">
-                                        <Stepper x:Name="_stepper" Minimum="0" Maximum="10" Increment="1" />
+                                        <Stepper x:Name="_stepper" Minimum="0" Maximum="10" Increment="1"/>
                                     </StackLayout>        
                                 </StackLayout>
                                 <StackLayout Orientation="Vertical" VerticalOptions="EndAndExpand">
-                                    <Button Text="Удалить" TextColor="AliceBlue" BackgroundColor="Red" 
-                                        HorizontalOptions="FillAndExpand"/>
+                                    <Button Text="Удалить" TextColor="AliceBlue" BackgroundColor="Red" HorizontalOptions="FillAndExpand" Clicked="Button_Clicked"/>
                                     <Label Text="{Binding Source={x:Reference _stepper}, Path=Value}" TextColor="Red" FontSize="35" HorizontalOptions="CenterAndExpand"/>
                                 </StackLayout>
                             </StackLayout>

@@ -7,7 +7,7 @@ namespace SearchTruckTires
     [XamlCompilation(XamlCompilationOptions.Compile)]
 
     public partial class Basket : ContentPage
-    { 
+    {
         public static readonly ObservableCollection<ProduktBasket> produktsBasket = new ObservableCollection<ProduktBasket>();
         public Basket()
         {
@@ -16,15 +16,12 @@ namespace SearchTruckTires
             Application.Current.UserAppTheme = OSAppTheme.Unspecified;
             ListViewBasket.ItemsSource = produktsBasket;
             BindingContext = this;
-            ListViewBasket.HasUnevenRows = true; 
+            ListViewBasket.HasUnevenRows = true;
         }
-        public async void OnItemTapped(object sender, ItemTappedEventArgs e)
+
+        private void Button_Clicked(object sender, System.EventArgs e)
         {
-            if (e.Item is ProduktTires selectedProdukt)
-            {
-                bool result = await DisplayAlert("Отправить: - ", $"{selectedProdukt.Title}", "Да", "Нет");
-                await DisplayAlert("Уведомление", "Вы выбрали: " + (result ? "Отправить" : "Отменить"), "OK");
-            }
+            produktsBasket.RemoveAt(0);
         }
     }
 }
