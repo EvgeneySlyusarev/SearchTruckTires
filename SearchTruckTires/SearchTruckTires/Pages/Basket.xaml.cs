@@ -9,6 +9,7 @@ namespace SearchTruckTires
     public partial class Basket : ContentPage
     {
         public static readonly ObservableCollection<ProduktBasket> produktsBasket = new ObservableCollection<ProduktBasket>();
+        public static int DeleteBasketClicked { get; set; }
         public Basket()
         {
             BackgroundImageSource = "@Resources/Drawable/WheelMark2.png";
@@ -21,7 +22,12 @@ namespace SearchTruckTires
 
         private void Button_Clicked(object sender, System.EventArgs e)
         {
-            produktsBasket.RemoveAt(0);
+            produktsBasket.RemoveAt(DeleteBasketClicked); 
+        }
+
+        private void ListViewBasket_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            DeleteBasketClicked = e.SelectedItemIndex;
         }
     }
 }

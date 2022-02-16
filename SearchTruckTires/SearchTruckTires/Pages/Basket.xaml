@@ -9,7 +9,7 @@
         <StackLayout>
             <Label Text="Колличество товаров в корзине:" TextColor="AliceBlue" FontSize="Medium"/>
             <Label Text="Сумма товаров:" TextColor="AliceBlue" FontSize="Medium" />
-            <ListView x:Name="ListViewBasket">
+            <ListView x:Name="ListViewBasket" ItemSelected="ListViewBasket_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
