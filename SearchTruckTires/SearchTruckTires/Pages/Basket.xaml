@@ -7,8 +7,18 @@
              Title="КОРЗИНА">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Колличество товаров в корзине:" TextColor="AliceBlue" FontSize="Medium"/>
-            <Label Text="Сумма товаров:" TextColor="AliceBlue" FontSize="Medium" />
+            <StackLayout Orientation="Horizontal">
+                <StackLayout Orientation="Vertical">
+                     <Label Text="Колличество товаров в корзине:" TextColor="AliceBlue" FontSize="Medium"/>
+                     <Label Text="Сумма товаров:" TextColor="AliceBlue" FontSize="Medium" />
+                </StackLayout>
+                <StackLayout Orientation="Vertical">
+                    <Label Text="{Binding ProductsCartСost}" TextColor="AliceBlue" FontSize="Medium"/>
+                    <Label Text="{Binding СostProductsCart}" TextColor="AliceBlue" FontSize="Medium" />
+                </StackLayout>
+            </StackLayout>
+       
+            
             <ListView x:Name="ListViewBasket" ItemSelected="ListViewBasket_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
