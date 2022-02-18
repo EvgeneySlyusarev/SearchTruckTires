@@ -11,9 +11,9 @@ namespace SearchTruckTires
     public partial class Basket : ContentPage
     {
         public static readonly ObservableCollection<ProduktBasket> produktsBasket = new ObservableCollection<ProduktBasket>();
-        public static int DeleteBasketClicked { get; set; }
-        public static int CountProduktsBasket { get; private set; }
-        public static int СostProductsCart { get; private set; }
+        private static int DeleteBasketClicked { get; set; }
+        public static int CountProduktsBasket { get; set; }
+        public static int СostProductsCart { get; set; }
 
         public Basket()
         {
@@ -23,9 +23,10 @@ namespace SearchTruckTires
             ListViewBasket.ItemsSource = produktsBasket;
             BindingContext = this;
             ListViewBasket.HasUnevenRows = true;
+            ProductBasketCounter();
+            ProductsCartСost();
         }
-
-        public int ProductBasketCounter()
+        private int ProductBasketCounter()
         {
             for (int i = 0; i < produktsBasket.Count; i++)
             {
@@ -33,8 +34,7 @@ namespace SearchTruckTires
             }
             return CountProduktsBasket;
         }
-
-        public int ProductsCartСost(ObservableCollection<ProduktBasket> produktsBasket)
+        private int ProductsCartСost()
         {
             СostProductsCart = 0;
             for (int i = 0; i < produktsBasket.Count; i++)

@@ -13,8 +13,8 @@
                      <Label Text="Сумма товаров:" TextColor="AliceBlue" FontSize="Medium" />
                 </StackLayout>
                 <StackLayout Orientation="Vertical">
-                    <Label Text="{Binding ProductsCartСost}" TextColor="AliceBlue" FontSize="Medium"/>
-                    <Label Text="{Binding СostProductsCart}" TextColor="AliceBlue" FontSize="Medium" />
+                    <Label x:DataType="searchtrucktires:Basket" Text="{Binding CountProduktsBasket}" TextColor="AliceBlue" FontSize="Medium"/>
+                    <Label x:DataType="searchtrucktires:Basket" Text="{Binding СostProductsCart}" TextColor="AliceBlue" FontSize="Medium" />
                 </StackLayout>
             </StackLayout>
        
