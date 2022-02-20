@@ -6,19 +6,7 @@
              x:Class="SearchTruckTires.Basket"
              Title="КОРЗИНА">
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <StackLayout Orientation="Vertical">
-                     <Label Text="Колличество товаров в корзине:" TextColor="AliceBlue" FontSize="Medium"/>
-                     <Label Text="Сумма товаров:" TextColor="AliceBlue" FontSize="Medium" />
-                </StackLayout>
-                <StackLayout Orientation="Vertical">
-                    <!--<Label x:DataType="searchtrucktires:Basket" Text="{Binding CountProduktsBasket}" TextColor="AliceBlue" FontSize="Medium"/>
-                    <Label x:DataType="searchtrucktires:Basket" Text="{Binding СostProductsCart}" TextColor="AliceBlue" FontSize="Medium" />-->
-                </StackLayout>
-            </StackLayout>
-       
-            
+        <StackLayout Margin="10">
             <ListView x:Name="ListViewBasket" ItemSelected="ListViewBasket_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -43,6 +31,18 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <StackLayout Orientation="Horizontal" BackgroundColor="AntiqueWhite">
+                <StackLayout Orientation="Vertical">
+                    <Label Text="В корзине:" TextColor="Red" FontSize="Title" FontAttributes="Bold"/>
+                    <Label Text="Сумма товаров:" TextColor="Red" FontSize="Title" FontAttributes="Bold"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                    <Label Text="11" TextColor="AliceBlue" FontSize="Title"/>
+                    <Label Text="22" TextColor="AliceBlue" FontSize="Title"/>
+                </StackLayout>
+            </StackLayout>
+
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
