@@ -11,9 +11,9 @@ namespace SearchTruckTires
     public partial class Basket : ContentPage
     {
         public static readonly ObservableCollection<ProduktBasket> produktsBasket = new ObservableCollection<ProduktBasket>();
-        public static int DeleteBasketClicked { get; set; }
-        public static int CountProduktsBasket { get; set; }
-        public static int СostProductsCart { get; set; }
+        public int DeleteBasketClicked;
+        public int QuantityProduktsBasket;
+        public int СostProductsCart;
 
         public Basket()
         {
@@ -21,31 +21,28 @@ namespace SearchTruckTires
             InitializeComponent();
             Application.Current.UserAppTheme = OSAppTheme.Unspecified;
             ListViewBasket.ItemsSource = produktsBasket;
-            CountProduktsBasket = ProductBasketCounter();
-            СostProductsCart = ProductsCartСost();
             BindingContext = this;
             ListViewBasket.HasUnevenRows = true;
         }
         private int ProductBasketCounter()
         {
-            for (int i = 0; i < produktsBasket.Count; i++)
+            foreach (ProduktBasket item in produktsBasket)
             {
-                CountProduktsBasket += produktsBasket[i].QuantityProduktBasket;
+                QuantityProduktsBasket += item.QuantityProdukt;
             }
-            return CountProduktsBasket;
+            return QuantityProduktsBasket;
         }
-        private int ProductsCartСost()
+        public int ProductsCartСost()
         {
-            СostProductsCart = 0;
-            for (int i = 0; i < produktsBasket.Count; i++)
+            foreach (ProduktBasket item in produktsBasket)
             {
-                int.TryParse(string.Join("", produktsBasket[i].PriseNProduktBasket.Where(c => char.IsDigit(c))), out int value);
-                СostProductsCart += value;
+                _ = int.TryParse(string.Join("", item.PriseNProduktBasket.Where(c => char.IsDigit(c))), out int value);
+                СostProductsCart = value;
             }
             return СostProductsCart;
         }
 
-        private void Button_Clicked(object sender, System.EventArgs e)
+        private void Button_Clicked(object sender, EventArgs e)
         {
             produktsBasket.RemoveAt(DeleteBasketClicked);
         }
@@ -53,6 +50,12 @@ namespace SearchTruckTires
         private void ListViewBasket_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             DeleteBasketClicked = e.SelectedItemIndex;
+        }
+
+        private void Stepper_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            _ = ProductBasketCounter();
+            _ = ProductsCartСost();
         }
     }
 }
