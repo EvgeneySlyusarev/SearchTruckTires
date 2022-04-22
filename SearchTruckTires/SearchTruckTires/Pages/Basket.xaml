@@ -4,7 +4,6 @@
              xmlns:searchtrucktires="clr-namespace:SearchTruckTires" 
              x:DataType="searchtrucktires:ProduktBasket"
              x:Class="SearchTruckTires.Basket"
-             <!--xmlns:local="clr-namespace:SearchTruckTires"-->
              Title="КОРЗИНА">
     <ContentPage.Content>
         <StackLayout Margin="10">
@@ -38,8 +37,8 @@
                     <Label Text="Сумма товаров:" TextColor="Red" FontSize="Title" FontAttributes="Bold"/>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
-                    <Label Text="{}" TextColor="AliceBlue" FontSize="Title"/>
-                    <!--<Label Text="{x:Binding Source={x:Static local:Basket.СostProductsCart}}" TextColor="AliceBlue" FontSize="Title"/>-->
+                    <Label x:Name="lableQwantProdBasket" TextColor="AliceBlue" FontSize="Title" />
+                    <Label x:Name="lableСostProdBasket" TextColor="AliceBlue" FontSize="Title"/>
                 </StackLayout>
             </StackLayout>
         </StackLayout>
