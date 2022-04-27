@@ -27,7 +27,7 @@ namespace SearchTruckTires
                 bool result = await DisplayAlert("Добавить в корзину: - ", $"{selectedProdukt.Title}?", "Да", "Нет");
                 if (result)
                 {
-                    Basket.produktsBasket.Add(new ProduktBasket{ TitleProduktBasket = selectedProdukt.Title, PriseNProduktBasket = selectedProdukt.PriseN, PriseBNProduktBasket = selectedProdukt.PriseBN, ImageURLProduktBasket = selectedProdukt.ImageURL});// to do
+                    Basket.produktsBasket.Add(new ProduktBasket { TitleProduktBasket = selectedProdukt.Title, PriseNProduktBasket = selectedProdukt.PriseN, PriseBNProduktBasket = selectedProdukt.PriseBN, ImageURLProduktBasket = selectedProdukt.ImageURL});// to do
                 }
             }
         }

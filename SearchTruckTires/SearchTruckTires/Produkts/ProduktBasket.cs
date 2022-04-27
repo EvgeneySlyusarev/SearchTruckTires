@@ -1,7 +1,5 @@
-﻿using System.ComponentModel;
-using System.IO;
+﻿using System.IO;
 using System.Net;
-using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
 namespace SearchTruckTires
@@ -13,9 +11,17 @@ namespace SearchTruckTires
         public string PriseBNProduktBasket { get; set; }
         public string ImageURLProduktBasket { get; set; }
         private int _quantityProduktBasket;
-        public int QuantityProduktBasket { get => _quantityProduktBasket; set => SetProperty(ref _quantityProduktBasket, value); }
-        public event PropertyChangedEventHandler PropertyChanged;
-        
+        public int QuantityProduktBasket
+        {
+            get => _quantityProduktBasket;
+            set => QuantityProduktBasket = _quantityProduktBasket;
+        }
+
+        public ProduktBasket()
+        {
+            _quantityProduktBasket = 1;
+        }
+
         public ImageSource ImageProduktBasket
         {
             get
@@ -24,21 +30,6 @@ namespace SearchTruckTires
                 byte[] byteArray = Client.DownloadData(ImageURLProduktBasket);
                 return ImageSource.FromStream(() => new MemoryStream(byteArray));
             }
-        }
-
-        protected bool SetProperty<T>(ref T field, T newValue, [CallerMemberName] string propertyName = null)
-        {
-            if (!Equals(field, newValue))
-            {
-                field = newValue;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-                return true;
-            }
-            return false;
-        }
-        public ProduktBasket()
-        {
-            _quantityProduktBasket = 1;
-        }
+        }// метод для скачивание изображения 
     }
 }

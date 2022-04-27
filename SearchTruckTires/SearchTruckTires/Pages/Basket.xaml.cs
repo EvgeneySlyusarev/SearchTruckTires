@@ -3,18 +3,17 @@ using Xamarin.Forms.Xaml;
 using System.Collections.ObjectModel;
 using System;
 using System.Linq;
-using System.ComponentModel;
 
 namespace SearchTruckTires
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
 
-    public partial class Basket : ContentPage, INotifyPropertyChanged
+    public partial class Basket : ContentPage
     {
         public static readonly ObservableCollection<ProduktBasket> produktsBasket = new ObservableCollection<ProduktBasket>();
-        public int DeleteBasketClicked;
-        public int QuantityProduktBasket;
-        public int СostProductsCart;
+        public int QuantityProduktBasket { get; set; }
+        public int СostProductsCart { get; set; }
+        public int DeleteBasketId { get; set; }
 
         public Basket()
         {
@@ -23,45 +22,56 @@ namespace SearchTruckTires
             Application.Current.UserAppTheme = OSAppTheme.Dark;
             ListViewBasket.ItemsSource = produktsBasket;
             ListViewBasket.HasUnevenRows = true;
-            lableQwantProdBasket.Text = Convert.ToString(QuantityProduktBasket);
-            lableСostProdBasket.Text = Convert.ToString(СostProductsCart);
+            _ = new Stepper();
             BindingContext = this;
         }
 
         private void ProductBasketCounter()
         {
+            QuantityProduktBasket = 0;
             foreach (ProduktBasket item in produktsBasket)
             {
                 QuantityProduktBasket += item.QuantityProduktBasket;
             }
+            lableQwantProdBasket.Text = Convert.ToString(QuantityProduktBasket);
         }
 
-       private void ProductsBasketСost()
+        private void ProductsBasketСost()// работает 
         {
+            СostProductsCart = 0;
             foreach (ProduktBasket item in produktsBasket)
             {
                 _ = int.TryParse(string.Join("", item.PriseNProduktBasket.Where(c => char.IsDigit(c))), out int value);
+                value *= item.QuantityProduktBasket;
                 СostProductsCart += value;
             }
+            lableСostProdBasket.Text = Convert.ToString(СostProductsCart);
         }
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            produktsBasket.RemoveAt(DeleteBasketClicked);
-        }
-
-        private void ListViewBasket_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            DeleteBasketClicked = e.SelectedItemIndex;
-        }
-
-        private void Stepper_ValueChanged(object sender, ValueChangedEventArgs e)
-        {
-            Device.BeginInvokeOnMainThread(() =>
+            var button = sender as Button;
+            if (sender is Button)
             {
-                ProductBasketCounter();
-                ProductsBasketСost();
-            });
+                DeleteBasketId = button.);
+            }
+            produktsBasket.RemoveAt(DeleteBasketId);
+        }
+
+        private void ListViewBasket_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            ProductBasketCounter();
+            ProductsBasketСost();
+        }
+
+        private void Stepper_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+
+        }
+
+        private void ListViewBasket_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            DeleteBasketId = e.ItemIndex;
         }
     }
 }

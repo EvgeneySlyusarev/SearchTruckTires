@@ -7,10 +7,10 @@
              Title="КОРЗИНА">
     <ContentPage.Content>
         <StackLayout Margin="10">
-            <ListView x:Name="ListViewBasket" ItemSelected="ListViewBasket_ItemSelected">
+            <ListView x:Name="ListViewBasket" ItemTapped="ListViewBasket_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
+                        <ViewCell PropertyChanged="ListViewBasket_PropertyChanged">
                             <StackLayout Orientation="Horizontal" BackgroundColor="AliceBlue" Opacity="0.9">
                                 <Image Source="{Binding ImageProduktBasket}" WidthRequest="100" HeightRequest="120"></Image>
                                 <StackLayout>
@@ -19,7 +19,7 @@
                                     <Label Text="{Binding PriseBNProduktBasket}" FontSize="Medium" FontAttributes= "Bold" TextColor="PaleVioletRed"/>
                                     <Label Text="Колличество товаров"></Label>
                                     <StackLayout Orientation="Horizontal">
-                                        <Stepper x:Name="_stepper" Minimum="1" Maximum="10" Increment="1" ValueChanged="Stepper_ValueChanged"/>
+                                        <Stepper x:Name="_stepper" Minimum="1" Maximum="10" Increment="1" PropertyChanged="Stepper_PropertyChanged"></Stepper>
                                     </StackLayout>        
                                 </StackLayout>
                                 <StackLayout Orientation="Vertical" VerticalOptions="EndAndExpand">
@@ -33,8 +33,8 @@
             </ListView>
             <StackLayout Orientation="Horizontal" BackgroundColor="AntiqueWhite">
                 <StackLayout Orientation="Vertical">
-                    <Label Text="В корзине:" TextColor="Red" FontSize="Title" FontAttributes="Bold"/>
-                    <Label Text="Сумма товаров:" TextColor="Red" FontSize="Title" FontAttributes="Bold"/>
+                    <Label Text="В корзине товаров:" TextColor="Red" FontSize="Title" FontAttributes="Bold"/>
+                    <Label Text="Сумма заказа:" TextColor="Red" FontSize="Title" FontAttributes="Bold"/>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
                     <Label x:Name="lableQwantProdBasket" TextColor="AliceBlue" FontSize="Title" />
