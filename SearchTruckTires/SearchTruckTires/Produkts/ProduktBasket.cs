@@ -6,21 +6,28 @@ namespace SearchTruckTires
 {
     public class ProduktBasket
     {
-        public string TitleProduktBasket { get; set; }
+        public string Id { get => _id.ToString(); }
+
+        public string TitleProduktBasket { get; set; } // TODO: only getters
         public string PriseNProduktBasket { get; set; }
         public string PriseBNProduktBasket { get; set; }
         public string ImageURLProduktBasket { get; set; }
-        private int _quantityProduktBasket;
+
         public int QuantityProduktBasket
         {
             get => _quantityProduktBasket;
-            set => QuantityProduktBasket = _quantityProduktBasket;
+            set => _quantityProduktBasket = value;
         }
 
-        public ProduktBasket()
+        public ProduktBasket() // TODO: pass all params
         {
-            _quantityProduktBasket = 1;
+            _id = ++_idCounter;  // generation of unique id
         }
+
+        private uint _id;
+        private static uint _idCounter = uint.MaxValue;
+
+        private int _quantityProduktBasket = 1;
 
         public ImageSource ImageProduktBasket
         {

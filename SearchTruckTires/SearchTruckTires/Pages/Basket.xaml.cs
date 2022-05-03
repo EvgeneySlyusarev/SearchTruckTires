@@ -13,7 +13,6 @@ namespace SearchTruckTires
         public static readonly ObservableCollection<ProduktBasket> produktsBasket = new ObservableCollection<ProduktBasket>();
         public int QuantityProduktBasket { get; set; }
         public int СostProductsCart { get; set; }
-        public int DeleteBasketId { get; set; }
 
         public Basket()
         {
@@ -24,6 +23,25 @@ namespace SearchTruckTires
             ListViewBasket.HasUnevenRows = true;
             _ = new Stepper();
             BindingContext = this;
+        }
+
+        private T _GetParent<T>(object element) where T : Element
+        {
+            var item = element as Element;
+            while ((item != null) && !(item is T))
+            {
+                item = item.Parent;
+            }
+            return item as T;
+        }
+
+        private ProduktBasket _GetProductByItem(ViewCell item)
+        {
+            if (item != null)
+            {
+                return produktsBasket.First((ProduktBasket p) => { return p.Id == item.ClassId; });
+            }
+            return null;
         }
 
         private void ProductBasketCounter()
@@ -48,30 +66,44 @@ namespace SearchTruckTires
             lableСostProdBasket.Text = Convert.ToString(СostProductsCart);
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            var button = sender as Button;
-            if (sender is Button)
-            {
-                DeleteBasketId = button.);
-            }
-            produktsBasket.RemoveAt(DeleteBasketId);
-        }
-
-        private void ListViewBasket_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void _RefreshFooter()
         {
             ProductBasketCounter();
             ProductsBasketСost();
         }
 
-        private void Stepper_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void Button_Clicked(object sender, EventArgs e)
         {
+            var item = _GetParent<ViewCell>(sender);
+            var product = _GetProductByItem(item);
+            if (product != null)
+            {
+                produktsBasket.Remove(product);
+            }
+        }
 
+        private void Stepper_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            var item = _GetParent<ViewCell>(sender);
+            var product = _GetProductByItem(item);
+            if (product != null)
+            {
+                product.QuantityProduktBasket = (int)e.NewValue;
+                _RefreshFooter();
+            }
+        }
+
+        private void ListViewBasket_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)  // TODO: switch to Add Remove callbacks
+        {
+            _RefreshFooter();
+        }
+
+        private void ListViewBasket_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
         }
 
         private void ListViewBasket_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            DeleteBasketId = e.ItemIndex;
         }
     }
 }
