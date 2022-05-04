@@ -4,14 +4,14 @@ using Xamarin.Forms;
 
 namespace SearchTruckTires
 {
-    public class ProduktBasket
+    public class Produkt
     {
         public string Id { get => _id.ToString(); }
 
-        public string TitleProduktBasket { get; set; } // TODO: only getters
-        public string PriseNProduktBasket { get; set; }
-        public string PriseBNProduktBasket { get; set; }
-        public string ImageURLProduktBasket { get; set; }
+        public string Title { get; set; } // TODO: only getters
+        public string PriceCash { get; set; }
+        public string PriceBank { get; set; }
+        public string ImageURL { get; set; }
 
         public int QuantityProduktBasket
         {
@@ -19,7 +19,7 @@ namespace SearchTruckTires
             set => _quantityProduktBasket = value;
         }
 
-        public ProduktBasket() // TODO: pass all params
+        public Produkt() // TODO: pass all params
         {
             _id = ++_idCounter;  // generation of unique id
         }
@@ -29,12 +29,12 @@ namespace SearchTruckTires
 
         private int _quantityProduktBasket = 1;
 
-        public ImageSource ImageProduktBasket
+        public ImageSource Image
         {
             get
             {
                 WebClient Client = new WebClient();
-                byte[] byteArray = Client.DownloadData(ImageURLProduktBasket);
+                byte[] byteArray = Client.DownloadData(ImageURL);
                 return ImageSource.FromStream(() => new MemoryStream(byteArray));
             }
         }// метод для скачивание изображения 

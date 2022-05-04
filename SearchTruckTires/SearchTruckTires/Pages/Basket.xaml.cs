@@ -10,7 +10,7 @@ namespace SearchTruckTires
 
     public partial class Basket : ContentPage
     {
-        public static readonly ObservableCollection<ProduktBasket> produktsBasket = new ObservableCollection<ProduktBasket>();
+        public static readonly ObservableCollection<Produkt> produktsBasket = new ObservableCollection<Produkt>();
         public int QuantityProduktBasket { get; set; }
         public int СostProductsCart { get; set; }
 
@@ -35,11 +35,11 @@ namespace SearchTruckTires
             return item as T;
         }
 
-        private ProduktBasket _GetProductByItem(ViewCell item)
+        private Produkt _GetProductByItem(ViewCell item)
         {
             if (item != null)
             {
-                return produktsBasket.First((ProduktBasket p) => { return p.Id == item.ClassId; });
+                return produktsBasket.First((Produkt p) => { return p.Id == item.ClassId; });
             }
             return null;
         }
@@ -47,7 +47,7 @@ namespace SearchTruckTires
         private void ProductBasketCounter()
         {
             QuantityProduktBasket = 0;
-            foreach (ProduktBasket item in produktsBasket)
+            foreach (Produkt item in produktsBasket)
             {
                 QuantityProduktBasket += item.QuantityProduktBasket;
             }
@@ -57,9 +57,9 @@ namespace SearchTruckTires
         private void ProductsBasketСost()// работает 
         {
             СostProductsCart = 0;
-            foreach (ProduktBasket item in produktsBasket)
+            foreach (Produkt item in produktsBasket)
             {
-                _ = int.TryParse(string.Join("", item.PriseNProduktBasket.Where(c => char.IsDigit(c))), out int value);
+                _ = int.TryParse(string.Join("", item.PriceCash.Where(c => char.IsDigit(c))), out int value);
                 value *= item.QuantityProduktBasket;
                 СostProductsCart += value;
             }

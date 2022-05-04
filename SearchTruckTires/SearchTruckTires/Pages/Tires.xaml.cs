@@ -10,7 +10,7 @@ namespace SearchTruckTires
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Tires : ContentPage
     {
-        public readonly ObservableCollection<ProduktTires> produktsTires = new ObservableCollection<ProduktTires>();
+        public readonly ObservableCollection<Produkt> produktsTires = new ObservableCollection<Produkt>();
         public Tires()
         {
             BackgroundImageSource = "@Resources/Drawable/WheelMark3.png";
@@ -22,12 +22,12 @@ namespace SearchTruckTires
         }
         public async void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
-            if (e.Item is ProduktTires selectedProdukt)
+            if (e.Item is Produkt selectedProdukt)
             {
                 bool result = await DisplayAlert("Добавить в корзину: - ", $"{selectedProdukt.Title}?", "Да", "Нет");
                 if (result)
                 {
-                    Basket.produktsBasket.Add(new ProduktBasket { TitleProduktBasket = selectedProdukt.Title, PriseNProduktBasket = selectedProdukt.PriseN, PriseBNProduktBasket = selectedProdukt.PriseBN, ImageURLProduktBasket = selectedProdukt.ImageURL});// to do
+                    Basket.produktsBasket.Add(new Produkt { Title = selectedProdukt.Title, PriceCash = selectedProdukt.PriceCash, PriceBank = selectedProdukt.PriceBank, ImageURL = selectedProdukt.ImageURL});// to do
                 }
             }
         }
@@ -63,17 +63,17 @@ namespace SearchTruckTires
                 string strPrice = item.QuerySelector("td.price-td").InnerText.Trim();
                 strPrice = strPrice.Replace(" ", "");
                 strPrice = strPrice.Replace("грн", "");
-                double priceBN = Convert.ToDouble(strPrice);
-                double priceN = Convert.ToDouble(strPrice);
-                double marginBN = 1.1;
-                double marginN = 1.05;
-                priceBN *= marginBN;
-                priceN *= marginN;
-                priceN = RoundUP(Convert.ToInt32(priceN));
-                priceBN = RoundUP(Convert.ToInt32(priceBN));
-                string priseNUP = " НАЛ - " + Convert.ToString(Convert.ToInt32(priceN)) + " ГРН , ";
-                string priseBNUP = " с НДС - " + Convert.ToString(Convert.ToInt32(priceBN)) + " ГРН.";
-                produktsTires.Add(new ProduktTires { Title = title, PriseN = priseNUP, PriseBN = priseBNUP, ImageURL = imageURL});
+                double priceBank = Convert.ToDouble(strPrice);
+                double priceCash = Convert.ToDouble(strPrice);
+                double marginBank = 1.1;
+                double marginCash = 1.05;
+                priceBank *= marginBank;
+                priceCash *= marginCash;
+                priceCash = RoundUP(Convert.ToInt32(priceCash));
+                priceBank = RoundUP(Convert.ToInt32(priceBank));
+                string priceCashUP = " НАЛ - " + Convert.ToString(Convert.ToInt32(priceCash)) + " ГРН , ";
+                string priceBankUP = " с НДС - " + Convert.ToString(Convert.ToInt32(priceBank)) + " ГРН.";
+                produktsTires.Add(new Produkt { Title = title, PriceCash = priceCashUP, PriceBank = priceBankUP, ImageURL = imageURL});
             }
         }
         private void ParsingKapitan(string toast)// Нужно изменить для парсинга капитан
@@ -113,7 +113,7 @@ namespace SearchTruckTires
                 priceBN = RoundUP(Convert.ToInt32(priceBN));
                 string priseNUP = " НАЛ - " + Convert.ToString(Convert.ToInt32(priceN)) + " ГРН , ";
                 string priseBNUP = " с НДС - " + Convert.ToString(Convert.ToInt32(priceBN)) + " ГРН.";
-                produktsTires.Add(new ProduktTires { Title = title, PriseN = priseNUP, PriseBN = priseBNUP, ImageURL = imageURL });
+                produktsTires.Add(new Produkt { Title = title, PriceCash = priseNUP, PriceBank = priseBNUP, ImageURL = imageURL });
             }
 
         }

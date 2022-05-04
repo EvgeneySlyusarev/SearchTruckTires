@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:searchtrucktires="clr-namespace:SearchTruckTires" 
-             x:DataType="searchtrucktires:ProduktBasket"
+             x:DataType="searchtrucktires:Produkt"
              x:Class="SearchTruckTires.Basket"
              Title="КОРЗИНА">
     <ContentPage.Content>
@@ -12,11 +12,11 @@
                     <DataTemplate>
                         <ViewCell PropertyChanged="ListViewBasket_PropertyChanged" ClassId="{Binding Id}">
                             <StackLayout Orientation="Horizontal" BackgroundColor="AliceBlue" Opacity="0.9">
-                                <Image Source="{Binding ImageProduktBasket}" WidthRequest="100" HeightRequest="120"></Image>
+                                <Image Source="{Binding Image}" WidthRequest="100" HeightRequest="120"></Image>
                                 <StackLayout>
-                                    <Label Text="{Binding TitleProduktBasket}" FontSize="Body" FontAttributes="Italic" TextDecorations="Underline" TextColor="AliceBlue"/>
-                                    <Label Text="{Binding PriseNProduktBasket}" FontSize="Medium" FontAttributes="Bold" TextColor="ForestGreen"/>
-                                    <Label Text="{Binding PriseBNProduktBasket}" FontSize="Medium" FontAttributes= "Bold" TextColor="PaleVioletRed"/>
+                                    <Label Text="{Binding Title}" FontSize="Body" FontAttributes="Italic" TextDecorations="Underline" TextColor="AliceBlue"/>
+                                    <Label Text="{Binding PriceCash}" FontSize="Medium" FontAttributes="Bold" TextColor="ForestGreen"/>
+                                    <Label Text="{Binding PriceBank}" FontSize="Medium" FontAttributes= "Bold" TextColor="PaleVioletRed"/>
                                     <Label Text="Колличество товаров"></Label>
                                     <StackLayout Orientation="Horizontal">
                                         <Stepper x:Name="_stepper" Minimum="1" Maximum="10" Increment="1" ValueChanged="Stepper_ValueChanged"></Stepper>

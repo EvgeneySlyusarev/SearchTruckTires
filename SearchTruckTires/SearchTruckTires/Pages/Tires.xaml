@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:searchtrucktires="clr-namespace:SearchTruckTires"
-             x:DataType="searchtrucktires:ProduktTires"
+             x:DataType="searchtrucktires:Produkt"
              x:Class="SearchTruckTires.Tires"
              Title="ШИНЫ"
              Padding="10,10,10,10">
@@ -57,11 +57,11 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" BackgroundColor="AliceBlue" Opacity="0.9">
-                                <Image Source="{Binding ImageProdukt}" WidthRequest="100" HeightRequest="130"></Image>
+                                <Image Source="{Binding Image}" WidthRequest="100" HeightRequest="130"></Image>
                                 <StackLayout VerticalOptions="Center">
                                     <Label Text="{Binding Title}" FontSize="Body" FontAttributes="Italic" HorizontalOptions="CenterAndExpand" TextColor="AliceBlue" TextDecorations="Underline"/>
-                                    <Label Text="{Binding PriseN}" FontSize="Medium" FontAttributes="Italic" TextColor="Green"/>
-                                    <Label Text="{Binding PriseBN}" FontSize="Medium" FontAttributes= "Italic" TextColor="PaleVioletRed"/>
+                                    <Label Text="{Binding PriceCash}" FontSize="Medium" FontAttributes="Italic" TextColor="Green"/>
+                                    <Label Text="{Binding PriceBank}" FontSize="Medium" FontAttributes= "Italic" TextColor="PaleVioletRed"/>
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>
