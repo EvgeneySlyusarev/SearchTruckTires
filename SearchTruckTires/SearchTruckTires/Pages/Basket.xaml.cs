@@ -18,8 +18,8 @@ namespace SearchTruckTires
             get => (ObservableCollection<Product>)ListViewBasket.ItemsSource;
         }
 
-        public int QuantityProduct { get => _quantityProduct; }
-        public int СostProducts { get => _costProducts; }
+        public int ProductCount { get => _productsCount; }
+        public int ProductsCost { get => _productsCost; }
 
         public Basket()
         {
@@ -28,11 +28,9 @@ namespace SearchTruckTires
 
             BackgroundImageSource = "@Resources/Drawable/WheelMark2.png";
             InitializeComponent();
-            Application.Current.UserAppTheme = OSAppTheme.Dark;
-
+            
             ListViewBasket.ItemsSource = new ObservableCollection<Product>();
             ListViewBasket.HasUnevenRows = true;
-            _ = new Stepper();
             BindingContext = this;
         }
 
@@ -55,34 +53,34 @@ namespace SearchTruckTires
             return null;
         }
 
-        private void ProductBasketCounter()
+        private void ProductCounter()
         {
-            _quantityProduct = 0;
+            _productsCount = 0;
             foreach (Product item in Products)
             {
-                _quantityProduct += item.QuantityProduktBasket;
+                _productsCount += item.QuantityProduktBasket;
             }
-            lableQwantProdBasket.Text = Convert.ToString(_quantityProduct);
+            lableQwantProdBasket.Text = Convert.ToString(_productsCount);
         }
 
-        private void ProductsBasketСost()
+        private void ProductsСost()
         {
-            _costProducts = 0;
+            _productsCost = 0;
             foreach (Product item in Products)
             {
                 bool success = int.TryParse(string.Join("", item.PriceCash.Where(c => char.IsDigit(c))), out int value);
                 if (success)
                 {
-                    _costProducts += value * item.QuantityProduktBasket;
+                    _productsCost += value * item.QuantityProduktBasket;
                 }
             }
-            lableСostProdBasket.Text = Convert.ToString(_costProducts);
+            lableСostProdBasket.Text = Convert.ToString(_productsCost);
         }
 
         private void _RefreshFooter()
         {
-            ProductBasketCounter();
-            ProductsBasketСost();
+            ProductCounter();
+            ProductsСost();
         }
 
         private void Button_Clicked(object sender, EventArgs e)
@@ -113,7 +111,7 @@ namespace SearchTruckTires
 
         private static Basket _instance = null;
 
-        private int _quantityProduct;
-        private int _costProducts;
+        private int _productsCount;
+        private int _productsCost;
     }
 }
