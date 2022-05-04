@@ -11,42 +11,57 @@ namespace SearchTruckTires
 
     public partial class Disc : ContentPage
     {
-        private readonly ObservableCollection<Product> produktsDiscs = new ObservableCollection<Product>();
         public Disc()
         {
             BackgroundImageSource = "@Resources/Drawable/DiscsBackground.png";
             InitializeComponent();
             Application.Current.UserAppTheme = OSAppTheme.Unspecified;
-            ListViewDiscs.ItemsSource = produktsDiscs;
+
+            _products = new ObservableCollection<Product>();
+            ListViewDiscs.ItemsSource = _products;
             BindingContext = this;
             ListViewDiscs.HasUnevenRows = true;
         }
+
         private void PickerDiscs_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ParsingMPKDiscs(pickerDiscs.Items[pickerDiscs.SelectedIndex].ToString());
+            ParseMPKDiscs(pickerDiscs.Items[pickerDiscs.SelectedIndex].ToString());
         }
+
         public async void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
-            if (e.Item is Product selectedProdukt)
+            if (e.Item is Product product)
             {
-                bool result = await DisplayAlert("Добавить в корзину: - ", $"{selectedProdukt.Title}", "Да", "Нет");
+                bool result = await DisplayAlert("Добавить в корзину: - ", $"{product.Title}", "Да", "Нет");
                 if (result)
                 {
-                    Basket.Instance.Products.Add(new Product { Title = selectedProdukt.Title, PriceCash = selectedProdukt.PriceCash, PriceBank = selectedProdukt.PriceBank, ImageURL = selectedProdukt.ImageURL});// to do
+                    Basket.Instance.Products.Add(new Product(product.Title, product.PriceCash, product.PriceBank, product.ImageURL));
                 }
             }
         }
-        private void ParsingMPKDiscs(string toast)
-        {
-            produktsDiscs.Clear();
-            string standardSize = toast;
-            standardSize = standardSize.Replace(".", "");
-            standardSize = standardSize.Replace("*", "");
-            standardSize = standardSize.ToLower();
-            string url = "http://mpk-tyres.com.ua/catalog/" + standardSize + "/";
 
-            HtmlWeb web = new HtmlWeb();
-            HtmlDocument htmlDoc = web.Load(url);
+        private void ParseMPKDiscs(string toast)
+        {
+            _products.Clear();
+
+            string standartSize = toast;
+            standartSize = standartSize.Replace(".", "");
+            standartSize = standartSize.Replace("*", "");
+            standartSize = standartSize.ToLower();
+            string url = "http://mpk-tyres.com.ua/catalog/" + standartSize + "/";
+
+            HtmlDocument htmlDoc = null;
+            try
+            {
+                HtmlWeb web = new HtmlWeb();
+                htmlDoc = web.Load(url);
+            }
+            catch (System.Net.WebException e)
+            {
+                DisplayAlert("Ошибка", "Нет сети\n\n" + e.Message, "ОК");
+                return;
+            }
+
             HtmlNode page = htmlDoc.DocumentNode;
 
             int RoundUP(int value)
@@ -55,7 +70,7 @@ namespace SearchTruckTires
                 return value;
             }
 
-            foreach (HtmlNode item in page.QuerySelectorAll("li.product")) // поиск в файле данных
+            foreach (HtmlNode item in page.QuerySelectorAll("li.product"))
             {
                 string imageURL = item.QuerySelector("img").GetAttributeValue("src", null);
                 imageURL = imageURL.Substring(0, imageURL.IndexOf('?'));
@@ -73,9 +88,10 @@ namespace SearchTruckTires
                 priceBank = RoundUP(Convert.ToInt32(priceBank));
                 string priceCashUP = " НАЛ - " + Convert.ToString(Convert.ToInt32(priceCash)) + " ГРН , ";
                 string priceBankUP = " с НДС - " + Convert.ToString(Convert.ToInt32(priceBank)) + " ГРН.";
-                produktsDiscs.Add(new Product { Title = title, PriceCash = priceCashUP, PriceBank = priceBankUP, ImageURL = imageURL });
+                _products.Add(new Product(title, priceCashUP, priceBankUP, imageURL));
             }
-
         }
-    }
+
+        private readonly ObservableCollection<Product> _products;
+    };
 }

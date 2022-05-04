@@ -7,10 +7,10 @@
              Title="КОРЗИНА">
     <ContentPage.Content>
         <StackLayout Margin="10">
-            <ListView x:Name="ListViewBasket" ChildAdded="ListViewBasket_ChildAdded" ChildRemoved="ListViewBasket_ChildRemoved">
+            <ListView x:Name="ListViewBasket">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell PropertyChanged="ListViewBasket_PropertyChanged" ClassId="{Binding Id}">
+                        <ViewCell ClassId="{Binding Id}" PropertyChanged="ListViewBasket_PropertyChanged">
                             <StackLayout Orientation="Horizontal" BackgroundColor="AliceBlue" Opacity="0.9">
                                 <Image Source="{Binding Image}" WidthRequest="100" HeightRequest="120"></Image>
                                 <StackLayout>

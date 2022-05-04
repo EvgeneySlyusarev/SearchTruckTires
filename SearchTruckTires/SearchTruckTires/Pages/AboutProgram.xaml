@@ -12,7 +12,7 @@
                  
                 Color="AliceBlue"
                 VerticalOptions="Center"/>
-            <Label Text="Developer: Slyusarev Evgeney"
+            <Label Text="Developer: Yevhen Sliusarev"
                    Margin="10"
                    TextColor="AliceBlue"
                    FontSize="Title"

@@ -21,12 +21,12 @@
                     BackgroundColor="AliceBlue"
                     >
                 <Picker.Items>
-                    <x:String>13.00*22.5</x:String>
+                    <!--<x:String>13.00*22.5</x:String>-->
                     <x:String>11.75X22.5</x:String>
                     <x:String>9.00X22.5</x:String>
                     <x:String>8.25X22.5</x:String>
-                    <x:String>7.5*22.5</x:String>
-                    <x:String>6.00*17.5</x:String>
+                    <!--<x:String>7.5*22.5</x:String>
+                    <x:String>6.00*17.5</x:String>-->
                 </Picker.Items>
             </Picker>
 

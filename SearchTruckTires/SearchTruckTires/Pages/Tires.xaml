@@ -21,24 +21,24 @@
                     FontSize="18"
                     BackgroundColor="AliceBlue" Opacity="0.9">
                 <Picker.Items>
-                    <x:String>205/75R17.5</x:String>
+                    <!--<x:String>205/75R17.5</x:String>-->
                     <x:String>215/75R17.5</x:String>
-                    <x:String>225/75R17.5</x:String>
+                    <!--<x:String>225/75R17.5</x:String>-->
                     <x:String>235/75R17.5</x:String>
-                    <x:String>245/70R17.5</x:String>
-                    <x:String>225/70R19.5</x:String>
-                    <x:String>245/70R19.5</x:String>
+                    <!--<x:String>245/70R17.5</x:String>-->
+                    <!--<x:String>225/70R19.5</x:String>-->
+                    <!--<x:String>245/70R19.5</x:String>-->
                     <x:String>265/70R19.5</x:String>
                     <x:String>285/70R19.5</x:String>
-                    <x:String>385/55R19.5</x:String>
-                    <x:String>435/50R19.5</x:String>
-                    <x:String>445/45R19.5</x:String>
-                    <x:String>8.25R20</x:String>
+                    <!--<x:String>385/55R19.5</x:String>-->
+                    <!--<x:String>435/50R19.5</x:String>-->
+                    <!--<x:String>445/45R19.5</x:String>-->
+                    <!--<x:String>8.25R20</x:String>-->
                     <x:String>9.00R20</x:String>
                     <x:String>10.00R20</x:String>
                     <x:String>11.00R20</x:String>
                     <x:String>12.00R20</x:String>
-                    <x:String>11R22.5</x:String>
+                    <!--<x:String>11R22.5</x:String>-->
                     <x:String>13R22.5</x:String>
                     <x:String>275/70R22.5</x:String>
                     <x:String>295/60R22.5</x:String>

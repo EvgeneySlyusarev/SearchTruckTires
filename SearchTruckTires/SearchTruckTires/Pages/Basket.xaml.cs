@@ -18,8 +18,8 @@ namespace SearchTruckTires
             get => (ObservableCollection<Product>)ListViewBasket.ItemsSource;
         }
 
-        public int ProductsCount { get => _productsCount; }
-        public int ProductsCost { get => _productsCost; }
+        public uint ProductsCount { get => _productsCount; }
+        public uint ProductsCost { get => _productsCost; }
 
         public Basket()
         {
@@ -58,7 +58,7 @@ namespace SearchTruckTires
             _productsCount = 0;
             foreach (Product item in Products)
             {
-                _productsCount += item.QuantityProductBasket;
+                _productsCount += item.Count;
             }
             lableQwantProdBasket.Text = Convert.ToString(_productsCount);
         }
@@ -71,7 +71,7 @@ namespace SearchTruckTires
                 bool success = int.TryParse(string.Join("", item.PriceCash.Where(c => char.IsDigit(c))), out int value);
                 if (success)
                 {
-                    _productsCost += value * item.QuantityProductBasket;
+                    _productsCost += (uint)value * item.Count;
                 }
             }
             lableСostProdBasket.Text = Convert.ToString(_productsCost);
@@ -99,29 +99,19 @@ namespace SearchTruckTires
             var product = _GetProductByItem(item);
             if (product != null)
             {
-                product.QuantityProductBasket = (int)e.NewValue;
+                product.Count = (uint)e.NewValue;
                 _RefreshFooter();
             }
         }
 
-        private void ListViewBasket_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)  // TODO: switch to Add Remove callbacks
+        private void ListViewBasket_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             _RefreshFooter();
         }
 
         private static Basket _instance = null;
 
-        private int _productsCount = 0;
-        private int _productsCost = 0;
-
-        private void ListViewBasket_ChildAdded(object sender, ElementEventArgs e)
-        {
-            _RefreshFooter();
-        }
-
-        private void ListViewBasket_ChildRemoved(object sender, ElementEventArgs e)
-        {
-            _RefreshFooter();
-        }
-    }
+        private uint _productsCount = 0;
+        private uint _productsCost = 0;
+    };
 }
