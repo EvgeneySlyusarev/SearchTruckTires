@@ -7,7 +7,6 @@ namespace SearchTruckTires
     public class Produkt
     {
         public string Id { get => _id.ToString(); }
-
         public string Title { get; set; } // TODO: only getters
         public string PriceCash { get; set; }
         public string PriceBank { get; set; }
