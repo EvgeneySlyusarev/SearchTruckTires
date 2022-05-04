@@ -18,7 +18,7 @@ namespace SearchTruckTires
             get => (ObservableCollection<Product>)ListViewBasket.ItemsSource;
         }
 
-        public int ProductCount { get => _productsCount; }
+        public int ProductsCount { get => _productsCount; }
         public int ProductsCost { get => _productsCost; }
 
         public Basket()
@@ -53,12 +53,12 @@ namespace SearchTruckTires
             return null;
         }
 
-        private void ProductCounter()
+        private void ProductsCounter()
         {
             _productsCount = 0;
             foreach (Product item in Products)
             {
-                _productsCount += item.QuantityProduktBasket;
+                _productsCount += item.QuantityProductBasket;
             }
             lableQwantProdBasket.Text = Convert.ToString(_productsCount);
         }
@@ -71,7 +71,7 @@ namespace SearchTruckTires
                 bool success = int.TryParse(string.Join("", item.PriceCash.Where(c => char.IsDigit(c))), out int value);
                 if (success)
                 {
-                    _productsCost += value * item.QuantityProduktBasket;
+                    _productsCost += value * item.QuantityProductBasket;
                 }
             }
             lableСostProdBasket.Text = Convert.ToString(_productsCost);
@@ -79,7 +79,7 @@ namespace SearchTruckTires
 
         private void _RefreshFooter()
         {
-            ProductCounter();
+            ProductsCounter();
             ProductsСost();
         }
 
@@ -99,7 +99,7 @@ namespace SearchTruckTires
             var product = _GetProductByItem(item);
             if (product != null)
             {
-                product.QuantityProduktBasket = (int)e.NewValue;
+                product.QuantityProductBasket = (int)e.NewValue;
                 _RefreshFooter();
             }
         }

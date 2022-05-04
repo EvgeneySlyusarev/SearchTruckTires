@@ -12,7 +12,7 @@ namespace SearchTruckTires
         public string PriceBank { get; set; }
         public string ImageURL { get; set; }
 
-        public int QuantityProduktBasket
+        public int QuantityProductBasket
         {
             get => _quantityProduktBasket;
             set => _quantityProduktBasket = value;
