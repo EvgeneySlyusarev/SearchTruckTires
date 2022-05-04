@@ -53,7 +53,7 @@ namespace SearchTruckTires
             return null;
         }
 
-        private void ProductsCounter()
+        private void _ProductsСalculateCounter()
         {
             _productsCount = 0;
             foreach (Product item in Products)
@@ -63,7 +63,7 @@ namespace SearchTruckTires
             lableQwantProdBasket.Text = Convert.ToString(_productsCount);
         }
 
-        private void ProductsСost()
+        private void _ProductsСost()
         {
             _productsCost = 0;
             foreach (Product item in Products)
@@ -79,8 +79,8 @@ namespace SearchTruckTires
 
         private void _RefreshFooter()
         {
-            ProductsCounter();
-            ProductsСost();
+            _ProductsСalculateCounter();
+            _ProductsСost();
         }
 
         private void Button_Clicked(object sender, EventArgs e)
@@ -111,7 +111,17 @@ namespace SearchTruckTires
 
         private static Basket _instance = null;
 
-        private int _productsCount;
-        private int _productsCost;
+        private int _productsCount = 0;
+        private int _productsCost = 0;
+
+        private void ListViewBasket_ChildAdded(object sender, ElementEventArgs e)
+        {
+            _RefreshFooter();
+        }
+
+        private void ListViewBasket_ChildRemoved(object sender, ElementEventArgs e)
+        {
+            _RefreshFooter();
+        }
     }
 }

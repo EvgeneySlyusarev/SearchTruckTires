@@ -7,7 +7,7 @@
              Title="КОРЗИНА">
     <ContentPage.Content>
         <StackLayout Margin="10">
-            <ListView x:Name="ListViewBasket">
+            <ListView x:Name="ListViewBasket" ChildAdded="ListViewBasket_ChildAdded" ChildRemoved="ListViewBasket_ChildRemoved">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell PropertyChanged="ListViewBasket_PropertyChanged" ClassId="{Binding Id}">
