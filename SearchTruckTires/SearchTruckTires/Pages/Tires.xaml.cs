@@ -10,7 +10,7 @@ namespace SearchTruckTires
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Tires : ContentPage
     {
-        public readonly ObservableCollection<Produkt> produktsTires = new ObservableCollection<Produkt>();
+        public readonly ObservableCollection<Product> produktsTires = new ObservableCollection<Product>();
         public Tires()
         {
             BackgroundImageSource = "@Resources/Drawable/WheelMark3.png";
@@ -22,12 +22,12 @@ namespace SearchTruckTires
         }
         public async void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
-            if (e.Item is Produkt selectedProdukt)
+            if (e.Item is Product selectedProdukt)
             {
                 bool result = await DisplayAlert("Добавить в корзину: - ", $"{selectedProdukt.Title}?", "Да", "Нет");
                 if (result)
                 {
-                    Basket.produktsBasket.Add(new Produkt { Title = selectedProdukt.Title, PriceCash = selectedProdukt.PriceCash, PriceBank = selectedProdukt.PriceBank, ImageURL = selectedProdukt.ImageURL});// to do
+                    Basket.Instance.Products.Add(new Product { Title = selectedProdukt.Title, PriceCash = selectedProdukt.PriceCash, PriceBank = selectedProdukt.PriceBank, ImageURL = selectedProdukt.ImageURL});// to do
                 }
             }
         }
@@ -73,7 +73,7 @@ namespace SearchTruckTires
                 priceBank = RoundUP(Convert.ToInt32(priceBank));
                 string priceCashUP = " НАЛ - " + Convert.ToString(Convert.ToInt32(priceCash)) + " ГРН , ";
                 string priceBankUP = " с НДС - " + Convert.ToString(Convert.ToInt32(priceBank)) + " ГРН.";
-                produktsTires.Add(new Produkt { Title = title, PriceCash = priceCashUP, PriceBank = priceBankUP, ImageURL = imageURL});
+                produktsTires.Add(new Product { Title = title, PriceCash = priceCashUP, PriceBank = priceBankUP, ImageURL = imageURL});
             }
         }
         private void ParsingKapitan(string toast)// Нужно изменить для парсинга капитан
@@ -113,7 +113,7 @@ namespace SearchTruckTires
                 priceBN = RoundUP(Convert.ToInt32(priceBN));
                 string priseNUP = " НАЛ - " + Convert.ToString(Convert.ToInt32(priceN)) + " ГРН , ";
                 string priseBNUP = " с НДС - " + Convert.ToString(Convert.ToInt32(priceBN)) + " ГРН.";
-                produktsTires.Add(new Produkt { Title = title, PriceCash = priseNUP, PriceBank = priseBNUP, ImageURL = imageURL });
+                produktsTires.Add(new Product { Title = title, PriceCash = priseNUP, PriceBank = priseBNUP, ImageURL = imageURL });
             }
 
         }

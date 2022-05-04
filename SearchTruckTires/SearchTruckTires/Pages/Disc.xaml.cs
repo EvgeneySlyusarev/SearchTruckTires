@@ -11,7 +11,7 @@ namespace SearchTruckTires
 
     public partial class Disc : ContentPage
     {
-        private readonly ObservableCollection<Produkt> produktsDiscs = new ObservableCollection<Produkt>();
+        private readonly ObservableCollection<Product> produktsDiscs = new ObservableCollection<Product>();
         public Disc()
         {
             BackgroundImageSource = "@Resources/Drawable/DiscsBackground.png";
@@ -27,12 +27,12 @@ namespace SearchTruckTires
         }
         public async void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
-            if (e.Item is Produkt selectedProdukt)
+            if (e.Item is Product selectedProdukt)
             {
                 bool result = await DisplayAlert("Добавить в корзину: - ", $"{selectedProdukt.Title}", "Да", "Нет");
                 if (result)
                 {
-                    Basket.produktsBasket.Add(new Produkt { Title = selectedProdukt.Title, PriceCash = selectedProdukt.PriceCash, PriceBank = selectedProdukt.PriceBank, ImageURL = selectedProdukt.ImageURL});// to do
+                    Basket.Instance.Products.Add(new Product { Title = selectedProdukt.Title, PriceCash = selectedProdukt.PriceCash, PriceBank = selectedProdukt.PriceBank, ImageURL = selectedProdukt.ImageURL});// to do
                 }
             }
         }
@@ -73,7 +73,7 @@ namespace SearchTruckTires
                 priceBank = RoundUP(Convert.ToInt32(priceBank));
                 string priceCashUP = " НАЛ - " + Convert.ToString(Convert.ToInt32(priceCash)) + " ГРН , ";
                 string priceBankUP = " с НДС - " + Convert.ToString(Convert.ToInt32(priceBank)) + " ГРН.";
-                produktsDiscs.Add(new Produkt { Title = title, PriceCash = priceCashUP, PriceBank = priceBankUP, ImageURL = imageURL });
+                produktsDiscs.Add(new Product { Title = title, PriceCash = priceCashUP, PriceBank = priceBankUP, ImageURL = imageURL });
             }
 
         }

@@ -3,6 +3,7 @@ using Xamarin.Forms.Xaml;
 using System.Collections.ObjectModel;
 using System;
 using System.Linq;
+using System.Diagnostics;
 
 namespace SearchTruckTires
 {
@@ -10,16 +11,26 @@ namespace SearchTruckTires
 
     public partial class Basket : ContentPage
     {
-        public static readonly ObservableCollection<Produkt> produktsBasket = new ObservableCollection<Produkt>();
-        public int QuantityProduktBasket { get; set; }
-        public int СostProductsCart { get; set; }
+        public static Basket Instance { get => _instance; }
+
+        public ObservableCollection<Product> Products
+        {
+            get => (ObservableCollection<Product>)ListViewBasket.ItemsSource;
+        }
+
+        public int QuantityProduct { get => _quantityProduct; }
+        public int СostProducts { get => _costProducts; }
 
         public Basket()
         {
+            Debug.Assert(_instance == null);
+            _instance = this;
+
             BackgroundImageSource = "@Resources/Drawable/WheelMark2.png";
             InitializeComponent();
             Application.Current.UserAppTheme = OSAppTheme.Dark;
-            ListViewBasket.ItemsSource = produktsBasket;
+
+            ListViewBasket.ItemsSource = new ObservableCollection<Product>();
             ListViewBasket.HasUnevenRows = true;
             _ = new Stepper();
             BindingContext = this;
@@ -35,35 +46,37 @@ namespace SearchTruckTires
             return item as T;
         }
 
-        private Produkt _GetProductByItem(ViewCell item)
+        private Product _GetProductByItem(ViewCell item)
         {
             if (item != null)
             {
-                return produktsBasket.First((Produkt p) => { return p.Id == item.ClassId; });
+                return Products.First((Product p) => { return p.Id == item.ClassId; });
             }
             return null;
         }
 
         private void ProductBasketCounter()
         {
-            QuantityProduktBasket = 0;
-            foreach (Produkt item in produktsBasket)
+            _quantityProduct = 0;
+            foreach (Product item in Products)
             {
-                QuantityProduktBasket += item.QuantityProduktBasket;
+                _quantityProduct += item.QuantityProduktBasket;
             }
-            lableQwantProdBasket.Text = Convert.ToString(QuantityProduktBasket);
+            lableQwantProdBasket.Text = Convert.ToString(_quantityProduct);
         }
 
-        private void ProductsBasketСost()// работает 
+        private void ProductsBasketСost()
         {
-            СostProductsCart = 0;
-            foreach (Produkt item in produktsBasket)
+            _costProducts = 0;
+            foreach (Product item in Products)
             {
-                _ = int.TryParse(string.Join("", item.PriceCash.Where(c => char.IsDigit(c))), out int value);
-                value *= item.QuantityProduktBasket;
-                СostProductsCart += value;
+                bool success = int.TryParse(string.Join("", item.PriceCash.Where(c => char.IsDigit(c))), out int value);
+                if (success)
+                {
+                    _costProducts += value * item.QuantityProduktBasket;
+                }
             }
-            lableСostProdBasket.Text = Convert.ToString(СostProductsCart);
+            lableСostProdBasket.Text = Convert.ToString(_costProducts);
         }
 
         private void _RefreshFooter()
@@ -78,7 +91,7 @@ namespace SearchTruckTires
             var product = _GetProductByItem(item);
             if (product != null)
             {
-                produktsBasket.Remove(product);
+                Products.Remove(product);
             }
         }
 
@@ -98,12 +111,9 @@ namespace SearchTruckTires
             _RefreshFooter();
         }
 
-        private void ListViewBasket_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-        }
+        private static Basket _instance = null;
 
-        private void ListViewBasket_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-        }
+        private int _quantityProduct;
+        private int _costProducts;
     }
 }

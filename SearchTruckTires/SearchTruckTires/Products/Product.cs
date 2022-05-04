@@ -4,7 +4,7 @@ using Xamarin.Forms;
 
 namespace SearchTruckTires
 {
-    public class Produkt
+    public class Product
     {
         public string Id { get => _id.ToString(); }
         public string Title { get; set; } // TODO: only getters
@@ -18,7 +18,7 @@ namespace SearchTruckTires
             set => _quantityProduktBasket = value;
         }
 
-        public Produkt() // TODO: pass all params
+        public Product() // TODO: pass all params
         {
             _id = ++_idCounter;  // generation of unique id
         }

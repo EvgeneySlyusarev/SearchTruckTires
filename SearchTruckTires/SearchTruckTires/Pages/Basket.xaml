@@ -2,12 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:searchtrucktires="clr-namespace:SearchTruckTires" 
-             x:DataType="searchtrucktires:Produkt"
+             x:DataType="searchtrucktires:Product"
              x:Class="SearchTruckTires.Basket"
              Title="КОРЗИНА">
     <ContentPage.Content>
         <StackLayout Margin="10">
-            <ListView x:Name="ListViewBasket" ItemSelected="ListViewBasket_ItemSelected" ItemTapped="ListViewBasket_ItemTapped">
+            <ListView x:Name="ListViewBasket">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell PropertyChanged="ListViewBasket_PropertyChanged" ClassId="{Binding Id}">
