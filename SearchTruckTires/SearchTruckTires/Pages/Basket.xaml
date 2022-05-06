@@ -62,11 +62,13 @@
             <StackLayout Orientation="Horizontal" Opacity="0.9" BackgroundColor="{AppThemeBinding Light={StaticResource LightPrimaryColor}, Dark={StaticResource DarkPrimaryColor}}">
                 <StackLayout Orientation="Vertical">
                     <Label Text="В корзине товаров:" TextColor="Red" FontSize="Title" FontAttributes="Bold"/>
-                    <Label Text="Сумма заказа:" TextColor="Red" FontSize="Title" FontAttributes="Bold"/>
+                    <Label Text="Сумма заказа НАЛ :" TextColor="Red" FontSize="Title" FontAttributes="Bold"/>
+                    <Label Text="Сумма заказа БАНК:" TextColor="Red" FontSize="Title" FontAttributes="Bold"/>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
                     <Label x:Name="lableQwantProdBasket" FontSize="Title" />
-                    <Label x:Name="lableСostProdBasket" FontSize="Title"/>
+                    <Label x:Name="lableСostProdBasketCash" FontSize="Title"/>
+                    <Label x:Name="lableСostProdBasketBank" FontSize="Title"/>
                 </StackLayout>
             </StackLayout>
         </StackLayout>

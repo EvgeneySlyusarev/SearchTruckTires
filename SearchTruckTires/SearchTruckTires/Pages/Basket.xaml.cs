@@ -19,7 +19,8 @@ namespace SearchTruckTires
         }
 
         public uint ProductsCount { get => _productsCount; }
-        public uint ProductsCost { get => _productsCost; }
+        public uint ProductsCostCash { get => _productsCostCash; }
+        public uint ProductsCostBank { get => _productsCostBank; }
 
         public Basket()
         {
@@ -66,16 +67,23 @@ namespace SearchTruckTires
 
         private void _ProductsСost()
         {
-            _productsCost = 0;
+            _productsCostCash = 0;
+            _productsCostBank = 0;
             foreach (Product item in Products)
             {
-                bool success = int.TryParse(string.Join("", item.PriceCash.Where(c => char.IsDigit(c))), out int value);
+                bool success = int.TryParse(string.Join("", item.PriceCash.Where(c => char.IsDigit(c))), out int valueCash);
                 if (success)
                 {
-                    _productsCost += (uint)value * item.Count;
+                    _productsCostCash += (uint)valueCash * item.Count;
+                }
+                 success = int.TryParse(string.Join("", item.PriceBank.Where(c => char.IsDigit(c))), out int valueBank);
+                if (success)
+                {
+                    _productsCostBank += (uint)valueBank * item.Count;
                 }
             }
-            lableСostProdBasket.Text = Convert.ToString(_productsCost);
+            lableСostProdBasketCash.Text = Convert.ToString(_productsCostCash);
+            lableСostProdBasketBank.Text = Convert.ToString(_productsCostBank);
         }
 
         private void _RefreshFooter()
@@ -117,6 +125,7 @@ namespace SearchTruckTires
         private static Basket _instance = null;
 
         private uint _productsCount = 0;
-        private uint _productsCost = 0;
+        private uint _productsCostCash = 0;
+        private uint _productsCostBank = 0;
     };
 }
