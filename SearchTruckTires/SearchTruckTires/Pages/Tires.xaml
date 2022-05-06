@@ -6,6 +6,35 @@
              x:Class="SearchTruckTires.Tires"
              Title="ШИНЫ"
              Padding="10,10,10,10">
+    
+    <ContentPage.Resources>
+
+        <!-- Light colors -->
+        <Color x:Key="LightPrimaryColor">Black</Color>
+        <Color x:Key="LigthPrimaryColorButton">Red</Color>
+        <Color x:Key="LightSecondaryColor">AliceBlue</Color>
+
+        <!-- Dark colors -->
+        <Color x:Key="DarkPrimaryColor">AliceBlue</Color>
+        <Color x:Key="DarkSecondaryColorButton">Red</Color>
+        <Color x:Key="DarkSecondaryColor">Black</Color>
+
+        <Style x:Key="FountStyle"
+               TargetType="StackLayout">
+            <Setter Property="BackgroundColor"
+                    Value="{AppThemeBinding Light={StaticResource LightPrimaryColor}, Dark={StaticResource DarkPrimaryColor}}" />
+        </Style>
+
+        <Style x:Key="ButtonStyle"
+               TargetType="Button">
+            <Setter Property="BackgroundColor"
+                    Value="{AppThemeBinding Light={StaticResource LigthPrimaryColorButton}, Dark={StaticResource DarkSecondaryColorButton}}" />
+            <Setter Property="TextColor"
+                    Value="{AppThemeBinding Light={StaticResource DarkSecondaryColor}, Dark={StaticResource DarkSecondaryColor}}" />
+        </Style>
+
+    </ContentPage.Resources>
+
     <ContentPage.Content>
         <StackLayout>
             <Label
@@ -19,7 +48,8 @@
                     SelectedIndexChanged="PickerTires_SelectedIndexChanged" 
                     HorizontalOptions="FillAndExpand"
                     FontSize="18"
-                    BackgroundColor="AliceBlue" Opacity="0.9">
+                    BackgroundColor="AliceBlue"
+                    Opacity="0.9">
                 <Picker.Items>
                     <!--<x:String>205/75R17.5</x:String>-->
                     <x:String>215/75R17.5</x:String>
@@ -56,12 +86,12 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal" BackgroundColor="AliceBlue" Opacity="0.9">
+                            <StackLayout Orientation="Horizontal" Opacity="0.9" BackgroundColor="{AppThemeBinding Light={StaticResource LightPrimaryColor}, Dark={StaticResource DarkPrimaryColor}}">
                                 <Image Source="{Binding Image}" WidthRequest="100" HeightRequest="130"></Image>
                                 <StackLayout VerticalOptions="Center">
-                                    <Label Text="{Binding Title}" FontSize="Body" FontAttributes="Italic" HorizontalOptions="CenterAndExpand" TextColor="AliceBlue" TextDecorations="Underline"/>
+                                    <Label Text="{Binding Title}" FontSize="Body" FontAttributes="Italic" HorizontalOptions="CenterAndExpand" TextDecorations="Underline"/>
                                     <Label Text="{Binding PriceCash}" FontSize="Medium" FontAttributes="Italic" TextColor="Green"/>
-                                    <Label Text="{Binding PriceBank}" FontSize="Medium" FontAttributes= "Italic" TextColor="PaleVioletRed"/>
+                                    <Label Text="{Binding PriceBank}" FontSize="Medium" FontAttributes= "Italic" TextColor="Red"/>
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>

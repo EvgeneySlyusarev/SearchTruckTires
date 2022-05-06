@@ -28,7 +28,8 @@ namespace SearchTruckTires
 
             BackgroundImageSource = "@Resources/Drawable/WheelMark2.png";
             InitializeComponent();
-            
+            Application.Current.UserAppTheme = OSAppTheme.Unspecified;
+
             ListViewBasket.ItemsSource = new ObservableCollection<Product>();
             ListViewBasket.HasUnevenRows = true;
             BindingContext = this;
@@ -100,6 +101,10 @@ namespace SearchTruckTires
             if (product != null)
             {
                 product.Count = (uint)e.NewValue;
+                if (e.NewValue == 0)
+                {
+                    Products.Remove(product);
+                }
                 _RefreshFooter();
             }
         }

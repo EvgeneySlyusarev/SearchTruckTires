@@ -9,6 +9,7 @@ namespace SearchTruckTires
         public MainPage()
         {
             InitializeComponent();
+            Application.Current.UserAppTheme = OSAppTheme.Dark;
         }
     }
 }
