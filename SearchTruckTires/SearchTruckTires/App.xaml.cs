@@ -4,7 +4,7 @@ namespace SearchTruckTires
 {
     public partial class App : Application
     {
-        public static new App Instance { get { return Current as App; } }
+        public static App Instance { get { return Current as App; } }
 
         public enum ELanguage
         {
@@ -17,10 +17,9 @@ namespace SearchTruckTires
         public App()
         {
             InitializeComponent();
-
             // Init user preferences
-            Language = ELanguage.Russian;
-
+            Language = ELanguage.English;
+            UserAppTheme = OSAppTheme.Dark;
             MainPage = new MainPage();
         }
     }

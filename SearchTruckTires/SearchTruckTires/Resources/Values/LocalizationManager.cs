@@ -30,6 +30,7 @@ namespace SearchTruckTires.Resources.Values
             }
             return "!!!" + key + "!!!";
         }
+
         private bool _Init()
         {
             if (App.Instance.Language == App.ELanguage.Russian)
