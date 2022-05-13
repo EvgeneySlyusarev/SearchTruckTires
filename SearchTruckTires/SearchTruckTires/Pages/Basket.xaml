@@ -61,9 +61,9 @@
             </ListView>
             <StackLayout Orientation="Horizontal" Opacity="0.9" BackgroundColor="{AppThemeBinding Light={StaticResource LightPrimaryColor}, Dark={StaticResource DarkPrimaryColor}}">
                 <StackLayout Orientation="Vertical">
-                    <Label Text="В корзине товаров:" TextColor="Red" FontSize="Title" FontAttributes="Bold"/>
-                    <Label Text="Сумма заказа НАЛ :" TextColor="Red" FontSize="Title" FontAttributes="Bold"/>
-                    <Label Text="Сумма заказа БАНК:" TextColor="Red" FontSize="Title" FontAttributes="Bold"/>
+                    <Label x:Name="lableBasketSize" TextColor="Red" FontSize="Title" FontAttributes="Bold"/>
+                    <Label x:Name="lableCostCash" TextColor="Red" FontSize="Title" FontAttributes="Bold"/>
+                    <Label x:Name="lableCostBank" TextColor="Red" FontSize="Title" FontAttributes="Bold"/>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
                     <Label x:Name="lableQwantProdBasket" FontSize="Title" />

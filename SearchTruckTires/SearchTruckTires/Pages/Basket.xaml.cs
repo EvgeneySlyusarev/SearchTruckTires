@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System;
 using System.Linq;
 using System.Diagnostics;
+using SearchTruckTires.Resources.Values;
 
 namespace SearchTruckTires
 {
@@ -34,6 +35,10 @@ namespace SearchTruckTires
             ListViewBasket.ItemsSource = new ObservableCollection<Product>();
             ListViewBasket.HasUnevenRows = true;
             BindingContext = this;
+
+            lableBasketSize.Text = LocalizationManager.Instance.Translate("basketSize");
+            lableCostCash.Text = LocalizationManager.Instance.Translate("costCash");
+            lableCostBank.Text = LocalizationManager.Instance.Translate("costBank");
         }
 
         private T _GetParent<T>(object element) where T : Element
@@ -95,7 +100,7 @@ namespace SearchTruckTires
         private void Button_Clicked(object sender, EventArgs e)
         {
             var item = _GetParent<ViewCell>(sender);
-            var product = _GetProductByItem(item);
+            var product = _GetProductByItem(item); 
             if (product != null)
             {
                 Products.Remove(product);
