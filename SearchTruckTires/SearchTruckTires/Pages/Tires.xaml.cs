@@ -4,6 +4,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using HtmlAgilityPack;
 using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace SearchTruckTires
 {
@@ -20,6 +21,10 @@ namespace SearchTruckTires
             ListViewTires.ItemsSource = _products;
             BindingContext = this;
             ListViewTires.HasUnevenRows = true;
+            
+            pickerTires.ItemsSource = _tiresSizesStringArrey;
+            _tiresSizeRating = new Dictionary<string, uint>();
+            _RefreshTiresSizeRating();
         }
 
         public async void OnItemTapped(object sender, ItemTappedEventArgs e)
@@ -34,13 +39,32 @@ namespace SearchTruckTires
             }
         }
 
+        private void _RefreshTiresSizeRating()
+        {
+            _tiresSizeRating.Clear();
+            foreach (var item in _tiresSizesStringArrey)
+            {
+                _tiresSizeRating.Add(item, 0);
+            }
+        }
+
         private void PickerTires_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ParseMPKTires(pickerTires.Items[pickerTires.SelectedIndex].ToString());
+            var toast = pickerTires.Items[pickerTires.SelectedIndex].ToString();
+            _AddRating(toast);
+            _ParseMPKTires(toast);
             //ParseKapitan(pickerTires.Items[pickerTires.SelectedIndex].ToString());
         }
 
-        private void ParseMPKTires(string toast)
+        private void _AddRating(string key)
+        {
+            if (_tiresSizeRating.ContainsKey(key))
+            {
+                _tiresSizeRating[key] += 1;
+            }
+        }
+
+        private void _ParseMPKTires(string toast)
         {
             _products.Clear();
 
@@ -93,5 +117,35 @@ namespace SearchTruckTires
         }
 
         private readonly ObservableCollection<Product> _products;
-    };
-}
+        //private readonly Picker _pickerTires;
+        private readonly Dictionary<string, uint> _tiresSizeRating = null;
+        private readonly string[] _tiresSizesStringArrey = new string[]
+        {
+            "215/75R17.5",
+            "225/75R17.5",
+            "235/75R17.5",
+            "245/70R17.5",
+            "265/70R19.5",
+            "285/70R19.5",
+            "385/55R19.5",
+            "435/50R19.5",
+            "445/45R19.5",
+            "8.25R20",
+            "9.00R20",
+            "10.00R20",
+            "11.00R20",
+            "12.00R20",
+            "11R22.5",
+            "13R22.5",
+            "275/70R22.5",
+            "295/60R22.5",
+            "315/60R22.5",
+            "295/80R22.5",
+            "315/70R22.5",
+            "315/80R22.5",
+            "385/55R22.5",
+            "385/65R22.5",
+            "425/65R22.5"
+        };
+
+    }}
