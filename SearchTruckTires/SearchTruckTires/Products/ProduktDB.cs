@@ -11,7 +11,7 @@ namespace SearchTruckTires
         public string TitleTires { get => _titleTires; }
         public string ModelTires { get => _modelTires; }
         public decimal PriseUsedTires { get => _price; }
-        public uint WidthTires { get => _widthTires; }
+        public uint WidthTires { get => _widthTires; } 
         public uint HeightTires { get => _heightTires; }
         public uint DiametrTires { get => _diametrTires; }
         public string SerialNumber { get => _serialNumber; }

@@ -4,10 +4,36 @@
              x:Class="SearchTruckTires.Pages.AddUsedTires"
              Title="Добавить Бу шину">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="ADD Tires"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"/>
+        <StackLayout Margin="10">
+            <Entry x:Name="EnteryTitle" Placeholder="Название" BackgroundColor="WhiteSmoke" TextColor="Black"/>
+            <Entry x:Name="EnteryModel" Placeholder="Модель" BackgroundColor="WhiteSmoke" TextColor="Black"/>
+            <Entry x:Name="EnteryPrise" Placeholder="Цена" BackgroundColor="WhiteSmoke" TextColor="Black"/>
+            <StackLayout Margin="10" HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+                <Picker x:Name="PickerWidth" Title="Ширина" BackgroundColor="White" />
+                <Picker x:Name="Pickerheight" Title="Высота" BackgroundColor="White"/>
+                <Picker x:Name="PickerDiametr" Title="Диаметр" BackgroundColor="White" />
+            </StackLayout>
+            <Entry x:Name="EnterySerialNumber" Placeholder="Серийный номер" BackgroundColor="WhiteSmoke" TextColor="Black"/>
+            <Entry x:Name="EnteryResidualTreadDepth" Placeholder="ОГП" BackgroundColor="WhiteSmoke" TextColor="Black"/>
+            <StackLayout>
+                <Label Text="Фото протектор и боковина"/>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <Image Source="@Resources/Drawable/Camera1.png" BackgroundColor="White" />
+                    <Image Source="" BackgroundColor="White"/>
+                </StackLayout>
+                <Label Text="Фото DOT и серийный №"/>
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="" BackgroundColor="White"/>
+                    <Image Source="" BackgroundColor="White"/>
+                </StackLayout>
+                <Label Text="Ремонты"/>
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="" BackgroundColor="White"/>
+                    <Image Source="" BackgroundColor="White"/>
+                    <Image Source="" BackgroundColor="White"/>
+                </StackLayout>
+            </StackLayout>
+            <Editor x:Name="EditorDescription" HorizontalOptions="FillAndExpand" BackgroundColor="White" Text="Описание" TextColor="Black"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
