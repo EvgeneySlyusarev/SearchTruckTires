@@ -18,8 +18,8 @@
             <StackLayout>
                 <Label Text="Фото протектор и боковина"/>
                 <StackLayout Orientation="Horizontal">
-                    <Image Source="@Resources/Drawable/camera1.png" BackgroundColor="White" />
-                    <Image Source="" BackgroundColor="White" />
+                    <Image Source="@Resources/Drawable/camera360.png" BackgroundColor="White"/>
+                    <Image Source="@Resources/Drawable/WheelMark2.png" BackgroundColor="White"/>
                 </StackLayout>
                 <Label Text="Фото DOT и серийный №"/>
                 <StackLayout Orientation="Horizontal">
