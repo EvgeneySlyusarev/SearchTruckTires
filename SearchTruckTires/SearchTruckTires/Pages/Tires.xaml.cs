@@ -62,6 +62,7 @@ namespace SearchTruckTires
             {
                 _tiresSizeRating[key] += 1;
             }
+            //Application.Current.Properties["tiresSizeRating"] = _tiresSizeRating;
         }
 
         private void _ParseMPKTires(string toast)

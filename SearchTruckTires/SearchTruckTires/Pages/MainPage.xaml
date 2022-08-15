@@ -6,10 +6,10 @@
             SelectedTabColor="Red"
             UnselectedTabColor="Yellow"
             BarBackgroundColor="DarkSlateGray"
-            BackgroundColor="DarkSlateGray"
-            >
+            BackgroundColor="DarkSlateGray">
     <TabbedPage.Children>
         <local:Tires></local:Tires>
+        <local:UsedTires></local:UsedTires>
         <local:Disc></local:Disc>
         <local:Basket></local:Basket>
         <local:AboutProgram></local:AboutProgram>

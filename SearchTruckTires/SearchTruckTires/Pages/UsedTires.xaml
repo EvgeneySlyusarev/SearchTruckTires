@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:SearchTruckTires.Pages" xmlns:searchtrucktires="clr-namespace:SearchTruckTires" x:DataType="searchtrucktires:MainPage"
+            x:Class="SearchTruckTires.UsedTires"
+            Title="БУ шины"
+            SelectedTabColor="Red"
+            UnselectedTabColor="Yellow"
+            BarBackgroundColor="DarkSlateGray"
+            BackgroundColor="DarkSlateGray">
+    <TabbedPage.Children>
+        <local:AddUsedTires></local:AddUsedTires>
+        <local:FindUsedTires></local:FindUsedTires>
+    </TabbedPage.Children>
+</TabbedPage>

@@ -22,7 +22,7 @@
             <Setter Property="BackgroundColor"
                     Value="{AppThemeBinding Light={StaticResource DarkPrimaryColor}, Dark={StaticResource DarkPrimaryColor}}" />
         </Style>
-        
+
         <Style x:Key="ButtonStyle"
                TargetType="Button">
             <Setter Property="BackgroundColor"
@@ -32,7 +32,7 @@
         </Style>
 
     </ContentPage.Resources>
-    
+
     <ContentPage.Content>
         <StackLayout Margin="10">
             <ListView x:Name="ListViewBasket">
@@ -40,25 +40,26 @@
                     <DataTemplate>
                         <ViewCell ClassId="{Binding Id}" PropertyChanged="ListViewBasket_PropertyChanged">
                             <StackLayout Orientation="Horizontal" Opacity="0.9" BackgroundColor="{AppThemeBinding Light={StaticResource LightPrimaryColor}, Dark={StaticResource DarkPrimaryColor}}">
-                            <Image Source="{Binding Image}" WidthRequest="100" HeightRequest="120"></Image>
-                            <StackLayout>
-                                <Label Text="{Binding Title}" FontSize="Body" FontAttributes="Italic" TextDecorations="Underline"/>
-                                <Label Text="{Binding PriceCash}" FontSize="Medium" FontAttributes="Bold" TextColor="ForestGreen"/>
-                                <Label Text="{Binding PriceBank}" FontSize="Medium" FontAttributes= "Bold" TextColor="PaleVioletRed"/>
-                                <Label Text="Колличество товаров"></Label>
-                                <StackLayout Orientation="Horizontal">
-                                    <Stepper x:Name="_stepper" Minimum="0" Maximum="10" Increment="1" ValueChanged="Stepper_ValueChanged" Value="1"></Stepper>
+                                <Image Source="{Binding Image}" WidthRequest="100" HeightRequest="120"></Image>
+                                <StackLayout>
+                                    <Label Text="{Binding Title}" FontSize="Body" FontAttributes="Italic" TextDecorations="Underline"/>
+                                    <Label Text="{Binding PriceCash}" FontSize="Medium" FontAttributes="Bold" TextColor="ForestGreen"/>
+                                    <Label Text="{Binding PriceBank}" FontSize="Medium" FontAttributes= "Bold" TextColor="PaleVioletRed"/>
+                                    <Label Text="Колличество товаров"></Label>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Stepper x:Name="_stepper" Minimum="0" Maximum="1000" Increment="1" ValueChanged="Stepper_ValueChanged" Value="1"></Stepper>
+                                    </StackLayout>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical" VerticalOptions="EndAndExpand">
+                                    <Button Text="Удалить" HorizontalOptions="FillAndExpand" Clicked="Button_Clicked" Style="{StaticResource ButtonStyle}"/>
+                                    <Label Text="{Binding Source={x:Reference _stepper}, Path=Value}" TextColor="Red" FontSize="35" HorizontalOptions="CenterAndExpand"/>
                                 </StackLayout>
                             </StackLayout>
-                            <StackLayout Orientation="Vertical" VerticalOptions="EndAndExpand">
-                                <Button Text="Удалить" HorizontalOptions="FillAndExpand" Clicked="Button_Clicked" Style="{StaticResource ButtonStyle}"/>
-                                <Label Text="{Binding Source={x:Reference _stepper}, Path=Value}" TextColor="Red" FontSize="35" HorizontalOptions="CenterAndExpand"/>
-                            </StackLayout>
-                        </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <Button x:Name="sendButton" Text="Отправить" HorizontalOptions="FillAndExpand" Style="{StaticResource ButtonStyle}" Clicked="_sendButton_Clicked"/>
             <StackLayout Orientation="Horizontal" Opacity="0.9" BackgroundColor="{AppThemeBinding Light={StaticResource LightPrimaryColor}, Dark={StaticResource DarkPrimaryColor}}">
                 <StackLayout Orientation="Vertical">
                     <Label x:Name="lableBasketSize" TextColor="Red" FontSize="Title" FontAttributes="Bold"/>

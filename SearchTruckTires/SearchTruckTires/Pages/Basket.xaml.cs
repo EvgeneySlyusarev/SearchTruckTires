@@ -81,7 +81,7 @@ namespace SearchTruckTires
                 {
                     _productsCostCash += (uint)valueCash * item.Count;
                 }
-                 success = int.TryParse(string.Join("", item.PriceBank.Where(c => char.IsDigit(c))), out int valueBank);
+                success = int.TryParse(string.Join("", item.PriceBank.Where(c => char.IsDigit(c))), out int valueBank);
                 if (success)
                 {
                     _productsCostBank += (uint)valueBank * item.Count;
@@ -100,7 +100,7 @@ namespace SearchTruckTires
         private void Button_Clicked(object sender, EventArgs e)
         {
             var item = _GetParent<ViewCell>(sender);
-            var product = _GetProductByItem(item); 
+            var product = _GetProductByItem(item);
             if (product != null)
             {
                 Products.Remove(product);
@@ -127,10 +127,16 @@ namespace SearchTruckTires
             _RefreshFooter();
         }
 
+        private void _sendButton_Clicked(object sender, EventArgs e)
+        {
+
+        }
         private static Basket _instance = null;
 
         private uint _productsCount = 0;
         private uint _productsCostCash = 0;
         private uint _productsCostBank = 0;
+
+
     };
 }
