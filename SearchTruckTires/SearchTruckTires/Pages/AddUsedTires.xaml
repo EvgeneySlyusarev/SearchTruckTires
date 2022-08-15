@@ -17,9 +17,9 @@
             <Entry x:Name="EnteryResidualTreadDepth" Placeholder="ОГП" BackgroundColor="WhiteSmoke" TextColor="Black"/>
             <StackLayout>
                 <Label Text="Фото протектор и боковина"/>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                    <Image Source="@Resources/Drawable/Camera1.png" BackgroundColor="White" />
-                    <Image Source="" BackgroundColor="White"/>
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="@Resources/Drawable/camera1.png" BackgroundColor="White" />
+                    <Image Source="" BackgroundColor="White" />
                 </StackLayout>
                 <Label Text="Фото DOT и серийный №"/>
                 <StackLayout Orientation="Horizontal">
