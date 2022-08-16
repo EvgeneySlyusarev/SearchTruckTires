@@ -20,9 +20,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Drawable\camera360.png" />
     <None Remove="Resources\Drawable\stormers216_2021.200x200.jpg" />
     <None Remove="Resources\Drawable\TiresBackground.png" />
     <None Remove="Resources\Drawable\WheelMark1.png" />
+    <None Remove="Resources\Drawable\WheelMark2.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,9 +41,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Drawable\camera360.png" />
     <Resource Include="Resources\Drawable\stormers216_2021.200x200.jpg" />
     <Resource Include="Resources\Drawable\TiresBackground.png" />
     <Resource Include="Resources\Drawable\WheelMark1.png" />
+    <Resource Include="Resources\Drawable\WheelMark2.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -79,6 +83,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Resources\Drawable\camera1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Drawable\DiscsBackground.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Resources\Drawable\WheelMark3.png">

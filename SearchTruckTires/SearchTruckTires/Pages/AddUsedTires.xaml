@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SearchTruckTires.Pages.AddUsedTires"
              Title="Добавить Бу шину">
-    <ContentPage.Content>
-        <StackLayout Margin="10">
+    <ScrollView>
+        <StackLayout Margin="8" Spacing="2">
             <Entry x:Name="EnteryTitle" Placeholder="Название" BackgroundColor="WhiteSmoke" TextColor="Black"/>
             <Entry x:Name="EnteryModel" Placeholder="Модель" BackgroundColor="WhiteSmoke" TextColor="Black"/>
             <Entry x:Name="EnteryPrise" Placeholder="Цена" BackgroundColor="WhiteSmoke" TextColor="Black"/>
@@ -16,24 +16,25 @@
             <Entry x:Name="EnterySerialNumber" Placeholder="Серийный номер" BackgroundColor="WhiteSmoke" TextColor="Black"/>
             <Entry x:Name="EnteryResidualTreadDepth" Placeholder="ОГП" BackgroundColor="WhiteSmoke" TextColor="Black"/>
             <StackLayout>
-                <Label Text="Фото протектор и боковина"/>
+                <Label Text="Фото протектор и боковина" TextColor="AliceBlue"/>
                 <StackLayout Orientation="Horizontal">
-                    <Image Source="@Resources/Drawable/camera360.png" BackgroundColor="White"/>
-                    <Image Source="@Resources/Drawable/WheelMark2.png" BackgroundColor="White"/>
+                    <Button x:Name="ButtonTread" ImageSource="@Resources/drawable/camera360.png"/>
+                    <Button x:Name="ButtonSide" ImageSource="@Resources/drawable/camera360.png"/>
                 </StackLayout>
-                <Label Text="Фото DOT и серийный №"/>
+                <Label Text="Фото DOT и серийный №" TextColor="AliceBlue"/>
                 <StackLayout Orientation="Horizontal">
-                    <Image Source="" BackgroundColor="White"/>
-                    <Image Source="" BackgroundColor="White"/>
+                    <Button x:Name="ButtonDOT" ImageSource="@Resources/drawable/camera360.png"/>
+                    <Button x:Name="ButtonSerialNumber" ImageSource="@Resources/drawable/camera360.png"/>
                 </StackLayout>
-                <Label Text="Ремонты"/>
+                <Label Text="Ремонты" TextColor="AliceBlue"/>
                 <StackLayout Orientation="Horizontal">
-                    <Image Source="" BackgroundColor="White"/>
-                    <Image Source="" BackgroundColor="White"/>
-                    <Image Source="" BackgroundColor="White"/>
+                    <Button x:Name="ButtonRepeir1" ImageSource="@Resources/drawable/camera360.png"/>
+                    <Button x:Name="ButtonRepeir2" ImageSource="@Resources/drawable/camera360.png"/>
+                    <Button x:Name="ButtonRepeir3" ImageSource="@Resources/drawable/camera360.png"/>
                 </StackLayout>
             </StackLayout>
-            <Editor x:Name="EditorDescription" HorizontalOptions="FillAndExpand" BackgroundColor="White" Text="Описание" TextColor="Black"/>
+            <Editor x:Name="EditorDescription" HorizontalOptions="FillAndExpand" BackgroundColor="White" Text="Описание" TextColor="DarkGray"/>
+            <Button Text="Сохранить" BackgroundColor="Red" HorizontalOptions="FillAndExpand" />
         </StackLayout>
-    </ContentPage.Content>
+    </ScrollView>
 </ContentPage>
