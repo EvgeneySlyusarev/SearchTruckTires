@@ -42,7 +42,7 @@ namespace SearchTruckTires
             return ImageSource.FromStream(() => new MemoryStream(byteArray));
         }
 
-        private uint _id;
+        private readonly uint _id;
         private static uint _idCounter = uint.MaxValue;
 
         private uint _count;
