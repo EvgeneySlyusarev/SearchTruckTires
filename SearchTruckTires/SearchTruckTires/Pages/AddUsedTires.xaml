@@ -9,9 +9,9 @@
             <Entry x:Name="EnteryModel" Placeholder="Модель" BackgroundColor="WhiteSmoke" TextColor="Black"/>
             <Entry x:Name="EnteryPrise" Placeholder="Цена" BackgroundColor="WhiteSmoke" TextColor="Black"/>
             <StackLayout Margin="10" HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
-                <Picker x:Name="PickerWidth" Title="Ширина" BackgroundColor="White" />
-                <Picker x:Name="Pickerheight" Title="Высота" BackgroundColor="White"/>
-                <Picker x:Name="PickerDiametr" Title="Диаметр" BackgroundColor="White" />
+                <Picker x:Name="PickerWight" Title="Ширина" BackgroundColor="White" ItemsSource="WeightTire_array"/>
+                <Picker x:Name="PickerHeight" Title="Высота" BackgroundColor="White" ItemsSource="HeightTire_array"/>
+                <Picker x:Name="PickerDiametr" Title="Диаметр" BackgroundColor="White" ItemsSource="RadiusTire_array" />
             </StackLayout>
             <Entry x:Name="EnterySerialNumber" Placeholder="Серийный номер" BackgroundColor="WhiteSmoke" TextColor="Black"/>
             <Entry x:Name="EnteryResidualTreadDepth" Placeholder="ОГП" BackgroundColor="WhiteSmoke" TextColor="Black"/>
@@ -34,7 +34,7 @@
                 </StackLayout>
             </StackLayout>
             <Editor x:Name="EditorDescription" HorizontalOptions="FillAndExpand" BackgroundColor="White" Text="Описание" TextColor="DarkGray"/>
-            <Button Text="Сохранить" BackgroundColor="Red" HorizontalOptions="FillAndExpand" />
+            <Button x:Name="Seved" BackgroundColor="Red" HorizontalOptions="FillAndExpand" Clicked="Seved_Clicked"/>
         </StackLayout>
     </ScrollView>
 </ContentPage>

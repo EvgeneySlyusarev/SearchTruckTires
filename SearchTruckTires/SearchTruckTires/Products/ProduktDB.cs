@@ -4,24 +4,23 @@ namespace SearchTruckTires
 {
     public class ProduktDB
     {
-        public string Id => _id.ToString();
-
-        public string TitleTires { get => _titleTires; }
-        public string ModelTires { get => _modelTires; }
-        public decimal PriseUsedTires { get => _priseUsedTires; }
-        public uint WidthTires { get => _widthTires; }
-        public uint HeightTires { get => _heightTires; }
-        public uint DiametrTires { get => _diametrTires; }
-        public string SerialNumber { get => _serialNumber; }
-        public uint ResidualTreadDepth { get => _residualTreadDepth; }
-        public ImageSource ImageTread { get => _imageTread; }
-        public ImageSource ImageSide { get => _imageSide; }
-        public ImageSource ImageDOT { get => _imageDOT; }
-        public ImageSource ImageSerialNumber { get => _imageSerialNumber; }
-        public ImageSource ImageRepeir1 { get => _imageRepeir1; }
-        public ImageSource ImageRepair2 { get => _imageRepair2; }
-        public ImageSource ImageRepair3 { get => _imageRepair3; }
-        public string Description { get => _description; }
+        public string Id { get => _id.ToString(); }
+        public string TitleTires { get => _titleTires; set => _titleTires = value; }
+        public string ModelTires { get => _modelTires; set => _modelTires = value; }
+        public decimal PriseUsedTires { get => _priseUsedTires; set => _priseUsedTires = value; }
+        public uint WidthTires { get => _widthTires; set => _widthTires = value; }
+        public uint HeightTires { get => _heightTires; set => _heightTires = value; }
+        public uint DiametrTires { get => _diametrTires; set => _diametrTires = value; }
+        public string SerialNumber { get => _serialNumber; set => _serialNumber = value; }
+        public uint ResidualTreadDepth { get => _residualTreadDepth; set => _residualTreadDepth = value; }
+        public ImageSource ImageTread { get => _imageTread; set => _imageTread = value; }
+        public ImageSource ImageSide { get => _imageSide; set => _imageSide = value; }
+        public ImageSource ImageDOT { get => _imageDOT; set => _imageDOT = value; }
+        public ImageSource ImageSerialNumber { get => _imageSerialNumber; set => _imageSerialNumber = value; }
+        public ImageSource ImageRepeir1 { get => _imageRepeir1; set => _imageRepeir1 = value; }
+        public ImageSource ImageRepair2 { get => _imageRepair2; set => _imageRepair2 = value; }
+        public ImageSource ImageRepair3 { get => _imageRepair3; set => _imageRepair3 = value; }
+        public string Description { get => _description; set => _description = value; }
 
         public ProduktDB(string titleTires, string modelTires, decimal priseUsedTires, uint widthTires,
                          uint heightTires, uint diametrTires, string serialNumber, uint residualTreadDepth,
@@ -47,6 +46,10 @@ namespace SearchTruckTires
             _imageRepair2 = imageRepair2;
             _imageRepair3 = imageRepair3;
             _description = description;
+        }
+
+        public ProduktDB()
+        {
         }
 
         public uint Count

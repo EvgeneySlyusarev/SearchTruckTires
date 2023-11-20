@@ -10,7 +10,7 @@
   <Class Name="SearchTruckTires.Basket">
     <Position X="5.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AEAFACDAAQAAAAAIAAAAAAAAAAKRCIAAQAAAAAQAIAA=</HashCode>
+      <HashCode>AEAEACDAAQAAAAAIAAAAAAAAAAKRCIAAQAAAAAQAIAQ=</HashCode>
       <FileName>Pages\Basket.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -31,11 +31,11 @@
   <Class Name="SearchTruckTires.Tires">
     <Position X="1" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QAAAEAAAAAAAAAAAAAAAAAAQAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <HashCode>QAAAAAAIAAAQAAAAAAAAQQAQAAAAAAAAAIAAAAAAAQA=</HashCode>
       <FileName>Pages\Tires.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SearchTruckTires.ProductParse">
+  <Class Name="SearchTruckTires.Product">
     <Position X="8.75" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACEQAAAIAAAEAABABAAAQIAAAIIBAACAiAAAAAAAA=</HashCode>
@@ -80,7 +80,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Xamarin.Forms.Application" Collapsed="true">
-    <Position X="0.75" Y="7.5" Width="1.5" />
+    <Position X="2.75" Y="7.75" Width="1.5" />
     <TypeIdentifier />
     <Lollipop Position="0.2" />
   </Class>
