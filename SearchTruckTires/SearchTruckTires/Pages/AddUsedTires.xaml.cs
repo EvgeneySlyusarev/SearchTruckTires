@@ -16,6 +16,9 @@ namespace SearchTruckTires.Pages
         {
             InitializeComponent();
 
+            PickerWight.ItemsSource = _weightTire_array;
+            PickerHeight.ItemsSource = _hightTire_array;
+            PickerDiametr.ItemsSource = _RadiusTire_array;
         }
 
         private async void TakePhotoAsync(object sender, EventArgs e)
@@ -53,7 +56,7 @@ namespace SearchTruckTires.Pages
 
             // Добавление элемента
             ProduktDB newItem = new ProduktDB();
-            newItem.TitleTires = EnteryModel.Text;
+            newItem.TitleTires = EnteryTitle.Text;
             newItem.ModelTires = EnteryModel.Text;
             newItem.PriseUsedTires = Convert.ToDecimal(EnteryPrise.Text);
             newItem.WidthTires = Convert.ToUInt32(PickerWight.Items);
@@ -69,8 +72,62 @@ namespace SearchTruckTires.Pages
 
         private void Seved_Clicked(object sender, EventArgs e)
         {
-
             BD_AddItem();
         }
+
+
+        private void PickerWight_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+        }
+        private void PickerHeight_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void PickerDiametr_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private readonly string[] _weightTire_array = new string[]
+        {
+            "205",
+            "215",
+            "225",
+            "235",
+            "245",
+            "255",
+            "265",
+            "275",
+            "285",
+            "295",
+            "305",
+            "315",
+            "385",
+            "425",
+            "435",
+            "445"
+        };
+        private readonly string[] _hightTire_array = new string[]
+        {
+            "45",
+            "50",
+            "55",
+            "60",
+            "70",
+            "80",
+            "90",
+            "00"
+        };
+        private readonly string[] _RadiusTire_array = new string[]
+            {
+                "17,5",
+                "19,5",
+                "20",
+                "22,5",
+                "24"
+            };
     }
+
 }
