@@ -1,17 +1,17 @@
-﻿using System;
+﻿using SQLite;
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using SQLite;
 
 namespace SearchTruckTires.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddUsedTires : ContentPage
-    { 
-        private readonly Image img = new Image();
-
+    {
         public AddUsedTires()
         {
             InitializeComponent();
@@ -19,33 +19,42 @@ namespace SearchTruckTires.Pages
             PickerWight.ItemsSource = _weightTire_array;
             PickerHeight.ItemsSource = _hightTire_array;
             PickerDiametr.ItemsSource = _RadiusTire_array;
+
+            buttonData.Add(Convert.ToString(ButtonTread), _imageTreadCash);
+            buttonData.Add(Convert.ToString(ButtonSide), _imageSideCash);
+            buttonData.Add(Convert.ToString(ButtonSerialNumber), _imageSerialNumberCash);
+            buttonData.Add(Convert.ToString(ButtonDOT), _imageDOTCash);
+            buttonData.Add(Convert.ToString(ButtonRepeir1), _imageRepeir1Cash);
+            buttonData.Add(Convert.ToString(ButtonRepeir2), _imageRepeir2Cash);
+            buttonData.Add(Convert.ToString(ButtonRepeir3), _imageRepeir3Cash);
         }
 
         private async void TakePhotoAsync(object sender, EventArgs e)
         {
-            try
-            {
-                var photo = await MediaPicker.CapturePhotoAsync(new MediaPickerOptions
-                {
-                    Title = $"xamarin.{DateTime.Now:dd.MM.yyyy_hh.mm.ss}.png"
-                });
 
-                // для примера сохраняем файл в локальном хранилище
-                string newFile = Path.Combine(FileSystem.AppDataDirectory, photo.FileName);
-                using (var stream = await photo.OpenReadAsync())
-                using (var newStream = File.OpenWrite(newFile))
+            var button = sender as Button;
+
+            if (button != null)
+            {
+                string buttonName = button.CommandParameter?.ToString();
+
+                try
                 {
-                    await stream.CopyToAsync(newStream);
+                    FileResult fileResult = await MediaPicker.CapturePhotoAsync(new MediaPickerOptions());
+                    ImageSource imageSource = await ConvertFileResultToImageSourceAsync(fileResult);
+
+                    buttonData[buttonName] = imageSource;
                 }
-
-                // загружаем в ImageView
-                img.Source = ImageSource.FromFile(photo.FullPath);
+                catch (Exception ex)
+                {
+                    await DisplayAlert("Сообщение об ошибке", ex.Message, "OK");
+                }
             }
-            catch (Exception ex)
-            {
-                await DisplayAlert("Сообщение об ошибке", ex.Message, "OK");
-            }
+        }
 
+        private Task<ImageSource> ConvertFileResultToImageSourceAsync(FileResult fileResult)
+        {
+            throw new NotImplementedException();
         }
 
         private void BD_AddItem()
@@ -64,8 +73,16 @@ namespace SearchTruckTires.Pages
             newItem.DiametrTires = Convert.ToUInt32(PickerDiametr.Items);
             newItem.SerialNumber = EnterySerialNumber.Text;
             newItem.ResidualTreadDepth = Convert.ToUInt32(EnteryResidualTreadDepth.Text);
-
-
+            newItem.SerialNumber = EnterySerialNumber.Text;
+            newItem.ResidualTreadDepth = Convert.ToUInt32(EnteryResidualTreadDepth.Text);
+            newItem.Description = EditorDescription.Text;
+            newItem.ImageTread = _imageTreadCash;
+            newItem.ImageSide = _imageSideCash;
+            newItem.ImageDOT = _imageDOTCash;
+            newItem.ImageSerialNumber = _imageSerialNumberCash;
+            newItem.ImageRepeir1 = _imageRepeir1Cash;
+            newItem.ImageRepair2 = _imageRepeir2Cash;
+            newItem.ImageRepair3 = _imageRepeir3Cash;
 
             db.Insert(newItem);
         }
@@ -75,20 +92,16 @@ namespace SearchTruckTires.Pages
             BD_AddItem();
         }
 
+        private readonly Dictionary<string, ImageSource> buttonData = new Dictionary<string, ImageSource>();
 
-        private void PickerWight_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-        }
-        private void PickerHeight_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
-        private void PickerDiametr_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        private ImageSource _imageTreadCash;
+        private ImageSource _imageSideCash;
+        private ImageSource _imageSerialNumberCash;
+        private ImageSource _imageDOTCash;
+        private ImageSource _imageRepeir1Cash;
+        private ImageSource _imageRepeir2Cash;
+        private ImageSource _imageRepeir3Cash;
 
         private readonly string[] _weightTire_array = new string[]
         {
@@ -115,7 +128,9 @@ namespace SearchTruckTires.Pages
             "50",
             "55",
             "60",
+            "65",
             "70",
+            "75",
             "80",
             "90",
             "00"

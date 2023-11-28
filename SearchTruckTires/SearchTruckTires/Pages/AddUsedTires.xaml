@@ -9,28 +9,28 @@
             <Entry x:Name="EnteryModel" Placeholder="Модель" BackgroundColor="WhiteSmoke" TextColor="Black"/>
             <Entry x:Name="EnteryPrise" Placeholder="Цена" BackgroundColor="WhiteSmoke" TextColor="Black"/>
             <StackLayout Margin="10" HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
-                <Picker x:Name="PickerWight" Title="Ширина" BackgroundColor="White" SelectedIndexChanged="PickerWight_SelectedIndexChanged"/>
-                <Picker x:Name="PickerHeight" Title="Высота" BackgroundColor="White" SelectedIndexChanged="PickerHeight_SelectedIndexChanged"/>
-                <Picker x:Name="PickerDiametr" Title="Диаметр" BackgroundColor="White" SelectedIndexChanged="PickerDiametr_SelectedIndexChanged" />
+                <Picker x:Name="PickerWight" Title="Ширина" BackgroundColor="White"/>
+                <Picker x:Name="PickerHeight" Title="Высота" BackgroundColor="White"/>
+                <Picker x:Name="PickerDiametr" Title="Диаметр" BackgroundColor="White"/>
             </StackLayout>
             <Entry x:Name="EnterySerialNumber" Placeholder="Серийный номер" BackgroundColor="WhiteSmoke" TextColor="Black"/>
             <Entry x:Name="EnteryResidualTreadDepth" Placeholder="ОГП" BackgroundColor="WhiteSmoke" TextColor="Black"/>
             <StackLayout>
                 <Label Text="Фото протектор и боковина" TextColor="AliceBlue"/>
                 <StackLayout Orientation="Horizontal">
-                    <Button x:Name="ButtonTread" ImageSource="@Resources/drawable/camera360.png"/>
-                    <Button x:Name="ButtonSide" ImageSource="@Resources/drawable/camera360.png"/>
+                    <Button x:Name="ButtonTread" ImageSource="@Resources/drawable/camera360.png" Clicked="TakePhotoAsync" CommandParameter="ButtonTread"/>
+                    <Button x:Name="ButtonSide" ImageSource="@Resources/drawable/camera360.png" Clicked="TakePhotoAsync" CommandParameter="ButtonSide"/>
                 </StackLayout>
                 <Label Text="Фото DOT и серийный №" TextColor="AliceBlue"/>
                 <StackLayout Orientation="Horizontal">
-                    <Button x:Name="ButtonDOT" ImageSource="@Resources/drawable/camera360.png"/>
-                    <Button x:Name="ButtonSerialNumber" ImageSource="@Resources/drawable/camera360.png"/>
+                    <Button x:Name="ButtonDOT" ImageSource="@Resources/drawable/camera360.png" Clicked="TakePhotoAsync" CommandParameter="ButtonDOT"/>
+                    <Button x:Name="ButtonSerialNumber" ImageSource="@Resources/drawable/camera360.png" Clicked="TakePhotoAsync" CommandParameter="ButtonSerialNumber"/>
                 </StackLayout>
                 <Label Text="Ремонты" TextColor="AliceBlue"/>
                 <StackLayout Orientation="Horizontal">
-                    <Button x:Name="ButtonRepeir1" ImageSource="@Resources/drawable/camera360.png"/>
-                    <Button x:Name="ButtonRepeir2" ImageSource="@Resources/drawable/camera360.png"/>
-                    <Button x:Name="ButtonRepeir3" ImageSource="@Resources/drawable/camera360.png"/>
+                    <Button x:Name="ButtonRepeir1" ImageSource="@Resources/drawable/camera360.png" Clicked="TakePhotoAsync" CommandParameter="ButtonRepeir1"/>
+                    <Button x:Name="ButtonRepeir2" ImageSource="@Resources/drawable/camera360.png" Clicked="TakePhotoAsync" CommandParameter="ButtonRepeir2"/>
+                    <Button x:Name="ButtonRepeir3" ImageSource="@Resources/drawable/camera360.png" Clicked="TakePhotoAsync" CommandParameter="ButtonRepeir3"/>
                 </StackLayout>
             </StackLayout>
             <Editor x:Name="EditorDescription" HorizontalOptions="FillAndExpand" BackgroundColor="White" Text="Описание" TextColor="DarkGray"/>
