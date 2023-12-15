@@ -1,4 +1,5 @@
-﻿using SQLite;
+﻿using SearchTruckTires.DB_ConectServis;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,94 +16,88 @@ namespace SearchTruckTires.Pages
         public AddUsedTires()
         {
             InitializeComponent();
-
             PickerWight.ItemsSource = _weightTire_array;
             PickerHeight.ItemsSource = _hightTire_array;
             PickerDiametr.ItemsSource = _RadiusTire_array;
+            buttonData = new Dictionary<string, ImageSource>();
 
-            buttonData.Add(Convert.ToString(ButtonTread), _imageTreadCash);
-            buttonData.Add(Convert.ToString(ButtonSide), _imageSideCash);
-            buttonData.Add(Convert.ToString(ButtonSerialNumber), _imageSerialNumberCash);
-            buttonData.Add(Convert.ToString(ButtonDOT), _imageDOTCash);
-            buttonData.Add(Convert.ToString(ButtonRepeir1), _imageRepeir1Cash);
-            buttonData.Add(Convert.ToString(ButtonRepeir2), _imageRepeir2Cash);
-            buttonData.Add(Convert.ToString(ButtonRepeir3), _imageRepeir3Cash);
+            //buttonData.Add("ButtonTread", _imageTreadCash);
+            //buttonData.Add("ButtonSide", _imageSideCash);
+            //buttonData.Add("ButtonSerialNumber", _imageSerialNumberCash);
+            //buttonData.Add("ButtonDOT", _imageDOTCash);
+            //buttonData.Add("ButtonRepeir1", _imageRepeir1Cash);
+            //buttonData.Add("ButtonRepeir2", _imageRepeir2Cash);
+            //buttonData.Add("ButtonRepeir3", _imageRepeir3Cash);
         }
 
         private async void TakePhotoAsync(object sender, EventArgs e)
         {
-
             var button = sender as Button;
 
             if (button != null)
             {
                 string buttonName = button.CommandParameter?.ToString();
-
+                FileResult fileResult = await MediaPicker.CapturePhotoAsync(new MediaPickerOptions());
+                
                 try
                 {
-                    FileResult fileResult = await MediaPicker.CapturePhotoAsync(new MediaPickerOptions());
-                    ImageSource imageSource = await ConvertFileResultToImageSourceAsync(fileResult);
-
-                    buttonData[buttonName] = imageSource;
+                    if (fileResult != null)
+                    {
+                        ImageSource imageSource = fileResult.FullPath;
+                        buttonData[buttonName] = imageSource;
+                    }
                 }
                 catch (Exception ex)
                 {
-                    await DisplayAlert("Сообщение об ошибке", ex.Message, "OK");
+                    await DisplayAlert("Фото не сделанно", ex.Message, "OK");
                 }
             }
         }
 
-        private Task<ImageSource> ConvertFileResultToImageSourceAsync(FileResult fileResult)
-        {
-            throw new NotImplementedException();
-        }
-
         private void BD_AddItem()
         {
-            var databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "database.db");
-            var db = new SQLiteConnection(databasePath);
-            db.CreateTable<ProduktDB>();
-
-            // Добавление элемента
-            ProduktDB newItem = new ProduktDB();
-            newItem.TitleTires = EnteryTitle.Text;
-            newItem.ModelTires = EnteryModel.Text;
-            newItem.PriseUsedTires = Convert.ToDecimal(EnteryPrise.Text);
-            newItem.WidthTires = Convert.ToUInt32(PickerWight.Items);
-            newItem.HeightTires = Convert.ToUInt32(PickerHeight.Items);
-            newItem.DiametrTires = Convert.ToUInt32(PickerDiametr.Items);
-            newItem.SerialNumber = EnterySerialNumber.Text;
-            newItem.ResidualTreadDepth = Convert.ToUInt32(EnteryResidualTreadDepth.Text);
-            newItem.SerialNumber = EnterySerialNumber.Text;
-            newItem.ResidualTreadDepth = Convert.ToUInt32(EnteryResidualTreadDepth.Text);
-            newItem.Description = EditorDescription.Text;
-            newItem.ImageTread = _imageTreadCash;
-            newItem.ImageSide = _imageSideCash;
-            newItem.ImageDOT = _imageDOTCash;
-            newItem.ImageSerialNumber = _imageSerialNumberCash;
-            newItem.ImageRepeir1 = _imageRepeir1Cash;
-            newItem.ImageRepair2 = _imageRepeir2Cash;
-            newItem.ImageRepair3 = _imageRepeir3Cash;
-
-            db.Insert(newItem);
+            using (SQLiteConnection sQLiteConnectDBTires = new SQLiteConnection(DB_Conekt.GetDatabasePath()))
+            {
+                sQLiteConnectDBTires.CreateTable<ProduktEntery>();
+                ProduktEntery newItem = new ProduktEntery
+                {
+                    TitleTires = EnteryTitle.Text,
+                    ModelTires = EnteryModel.Text,
+                    PriseUsedTires = Convert.ToDecimal(EnteryPrise.Text)
+                };
+                //newItem.WidthTires = Convert.ToUInt32(PickerWight.Items);
+                //newItem.HeightTires = Convert.ToUInt32(PickerHeight.Items);
+                //newItem.DiametrTires = Convert.ToUInt32(PickerDiametr.Items);
+                //newItem.SerialNumber = EnterySerialNumber.Text;
+                //newItem.ResidualTreadDepth = Convert.ToUInt32(EnteryResidualTreadDepth.Text);
+                //newItem.SerialNumber = EnterySerialNumber.Text;
+                //newItem.ResidualTreadDepth = Convert.ToUInt32(EnteryResidualTreadDepth.Text);
+                //newItem.Description = EditorDescription.Text;
+                //newItem.ImageTread = _imageTreadCash;
+                //newItem.ImageSide = _imageSideCash;
+                //newItem.ImageDOT = _imageDOTCash;
+                //newItem.ImageSerialNumber = _imageSerialNumberCash;
+                //newItem.ImageRepeir1 = _imageRepeir1Cash;
+                //newItem.ImageRepair2 = _imageRepeir2Cash;
+                //newItem.ImageRepair3 = _imageRepeir3Cash;
+                _ = sQLiteConnectDBTires.Insert(newItem);
+                sQLiteConnectDBTires.Close();
+            }
         }
-
-        private void Seved_Clicked(object sender, EventArgs e)
+        private void Save_Clicked(object sender, EventArgs e)
         {
             BD_AddItem();
         }
 
-        private readonly Dictionary<string, ImageSource> buttonData = new Dictionary<string, ImageSource>();
+        private readonly Dictionary<string, ImageSource> buttonData;
 
-
-        private ImageSource _imageTreadCash;
-        private ImageSource _imageSideCash;
-        private ImageSource _imageSerialNumberCash;
-        private ImageSource _imageDOTCash;
-        private ImageSource _imageRepeir1Cash;
-        private ImageSource _imageRepeir2Cash;
-        private ImageSource _imageRepeir3Cash;
-
+        //private ImageSource _imageTreadCash = ImageSource.FromFile("camera360.png");
+        //private ImageSource _imageSideCash = ImageSource.FromFile("camera360.png");
+        //private ImageSource _imageSerialNumberCash = ImageSource.FromFile("camera360.png");
+        //private ImageSource _imageDOTCash = ImageSource.FromFile("camera360.png");
+        //private ImageSource _imageRepeir1Cash = ImageSource.FromFile("camera360.png");
+        //private ImageSource _imageRepeir2Cash = ImageSource.FromFile("camera360.png");
+        //private ImageSource _imageRepeir3Cash = ImageSource.FromFile("camera360.png");
         private readonly string[] _weightTire_array = new string[]
         {
             "205",
@@ -144,5 +139,4 @@ namespace SearchTruckTires.Pages
                 "24"
             };
     }
-
 }

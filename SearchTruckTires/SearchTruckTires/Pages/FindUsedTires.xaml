@@ -3,11 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SearchTruckTires.Pages.FindUsedTires"
              Title="Поиск БУ ШИН">
-    <ContentPage.Content>
         <StackLayout>
-            <Label Text="Find Tires"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Button x:Name="ButtonDB_Download" HorizontalOptions="Center" Text="Скачать из БД" Clicked="ButtonDB_Download_Clicked" BackgroundColor="Red"/>
+            <ListView x:Name="ProductsListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout VerticalOptions="Center">
+                                <Label x:Name="TitleTiresLable" Text="{Binding TitleTires}" BackgroundColor="Red" HorizontalOptions="Center"/>
+                                <Label x:Name="ModelTiresLable" Text="{Binding ModelTires}" BackgroundColor="Red" HorizontalOptions="Center"/>
+                                <Label x:Name="PriseTiresLable" Text="{Binding PriseUsedTires}" BackgroundColor="Red" HorizontalOptions="Center"/>
+                                <!-- Add more labels for other properties -->
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
-    </ContentPage.Content>
 </ContentPage>

@@ -1,9 +1,9 @@
-﻿using SQLite;
+﻿using SearchTruckTires.DB_ConectServis;
+using SQLite;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -16,17 +16,27 @@ namespace SearchTruckTires.Pages
         public FindUsedTires()
         {
             InitializeComponent();
+            ProductsListView.ItemsSource = _products;
+            BindingContext = this;
+            ProductsListView.HasUnevenRows = true;
         }
 
-    //    private List<ProduktDB> BD_Conection()
-    //    {
-    //        var databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "database.db");
-    //        var db = new SQLiteConnection(databasePath);
-    //        //db.CreateTable<ProduktDB>();
+        private List<ProduktEntery> GetProduktsFromDatabase()
+        {
+            using (SQLiteConnection sQLiteConnectDBTires = new SQLiteConnection(DB_Conekt.GetDatabasePath()))
+            {
+                // Получение всех элементов
+                List<ProduktEntery> items = sQLiteConnectDBTires.Table<ProduktEntery>().ToList();
+                return items;
+            }
+        }
 
-    //        // Получение всех элементов
-    //        List<ProduktDB> items = db.Table<>.ToList();
-    //        return items;
-    //    }
+        private void ButtonDB_Download_Clicked(object sender, EventArgs e)
+        {
+            _products = new ObservableCollection<ProduktEntery>(GetProduktsFromDatabase());
+            ProductsListView.ItemsSource = _products;
+        }
+
+        private ObservableCollection<ProduktEntery> _products;
     }
 }

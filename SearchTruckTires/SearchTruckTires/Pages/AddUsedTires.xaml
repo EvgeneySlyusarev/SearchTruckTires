@@ -34,7 +34,7 @@
                 </StackLayout>
             </StackLayout>
             <Editor x:Name="EditorDescription" HorizontalOptions="FillAndExpand" BackgroundColor="White" Text="Описание" TextColor="DarkGray"/>
-            <Button x:Name="Seved" BackgroundColor="Red" HorizontalOptions="FillAndExpand" Clicked="Seved_Clicked"/>
+            <Button x:Name="Saved" Text="Save" BackgroundColor="Red" HorizontalOptions="FillAndExpand" Clicked="Save_Clicked"/>
         </StackLayout>
     </ScrollView>
 </ContentPage>
