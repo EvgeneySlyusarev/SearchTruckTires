@@ -9,9 +9,9 @@
             <Entry x:Name="EnteryModel" Placeholder="Модель" BackgroundColor="WhiteSmoke" TextColor="Black"/>
             <Entry x:Name="EnteryPrise" Placeholder="Цена" BackgroundColor="WhiteSmoke" TextColor="Black"/>
             <StackLayout Margin="10" HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
-                <Picker x:Name="PickerWight" Title="Ширина" BackgroundColor="White"/>
-                <Picker x:Name="PickerHeight" Title="Высота" BackgroundColor="White"/>
-                <Picker x:Name="PickerDiametr" Title="Диаметр" BackgroundColor="White"/>
+                <Picker x:Name="PickerWight" Title="Ширина" BackgroundColor="White" SelectedIndexChanged="PickerWight_SelectedIndexChanged"/>
+                <Picker x:Name="PickerHeight" Title="Высота" BackgroundColor="White" SelectedIndexChanged="PickerHeight_SelectedIndexChanged"/>
+                <Picker x:Name="PickerDiametr" Title="Диаметр" BackgroundColor="White" SelectedIndexChanged="PickerDiametr_SelectedIndexChanged"/>
             </StackLayout>
             <Entry x:Name="EnterySerialNumber" Placeholder="Серийный номер" BackgroundColor="WhiteSmoke" TextColor="Black"/>
             <Entry x:Name="EnteryResidualTreadDepth" Placeholder="ОГП" BackgroundColor="WhiteSmoke" TextColor="Black"/>

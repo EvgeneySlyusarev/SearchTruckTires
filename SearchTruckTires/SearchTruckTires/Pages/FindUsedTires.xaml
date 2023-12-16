@@ -4,17 +4,43 @@
              x:Class="SearchTruckTires.Pages.FindUsedTires"
              Title="Поиск БУ ШИН">
         <StackLayout>
-            <Button x:Name="ButtonDB_Download" HorizontalOptions="Center" Text="Скачать из БД" Clicked="ButtonDB_Download_Clicked" BackgroundColor="Red"/>
-            <ListView x:Name="ProductsListView">
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+            <Button x:Name="ButtonDB_Download" HorizontalOptions="Center" Text="Скачать из БД" Clicked="ButtonDB_Download_Clicked" BackgroundColor="Green"/>
+            <Button x:Name="ButtonDB_DellAllItemDB" HorizontalOptions="Center" Text="Удалить записи из БД" Clicked="ButtonDB_DellAllItemDB_Clicked" BackgroundColor="Red"/>
+        </StackLayout>
+        <ListView x:Name="ProductsListView" BackgroundColor="AliceBlue">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout VerticalOptions="Center">
-                                <Label x:Name="TitleTiresLable" Text="{Binding TitleTires}" BackgroundColor="Red" HorizontalOptions="Center"/>
-                                <Label x:Name="ModelTiresLable" Text="{Binding ModelTires}" BackgroundColor="Red" HorizontalOptions="Center"/>
-                                <Label x:Name="PriseTiresLable" Text="{Binding PriseUsedTires}" BackgroundColor="Red" HorizontalOptions="Center"/>
-                                <!-- Add more labels for other properties -->
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40*" />
+                                    <ColumnDefinition Width="60*" />
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="0" Margin="10,10,10,10">
+                                    <Label Text="Tire Size" HorizontalOptions="Start"/>
+                                    <Label Text="Title" HorizontalOptions="Start"/>
+                                    <Label Text="Model" HorizontalOptions="Start"/>
+                                    <Label Text="Prise" HorizontalOptions="Start"/>
+                                    <Label Text="SerialNumber"  HorizontalOptions="Start"/>
+                                    <Label Text="RTD" HorizontalOptions="Start"/>
+                                </StackLayout>
+                            <StackLayout Grid.Column="1" Margin="10,10,10,10">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label x:Name="WidthTiresLabel" Text="{Binding WidthTires}"/>
+                                    <Label x:Name="HeightTiresLable" Text="{Binding HeightTires}"/>
+                                    <Label Text="/R"/>
+                                    <Label x:Name="DiametrTiresLable" Text="{Binding DiametrTires}"/>
+                                </StackLayout>
+                                <StackLayout>
+                                    <Label x:Name="TitleTiresLable" Text="{Binding TitleTires}"/>
+                                    <Label x:Name="ModelTiresLable" Text="{Binding ModelTires}"/>
+                                    <Label x:Name="PriseTiresLable" Text="{Binding PriseUsedTires}"/>
+                                    <Label x:Name="SerialNumberLable" Text="{Binding SerialNumber}"/>
+                                    <Label x:Name="ResidualTreadDepthLable" Text="{Binding ResidualTreadDepth}"/>
+                                </StackLayout>
                             </StackLayout>
+                            </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

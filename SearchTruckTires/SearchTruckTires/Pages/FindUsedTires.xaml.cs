@@ -38,5 +38,15 @@ namespace SearchTruckTires.Pages
         }
 
         private ObservableCollection<ProduktEntery> _products;
+
+       
+
+        private void ButtonDB_DellAllItemDB_Clicked(object sender, EventArgs e)
+        {
+            using (SQLiteConnection sQLiteConnectDBTires = new SQLiteConnection(DB_Conekt.GetDatabasePath()))
+            {
+                _ = sQLiteConnectDBTires.DeleteAll<ProduktEntery>();
+            }
+        }
     }
 }

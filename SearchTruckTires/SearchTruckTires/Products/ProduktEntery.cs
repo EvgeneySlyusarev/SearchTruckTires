@@ -1,4 +1,5 @@
 ﻿using SQLite;
+using System;
 
 namespace SearchTruckTires
 {
@@ -9,11 +10,11 @@ namespace SearchTruckTires
         public string TitleTires { get => _titleTires; set => _titleTires = value; }
         public string ModelTires { get => _modelTires; set => _modelTires = value; }
         public decimal PriseUsedTires { get => _priseUsedTires; set => _priseUsedTires = value; }
-        //public uint WidthTires { get => _widthTires; set => _widthTires = value; }
-        //public uint HeightTires { get => _heightTires; set => _heightTires = value; }
-        //public uint DiametrTires { get => _diametrTires; set => _diametrTires = value; }
-        //public string SerialNumber { get => _serialNumber; set => _serialNumber = value; }
-        //public uint ResidualTreadDepth { get => _residualTreadDepth; set => _residualTreadDepth = value; }
+        public string WidthTires { get => _widthTires; set => _widthTires = value; }
+        public string HeightTires { get => _heightTires; set => _heightTires = value; }
+        public string DiametrTires { get => _diametrTires; set => _diametrTires = value; }
+        public string SerialNumber { get => _serialNumber; set => _serialNumber = value; }
+        public string ResidualTreadDepth { get => _residualTreadDepth; set => _residualTreadDepth = value; }
         //public ImageSource ImageTread { get => _imageTread; set => _imageTread = value; }
         //public ImageSource ImageSide { get => _imageSide; set => _imageSide = value; }
         //public ImageSource ImageDOT { get => _imageDOT; set => _imageDOT = value; }
@@ -23,8 +24,8 @@ namespace SearchTruckTires
         //public ImageSource ImageRepair3 { get => _imageRepair3; set => _imageRepair3 = value; }
         //public string Description { get => _description; set => _description = value; }
 
-        public ProduktEntery(string titleTires, string modelTires, decimal priseUsedTires//, uint widthTires,
-                         //uint heightTires, uint diametrTires, string serialNumber, uint residualTreadDepth,
+        public ProduktEntery(string titleTires, string modelTires, decimal priseUsedTires, string widthTires,
+                         string heightTires, string diametrTires, string serialNumber, string residualTreadDepth
                          // ImageSource imageTread, ImageSource imageSide, ImageSource imageDOT, ImageSource imageSerialNumber,
                          //ImageSource imageRepeir1, ImageSource imageRepair2, ImageSource imageRepair3,
                          //string description
@@ -36,11 +37,11 @@ namespace SearchTruckTires
             _titleTires = titleTires;
             _modelTires = modelTires;
             _priseUsedTires = priseUsedTires;
-            //_widthTires = widthTires;
-            //_heightTires = heightTires;
-            //_diametrTires = diametrTires;
-            //_serialNumber = serialNumber;
-            //_residualTreadDepth = residualTreadDepth;
+            _widthTires = widthTires;
+            _heightTires = heightTires;
+            _diametrTires = diametrTires;
+            _serialNumber = serialNumber;
+            _residualTreadDepth = residualTreadDepth;
             //_imageTread = imageTread;
             //_imageSide = imageSide;
             //_imageDOT = imageDOT;
@@ -50,7 +51,6 @@ namespace SearchTruckTires
             //_imageRepair3 = imageRepair3;
             //_description = description;
         }
-
         public ProduktEntery()
         {
         }
@@ -69,11 +69,12 @@ namespace SearchTruckTires
         private string _titleTires;
         private string _modelTires;
         private decimal _priseUsedTires;
-        //private uint _widthTires;
-        //private uint _heightTires;
-        //private uint _diametrTires;
-        //private string _serialNumber;
-        //private uint _residualTreadDepth;
+        private string _widthTires;
+        private string _heightTires;
+        private string _diametrTires;
+        private string _serialNumber;
+        private string _residualTreadDepth;
+
         //private ImageSource _imageTread;
         //private ImageSource _imageSide;
         //private ImageSource _imageDOT;
@@ -82,23 +83,6 @@ namespace SearchTruckTires
         //private ImageSource _imageRepair2;
         //private ImageSource _imageRepair3;
         //private string _description;
-
-
-        //// Пример метода для добавления элемента в базу данных
-        //public void AddItem(ProduktDB item)
-        //{
-        //    _ = DatabaseTires.Insert(item);
-        //}
-        //// Пример метода для получения всех элементов из базы данных
-        //public List<ProduktDB> GetItems()
-        //{
-        //    return DatabaseTires.Table<ProduktDB>().ToList();
-        //}
-        //// Пример метода удаления по индексу
-        //public void DelItem(ProduktDB item)
-        //{
-        //    _ = DatabaseTires.Delete<ProduktDB>(item.Id);
-        //}
     }
 }
 
