@@ -90,6 +90,8 @@ namespace SearchTruckTires.Pages
             PickerWight.SelectedItem = null;
             PickerHeight.SelectedItem = null;
             PickerDiametr.SelectedItem = null;
+            EnterySerialNumber.Text = string.Empty;
+            EnteryResidualTreadDepth.Text = string.Empty;
 
             // Отображение уведомления
             _ = DisplayAlert("Уведомление", "Данные успешно сохранены в базе данных.", "OK");

@@ -26,6 +26,11 @@ namespace SearchTruckTires.Pages
             using (SQLiteConnection sQLiteConnectDBTires = new SQLiteConnection(DB_Conekt.GetDatabasePath()))
             {
                 // Получение всех элементов
+                bool DB_Empty = File.Exists(DB_Conekt.GetDatabasePath());
+                if (!DB_Empty)
+                {
+                    _ = DisplayAlert("Уведомление", "База данних не содержит данних.", "OK");
+                }
                 List<ProduktEntery> items = sQLiteConnectDBTires.Table<ProduktEntery>().ToList();
                 return items;
             }
@@ -38,8 +43,6 @@ namespace SearchTruckTires.Pages
         }
 
         private ObservableCollection<ProduktEntery> _products;
-
-       
 
         private void ButtonDB_DellAllItemDB_Clicked(object sender, EventArgs e)
         {
