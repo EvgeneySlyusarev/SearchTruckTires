@@ -14,6 +14,7 @@ namespace SearchTruckTires
         public string HeightTires { get => _heightTires; set => _heightTires = value; }
         public string DiametrTires { get => _diametrTires; set => _diametrTires = value; }
         public string SerialNumber { get => _serialNumber; set => _serialNumber = value; }
+        public string DOT { get => _DOT; set => _DOT = value; }
         public string ResidualTreadDepth { get => _residualTreadDepth; set => _residualTreadDepth = value; }
         //public ImageSource ImageTread { get => _imageTread; set => _imageTread = value; }
         //public ImageSource ImageSide { get => _imageSide; set => _imageSide = value; }
@@ -25,7 +26,7 @@ namespace SearchTruckTires
         //public string Description { get => _description; set => _description = value; }
 
         public ProduktEntery(string titleTires, string modelTires, decimal priseUsedTires, string widthTires,
-                         string heightTires, string diametrTires, string serialNumber, string residualTreadDepth
+                         string heightTires, string diametrTires, string serialNumber, string DOT, string residualTreadDepth
                          // ImageSource imageTread, ImageSource imageSide, ImageSource imageDOT, ImageSource imageSerialNumber,
                          //ImageSource imageRepeir1, ImageSource imageRepair2, ImageSource imageRepair3,
                          //string description
@@ -41,6 +42,7 @@ namespace SearchTruckTires
             _heightTires = heightTires;
             _diametrTires = diametrTires;
             _serialNumber = serialNumber;
+            _DOT = DOT;
             _residualTreadDepth = residualTreadDepth;
             //_imageTread = imageTread;
             //_imageSide = imageSide;
@@ -74,6 +76,7 @@ namespace SearchTruckTires
         private string _diametrTires;
         private string _serialNumber;
         private string _residualTreadDepth;
+        private string _DOT;
 
         //private ImageSource _imageTread;
         //private ImageSource _imageSide;

@@ -11,9 +11,11 @@
             <StackLayout Margin="10" HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
                 <Picker x:Name="PickerWight" Title="Ширина" BackgroundColor="White" SelectedIndexChanged="PickerWight_SelectedIndexChanged"/>
                 <Picker x:Name="PickerHeight" Title="Высота" BackgroundColor="White" SelectedIndexChanged="PickerHeight_SelectedIndexChanged"/>
+                <Label Text="/R"/>
                 <Picker x:Name="PickerDiametr" Title="Диаметр" BackgroundColor="White" SelectedIndexChanged="PickerDiametr_SelectedIndexChanged"/>
             </StackLayout>
             <Entry x:Name="EnterySerialNumber" Placeholder="Серийный номер" BackgroundColor="WhiteSmoke" TextColor="Black"/>
+            <Entry x:Name="EnteryDOT" Placeholder="DOT" BackgroundColor="WhiteSmoke" TextColor="Black"/>
             <Entry x:Name="EnteryResidualTreadDepth" Placeholder="ОГП" BackgroundColor="WhiteSmoke" TextColor="Black"/>
             <StackLayout>
                 <Label Text="Фото протектор и боковина" TextColor="AliceBlue"/>

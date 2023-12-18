@@ -66,6 +66,7 @@ namespace SearchTruckTires.Pages
                     HeightTires = _higthTires,
                     DiametrTires = _diametrTires,
                     SerialNumber = EnterySerialNumber.Text,
+                    DOT = EnteryDOT.Text,
                     ResidualTreadDepth = EnteryResidualTreadDepth.Text
                 };
                 //newItem.Description = EditorDescription.Text;
@@ -80,17 +81,19 @@ namespace SearchTruckTires.Pages
                 sQLiteConnectDBTires.Close();
             }
         }
+
         private void Save_Clicked(object sender, EventArgs e)
         {
             BD_AddItem();
             // Сброс значений полей после сохранения
             EnteryTitle.Text = string.Empty;
             EnteryModel.Text = string.Empty;
-            EnteryPrise.Text = string.Empty;
+            EnteryPrise.Text = string.Empty; 
             PickerWight.SelectedItem = null;
             PickerHeight.SelectedItem = null;
             PickerDiametr.SelectedItem = null;
             EnterySerialNumber.Text = string.Empty;
+            EnteryDOT.Text = string.Empty;
             EnteryResidualTreadDepth.Text = string.Empty;
 
             // Отображение уведомления
@@ -106,6 +109,7 @@ namespace SearchTruckTires.Pages
         //private ImageSource _imageRepeir1Cash = ImageSource.FromFile("camera360.png");
         //private ImageSource _imageRepeir2Cash = ImageSource.FromFile("camera360.png");
         //private ImageSource _imageRepeir3Cash = ImageSource.FromFile("camera360.png");
+
         private readonly string[] _weightTire_array = new string[]
         {
             "205",
@@ -146,6 +150,7 @@ namespace SearchTruckTires.Pages
                 "22,5",
                 "24"
             };
+
         private string _wigthTires;
         private string _higthTires;
         private string _diametrTires;
