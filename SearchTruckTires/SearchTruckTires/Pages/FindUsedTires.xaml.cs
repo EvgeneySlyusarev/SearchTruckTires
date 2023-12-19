@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -24,39 +23,71 @@ namespace SearchTruckTires.Pages
             PickerDiametr.ItemsSource = _diametrTire_array;
         }
 
-        private List<ProduktEntery> GetProduktsFromDatabase()
+        private ObservableCollection<ProduktDB> _products;
+
+        private void PickerWight_SelectedIndexChanged(object sender, EventArgs e)
         {
-            using (SQLiteConnection sQLiteConnectDBTires = new SQLiteConnection(DB_Conekt.GetDatabasePath()))
+            if (PickerWight.SelectedIndex >= 0 && PickerWight.SelectedIndex < PickerWight.Items.Count)
             {
-                // Получение всех элементов
-                bool DB_Empty = File.Exists(DB_Conekt.GetDatabasePath());
-                if (!DB_Empty)
-                {
-                    _ = DisplayAlert("Уведомление", "База данних не содержит данних.", "OK");
-                }
-                List<ProduktEntery> items = sQLiteConnectDBTires.Table<ProduktEntery>().ToList();
-                return items;
+                _wigthTires = PickerWight.Items[PickerWight.SelectedIndex].ToString();
+            }
+        }
+        private void PickerHeight_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (PickerHeight.SelectedIndex >= 0 && PickerHeight.SelectedIndex < PickerHeight.Items.Count)
+            {
+                _higthTires = PickerHeight.Items[PickerHeight.SelectedIndex].ToString();
+            }
+        }
+        private void PickerDiametr_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (PickerDiametr.SelectedIndex >= 0 && PickerDiametr.SelectedIndex < PickerDiametr.Items.Count)
+            {
+                _diametrTires = PickerDiametr.Items[PickerDiametr.SelectedIndex].ToString();
             }
         }
 
-        private void ButtonALL_DB_Download_Clicked(object sender, EventArgs e)
+        private void ButtonFindTiresSizes_Clicked(object sender, EventArgs e)
         {
-            _products = new ObservableCollection<ProduktEntery>(GetProduktsFromDatabase());
+            _products = new ObservableCollection<ProduktDB>(GetFindTiresSizeFromDatabase());
             ProductsListView.ItemsSource = _products;
         }
-
-        private ObservableCollection<ProduktEntery> _products;
-
+        private void ButtonALL_DB_Download_Clicked(object sender, EventArgs e)
+        {
+            _products = new ObservableCollection<ProduktDB>(GetAllProduktsFromDatabase());
+            ProductsListView.ItemsSource = _products;
+        }
         private void ButtonDB_DellAllItemDB_Clicked(object sender, EventArgs e)
         {
             using (SQLiteConnection sQLiteConnectDBTires = new SQLiteConnection(DB_Conekt.GetDatabasePath()))
             {
-                _ = sQLiteConnectDBTires.DeleteAll<ProduktEntery>();
+                _ = sQLiteConnectDBTires.DeleteAll<ProduktDB>();
             }
         }
 
-        private readonly string[] _weightTire_array = new string[]
+        private List<ProduktDB> GetFindTiresSizeFromDatabase()
         {
+            using SQLiteConnection sQLiteConnectDBTires = new SQLiteConnection(DB_Conekt.GetDatabasePath());
+            TableQuery<ProduktDB> filteredData = from item in sQLiteConnectDBTires.Table<ProduktDB>()
+                                                     where item.WidthTires == _wigthTires && item.HeightTires == _higthTires && item.DiametrTires == _diametrTires
+                                                     select item;
+            return filteredData.ToList();
+        }
+        private List<ProduktDB> GetAllProduktsFromDatabase()
+        {
+            using SQLiteConnection sQLiteConnectDBTires = new SQLiteConnection(DB_Conekt.GetDatabasePath());
+            // Получение всех элементов
+            bool DB_Empty = File.Exists(DB_Conekt.GetDatabasePath());
+            if (!DB_Empty)
+            {
+                _ = DisplayAlert("Уведомление", "База данних не содержит данних.", "OK");
+            }
+            List<ProduktDB> items = sQLiteConnectDBTires.Table<ProduktDB>().ToList();
+            return items;
+        }
+
+        private readonly string[] _weightTire_array = new string[]
+       {
             "205",
             "215",
             "225",
@@ -73,7 +104,7 @@ namespace SearchTruckTires.Pages
             "425",
             "435",
             "445"
-        };
+       };
         private readonly string[] _hightTire_array = new string[]
         {
             "45",
@@ -100,41 +131,22 @@ namespace SearchTruckTires.Pages
         private string _higthTires;
         private string _diametrTires;
 
-        private void PickerWight_SelectedIndexChanged(object sender, EventArgs e)
+        private void ProductsListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            if (PickerWight.SelectedIndex >= 0 && PickerWight.SelectedIndex < PickerWight.Items.Count)
+            if (e.Item is ProduktDB selectedItem)
             {
-                _wigthTires = PickerWight.Items[PickerWight.SelectedIndex].ToString();
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    PhotoDetailPage photoDetailPage = new PhotoDetailPage(selectedItem);
+                    _ = Navigation.PushModalAsync(photoDetailPage);
+                });
             }
-        }
-        private void PickerHeight_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (PickerHeight.SelectedIndex >= 0 && PickerHeight.SelectedIndex < PickerHeight.Items.Count)
-            {
-                _higthTires = PickerHeight.Items[PickerHeight.SelectedIndex].ToString();
-            }
-        }
-        private void PickerDiametr_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (PickerDiametr.SelectedIndex >= 0 && PickerDiametr.SelectedIndex < PickerDiametr.Items.Count)
-            {
-                _diametrTires = PickerDiametr.Items[PickerDiametr.SelectedIndex].ToString();
-            }
-        }
 
-        private void ButtonFindTiresSizes_Clicked(object sender, EventArgs e)
-        {
-            _products = new ObservableCollection<ProduktEntery>(DB_FindTiresSize());
-            ProductsListView.ItemsSource = _products;
-        }
-        private List<ProduktEntery> DB_FindTiresSize()
-        {
-            using SQLiteConnection sQLiteConnectDBTires = new SQLiteConnection(DB_Conekt.GetDatabasePath());
-            TableQuery<ProduktEntery> filteredData = from item in sQLiteConnectDBTires.Table<ProduktEntery>()
-                                                     where item.WidthTires == _wigthTires && item.HeightTires == _higthTires && item.DiametrTires == _diametrTires
-                                                     select item;
-
-            return filteredData.ToList();
+            if (sender is ListView listView)
+            {
+                listView.SelectedItem = null;
+            }
+           
         }
     }
 }

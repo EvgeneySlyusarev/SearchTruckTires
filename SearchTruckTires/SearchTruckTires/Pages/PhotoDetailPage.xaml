@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:searchtrucktires="clr-namespace:SearchTruckTires" 
+             x:DataType="searchtrucktires:UsedTires"
+             x:Class="SearchTruckTires.Pages.PhotoDetailPage">
+    <ScrollView>
+        <StackLayout Padding="10,10,10,10">
+            <Label Text="Tread"/>
+            <Image x:Name="PhotoTread" Aspect="AspectFit"/>
+            <Label Text="Side"/>
+            <Image x:Name="PhotoSide" Aspect="AspectFit"/>
+            <Label Text="DOT"/>
+            <Image x:Name="PhotoDot" Aspect="AspectFit"/>
+            <Label Text="SerialNumber"/>
+            <Image x:Name="PhotoSerialNumber" Aspect="AspectFit"/>
+            <Label Text="Repeir1"/>
+            <Image x:Name="PhotoRepeir1" Aspect="AspectFit"/>
+            <Label Text="Repeir2"/>
+            <Image x:Name="PhotoRepeir2" Aspect="AspectFit"/>
+            <Label Text="Repeir3"/>
+            <Image x:Name="PhotoRepeir3" Aspect="AspectFit"/>
+            <Button x:Name="backButton" Text="Назад" HorizontalOptions="Start" BackgroundColor="Red"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

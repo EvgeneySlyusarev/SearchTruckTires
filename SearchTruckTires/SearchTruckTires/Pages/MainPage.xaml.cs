@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using SearchTruckTires.Pages;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace SearchTruckTires
@@ -9,6 +10,8 @@ namespace SearchTruckTires
         public MainPage()
         {
             InitializeComponent();
+            //NavigationPage navigationPage = new NavigationPage(new SplashPage());
+            //Children.Add(navigationPage);
         }
     }
 }

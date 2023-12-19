@@ -2,6 +2,7 @@
 using SQLite;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -17,37 +18,51 @@ namespace SearchTruckTires.Pages
             PickerWight.ItemsSource = _weightTire_array;
             PickerHeight.ItemsSource = _hightTire_array;
             PickerDiametr.ItemsSource = _diametrTire_array;
-            buttonData = new Dictionary<string, ImageSource>();
-
-            //buttonData.Add("ButtonTread", _imageTreadCash);
-            //buttonData.Add("ButtonSide", _imageSideCash);
-            //buttonData.Add("ButtonSerialNumber", _imageSerialNumberCash);
-            //buttonData.Add("ButtonDOT", _imageDOTCash);
-            //buttonData.Add("ButtonRepeir1", _imageRepeir1Cash);
-            //buttonData.Add("ButtonRepeir2", _imageRepeir2Cash);
-            //buttonData.Add("ButtonRepeir3", _imageRepeir3Cash);
+            buttonData = new Dictionary<string, string>
+            {
+                {"ButtonTread", _imageTreadCash },
+                {"ButtonSide", _imageSideCash },
+                {"ButtonDOT", _imageDOTCash },
+                {"ButtonSerialNumber", _imageSerialNumberCash },
+                {"ButtonRepeir1", _imageRepeir1Cash },
+                {"ButtonRepeir2", _imageRepeir2Cash },
+                {"ButtonRepeir3", _imageRepeir3Cash }
+            };
         }
 
-        private async void TakePhotoAsync(object sender, EventArgs e)
+        private async void TakePhotoAsyncAndSave(object sender, EventArgs e)
         {
-            var button = sender as Button;
-
-            if (button != null)
+            if (sender is Button button)
             {
                 string buttonName = button.CommandParameter?.ToString();
-                FileResult fileResult = await MediaPicker.CapturePhotoAsync(new MediaPickerOptions());
-                
                 try
                 {
+                    FileResult fileResult = await MediaPicker.CapturePhotoAsync(new MediaPickerOptions());
+                    string filePath = fileResult.FullPath;
+
+                    // Преобразование файла в массив байт
+                    byte[] fileBytes = await File.ReadAllBytesAsync(filePath);
+
                     if (fileResult != null)
                     {
-                        ImageSource imageSource = fileResult.FullPath;
-                        buttonData[buttonName] = imageSource;
+                        if (!string.IsNullOrEmpty(buttonName))
+                        {
+                            string directory = FileSystem.AppDataDirectory;
+                            string uniqueFileName = $"photo_{DateTime.Now:yyyyMMddHHmmssfff}.bmp";
+                            string filename = Path.Combine(directory, uniqueFileName);
+
+                            File.WriteAllBytes(filename, fileBytes);
+
+                            ImageSource imageSource = ImageSource.FromFile(filename);
+                            buttonData[buttonName] = filename;
+
+                            await DisplayAlert("Уведомление", "Фото сделано и сохранено", "OK");
+                        }
                     }
                 }
                 catch (Exception ex)
                 {
-                    await DisplayAlert("Фото не сделанно", ex.Message, "OK");
+                    await DisplayAlert("Фото не сделано", ex.Message, "OK");
                 }
             }
         }
@@ -56,8 +71,8 @@ namespace SearchTruckTires.Pages
         {
             using (SQLiteConnection sQLiteConnectDBTires = new SQLiteConnection(DB_Conekt.GetDatabasePath()))
             {
-                sQLiteConnectDBTires.CreateTable<ProduktEntery>();
-                ProduktEntery newItem = new ProduktEntery
+                sQLiteConnectDBTires.CreateTable<ProduktDB>();
+                ProduktDB newItem = new ProduktDB
                 {
                     TitleTires = EnteryTitle.Text,
                     ModelTires = EnteryModel.Text,
@@ -67,16 +82,16 @@ namespace SearchTruckTires.Pages
                     DiametrTires = _diametrTires,
                     SerialNumber = EnterySerialNumber.Text,
                     DOT = EnteryDOT.Text,
-                    ResidualTreadDepth = EnteryResidualTreadDepth.Text
+                    ResidualTreadDepth = EnteryResidualTreadDepth.Text,
+                    Description = EditorDescription.Text,
+                    ImageTread = buttonData["ButtonTread"],
+                    ImageSide = buttonData["ButtonSide"],
+                    ImageDOT = buttonData["ButtonDOT"],
+                    ImageSerialNumber = buttonData["ButtonSerialNumber"],
+                    ImageRepeir1 = buttonData["ButtonRepeir1"],
+                    ImageRepair2 = buttonData["ButtonRepeir2"],
+                    ImageRepair3 = buttonData["ButtonRepeir3"]
                 };
-                //newItem.Description = EditorDescription.Text;
-                //newItem.ImageTread = _imageTreadCash;
-                //newItem.ImageSide = _imageSideCash;
-                //newItem.ImageDOT = _imageDOTCash;
-                //newItem.ImageSerialNumber = _imageSerialNumberCash;
-                //newItem.ImageRepeir1 = _imageRepeir1Cash;
-                //newItem.ImageRepair2 = _imageRepeir2Cash;
-                //newItem.ImageRepair3 = _imageRepeir3Cash;
                 _ = sQLiteConnectDBTires.Insert(newItem);
                 sQLiteConnectDBTires.Close();
             }
@@ -95,20 +110,26 @@ namespace SearchTruckTires.Pages
             EnterySerialNumber.Text = string.Empty;
             EnteryDOT.Text = string.Empty;
             EnteryResidualTreadDepth.Text = string.Empty;
-
+            ButtonSide.ImageSource = ImageSource.FromFile("camera360.png");
+            ButtonTread.ImageSource = ImageSource.FromFile("camera360.png");
+            ButtonDOT.ImageSource = ImageSource.FromFile("camera360.png");
+            ButtonSerialNumber.ImageSource = ImageSource.FromFile("camera360.png");
+            ButtonRepeir1.ImageSource = ImageSource.FromFile("camera360.png");
+            ButtonRepeir2.ImageSource = ImageSource.FromFile("camera360.png");
+            ButtonRepeir3.ImageSource = ImageSource.FromFile("camera360.png");
             // Отображение уведомления
             _ = DisplayAlert("Уведомление", "Данные успешно сохранены в базе данных.", "OK");
         }
 
-        private readonly Dictionary<string, ImageSource> buttonData;
+        private readonly Dictionary<string, string> buttonData;
 
-        //private ImageSource _imageTreadCash = ImageSource.FromFile("camera360.png");
-        //private ImageSource _imageSideCash = ImageSource.FromFile("camera360.png");
-        //private ImageSource _imageSerialNumberCash = ImageSource.FromFile("camera360.png");
-        //private ImageSource _imageDOTCash = ImageSource.FromFile("camera360.png");
-        //private ImageSource _imageRepeir1Cash = ImageSource.FromFile("camera360.png");
-        //private ImageSource _imageRepeir2Cash = ImageSource.FromFile("camera360.png");
-        //private ImageSource _imageRepeir3Cash = ImageSource.FromFile("camera360.png");
+        private readonly string _imageTreadCash;
+        private readonly string _imageSideCash;
+        private readonly string _imageSerialNumberCash;
+        private readonly string _imageDOTCash;
+        private readonly string _imageRepeir1Cash;
+        private readonly string _imageRepeir2Cash;
+        private readonly string _imageRepeir3Cash;
 
         private readonly string[] _weightTire_array = new string[]
         {

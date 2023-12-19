@@ -15,7 +15,7 @@ namespace SearchTruckTires.DB_ConectServis
             if (!databaseExists)
             {
                 SQLiteConnection sQLiteConnectDBTires = new SQLiteConnection(GetDatabasePath());
-                _ = sQLiteConnectDBTires.CreateTable<ProduktEntery>();
+                _ = sQLiteConnectDBTires.CreateTable<ProduktDB>();
             }
         }
         

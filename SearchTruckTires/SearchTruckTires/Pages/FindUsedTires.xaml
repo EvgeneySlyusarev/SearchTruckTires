@@ -15,14 +15,15 @@
             <Picker x:Name="PickerDiametr" Title="Диаметр" BackgroundColor="White" SelectedIndexChanged="PickerDiametr_SelectedIndexChanged"/>
         </StackLayout>
         <Button x:Name="ButtonFindTiresSizes" Text="Поиск типоразмера" HorizontalOptions="CenterAndExpand" Clicked="ButtonFindTiresSizes_Clicked"/>
-        <ListView x:Name="ProductsListView" BackgroundColor="AliceBlue">
-                <ListView.ItemTemplate>
+        <ListView x:Name="ProductsListView" ItemTapped="ProductsListView_ItemTapped">
+                <ListView.ItemTemplate >
                     <DataTemplate>
                         <ViewCell>
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="40*" />
-                                    <ColumnDefinition Width="60*" />
+                                    <ColumnDefinition Width="30*" />
+                                    <ColumnDefinition Width="30*" />
+                                    <ColumnDefinition Width="30*" />
                                 </Grid.ColumnDefinitions>
                                 <StackLayout Grid.Column="0" Margin="10,10,10,10">
                                     <Label Text="Tire Size" HorizontalOptions="Start"/>
@@ -30,25 +31,28 @@
                                     <Label Text="Model" HorizontalOptions="Start"/>
                                     <Label Text="Prise" HorizontalOptions="Start"/>
                                     <Label Text="SerialNumber"  HorizontalOptions="Start"/>
-                                <Label Text="DOT" HorizontalOptions="Start"/>
-                                <Label Text="RTD" HorizontalOptions="Start"/>
+                                    <Label Text="DOT" HorizontalOptions="Start"/>
+                                    <Label Text="RTD" HorizontalOptions="Start"/>
                                 </StackLayout>
-                            <StackLayout Grid.Column="1" Margin="10,10,10,10">
-                                <StackLayout Orientation="Horizontal">
-                                    <Label x:Name="WidthTiresLabel" Text="{Binding WidthTires}"/>
-                                    <Label x:Name="HeightTiresLable" Text="{Binding HeightTires}"/>
-                                    <Label Text="/R"/>
-                                    <Label x:Name="DiametrTiresLable" Text="{Binding DiametrTires}"/>
+                                <StackLayout Grid.Column="1" Margin="10,10,10,10">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label x:Name="WidthTiresLabel" Text="{Binding WidthTires}"/>
+                                        <Label x:Name="HeightTiresLable" Text="{Binding HeightTires}"/>
+                                        <Label Text="/R"/>
+                                        <Label x:Name="DiametrTiresLable" Text="{Binding DiametrTires}"/>
+                                    </StackLayout>
+                                    <StackLayout>
+                                        <Label x:Name="TitleTiresLable" Text="{Binding TitleTires}"/>
+                                        <Label x:Name="ModelTiresLable" Text="{Binding ModelTires}"/>
+                                        <Label x:Name="PriseTiresLable" Text="{Binding PriseUsedTires}"/>
+                                        <Label x:Name="SerialNumberLable" Text="{Binding SerialNumber}"/>
+                                        <Label x:Name="DOT" Text="{Binding DOT}"/>
+                                        <Label x:Name="ResidualTreadDepthLable" Text="{Binding ResidualTreadDepth}"/>
+                                    </StackLayout>
                                 </StackLayout>
-                                <StackLayout>
-                                    <Label x:Name="TitleTiresLable" Text="{Binding TitleTires}"/>
-                                    <Label x:Name="ModelTiresLable" Text="{Binding ModelTires}"/>
-                                    <Label x:Name="PriseTiresLable" Text="{Binding PriseUsedTires}"/>
-                                    <Label x:Name="SerialNumberLable" Text="{Binding SerialNumber}"/>
-                                    <Label x:Name="DOT" Text="{Binding DOT}"/>
-                                    <Label x:Name="ResidualTreadDepthLable" Text="{Binding ResidualTreadDepth}"/>
+                                <StackLayout Grid.Column="2">
+                                 <Image Source="{Binding ImageTread}" Aspect="AspectFit"/>
                                 </StackLayout>
-                            </StackLayout>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
