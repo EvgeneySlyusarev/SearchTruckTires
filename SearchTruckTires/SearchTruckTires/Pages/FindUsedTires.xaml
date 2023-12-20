@@ -15,13 +15,13 @@
             <Picker x:Name="PickerDiametr" Title="Диаметр" BackgroundColor="White" SelectedIndexChanged="PickerDiametr_SelectedIndexChanged"/>
         </StackLayout>
         <Button x:Name="ButtonFindTiresSizes" Text="Поиск типоразмера" HorizontalOptions="CenterAndExpand" Clicked="ButtonFindTiresSizes_Clicked"/>
-        <ListView x:Name="ProductsListView" ItemTapped="ProductsListView_ItemTapped">
-                <ListView.ItemTemplate >
+        <ListView x:Name="ProductsListView" ItemTapped="ProductsListView_ItemTapped" HasUnevenRows = "True">
+            <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="30*" />
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*" />
                                     <ColumnDefinition Width="30*" />
                                     <ColumnDefinition Width="30*" />
                                 </Grid.ColumnDefinitions>
@@ -51,7 +51,7 @@
                                     </StackLayout>
                                 </StackLayout>
                                 <StackLayout Grid.Column="2">
-                                 <Image Source="{Binding ImageTread}" Aspect="AspectFit"/>
+                                 <Image Source="{Binding ImageTread}" Aspect="AspectFit" HeightRequest="200" VerticalOptions="CenterAndExpand"/>
                                 </StackLayout>
                             </Grid>
                         </ViewCell>

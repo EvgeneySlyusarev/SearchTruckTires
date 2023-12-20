@@ -20,19 +20,19 @@
             <StackLayout>
                 <Label Text="Фото протектор и боковина" TextColor="AliceBlue"/>
                 <StackLayout Orientation="Horizontal">
-                    <Button x:Name="ButtonTread" ImageSource="@Resources/drawable/camera360.png" Clicked="TakePhotoAsyncAndSave" CommandParameter="ButtonTread"/>
-                    <Button x:Name="ButtonSide" ImageSource="@Resources/drawable/camera360.png" Clicked="TakePhotoAsyncAndSave" CommandParameter="ButtonSide"/>
+                    <ImageButton x:Name="ButtonTread" Source="@Resources/drawable/camera360.png"  Clicked="TakePhotoAsyncAndSave" CommandParameter="ButtonTread" Aspect="AspectFit" WidthRequest="60"/>
+                    <ImageButton x:Name="ButtonSide" Source="@Resources/drawable/camera360.png" Clicked="TakePhotoAsyncAndSave" CommandParameter="ButtonSide" Aspect="AspectFit" WidthRequest="60"/>
                 </StackLayout>
                 <Label Text="Фото DOT и серийный №" TextColor="AliceBlue"/>
                 <StackLayout Orientation="Horizontal">
-                    <Button x:Name="ButtonDOT" ImageSource="@Resources/drawable/camera360.png" Clicked="TakePhotoAsyncAndSave" CommandParameter="ButtonDOT"/>
-                    <Button x:Name="ButtonSerialNumber" ImageSource="@Resources/drawable/camera360.png" Clicked="TakePhotoAsyncAndSave" CommandParameter="ButtonSerialNumber"/>
+                    <ImageButton x:Name="ButtonDOT" Source="@Resources/drawable/camera360.png" Clicked="TakePhotoAsyncAndSave" CommandParameter="ButtonDOT" Aspect="AspectFit" WidthRequest="60"/>
+                    <ImageButton x:Name="ButtonSerialNumber" Source="@Resources/drawable/camera360.png" Clicked="TakePhotoAsyncAndSave" CommandParameter="ButtonSerialNumber" Aspect="AspectFit" WidthRequest="60"/>
                 </StackLayout>
                 <Label Text="Ремонты" TextColor="AliceBlue"/>
                 <StackLayout Orientation="Horizontal">
-                    <Button x:Name="ButtonRepeir1" ImageSource="@Resources/drawable/camera360.png" Clicked="TakePhotoAsyncAndSave" CommandParameter="ButtonRepeir1"/>
-                    <Button x:Name="ButtonRepeir2" ImageSource="@Resources/drawable/camera360.png" Clicked="TakePhotoAsyncAndSave" CommandParameter="ButtonRepeir2"/>
-                    <Button x:Name="ButtonRepeir3" ImageSource="@Resources/drawable/camera360.png" Clicked="TakePhotoAsyncAndSave" CommandParameter="ButtonRepeir3"/>
+                    <ImageButton x:Name="ButtonRepeir1" Source="@Resources/drawable/camera360.png" Clicked="TakePhotoAsyncAndSave" CommandParameter="ButtonRepeir1" Aspect="AspectFit" WidthRequest="60"/>
+                    <ImageButton x:Name="ButtonRepeir2" Source="@Resources/drawable/camera360.png" Clicked="TakePhotoAsyncAndSave" CommandParameter="ButtonRepeir2" Aspect="AspectFit" WidthRequest="60"/>
+                    <ImageButton x:Name="ButtonRepeir3" Source="@Resources/drawable/camera360.png" Clicked="TakePhotoAsyncAndSave" CommandParameter="ButtonRepeir3" Aspect="AspectFit" WidthRequest="60"/>
                 </StackLayout>
             </StackLayout>
             <Editor x:Name="EditorDescription" HorizontalOptions="FillAndExpand" BackgroundColor="White" Text="Описание" TextColor="DarkGray"/>

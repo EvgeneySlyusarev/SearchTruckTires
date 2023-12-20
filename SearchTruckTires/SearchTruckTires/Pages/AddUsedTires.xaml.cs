@@ -32,7 +32,7 @@ namespace SearchTruckTires.Pages
 
         private async void TakePhotoAsyncAndSave(object sender, EventArgs e)
         {
-            if (sender is Button button)
+            if (sender is ImageButton button)
             {
                 string buttonName = button.CommandParameter?.ToString();
                 try
@@ -55,8 +55,7 @@ namespace SearchTruckTires.Pages
 
                             ImageSource imageSource = ImageSource.FromFile(filename);
                             buttonData[buttonName] = filename;
-
-                            await DisplayAlert("Уведомление", "Фото сделано и сохранено", "OK");
+                            button.Source = imageSource;
                         }
                     }
                 }
@@ -110,13 +109,13 @@ namespace SearchTruckTires.Pages
             EnterySerialNumber.Text = string.Empty;
             EnteryDOT.Text = string.Empty;
             EnteryResidualTreadDepth.Text = string.Empty;
-            ButtonSide.ImageSource = ImageSource.FromFile("camera360.png");
-            ButtonTread.ImageSource = ImageSource.FromFile("camera360.png");
-            ButtonDOT.ImageSource = ImageSource.FromFile("camera360.png");
-            ButtonSerialNumber.ImageSource = ImageSource.FromFile("camera360.png");
-            ButtonRepeir1.ImageSource = ImageSource.FromFile("camera360.png");
-            ButtonRepeir2.ImageSource = ImageSource.FromFile("camera360.png");
-            ButtonRepeir3.ImageSource = ImageSource.FromFile("camera360.png");
+            ButtonSide.Source = ImageSource.FromFile("camera360.png");
+            ButtonTread.Source = ImageSource.FromFile("camera360.png");
+            ButtonDOT.Source = ImageSource.FromFile("camera360.png");
+            ButtonSerialNumber.Source = ImageSource.FromFile("camera360.png");
+            ButtonRepeir1.Source = ImageSource.FromFile("camera360.png");
+            ButtonRepeir2.Source = ImageSource.FromFile("camera360.png");
+            ButtonRepeir3.Source = ImageSource.FromFile("camera360.png");
             // Отображение уведомления
             _ = DisplayAlert("Уведомление", "Данные успешно сохранены в базе данных.", "OK");
         }
@@ -196,6 +195,11 @@ namespace SearchTruckTires.Pages
             {
                 _diametrTires = PickerDiametr.Items[PickerDiametr.SelectedIndex].ToString();
             }
+        }
+
+        private void ButtonTread_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 } 
