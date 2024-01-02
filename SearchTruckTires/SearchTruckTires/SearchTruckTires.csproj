@@ -53,8 +53,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Pages\NewParsingDisc.xaml.cs">
+      <DependentUpon>NewParsingDisc.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\NewParsingTires.xaml.cs">
+      <DependentUpon>NewParsingTires.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -68,7 +74,7 @@
     <EmbeddedResource Update="Pages\Basket.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\Disc.xaml">
+    <EmbeddedResource Update="Pages\NewParsingDisc.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\FindUsedTires.xaml">
@@ -80,7 +86,7 @@
     <EmbeddedResource Update="Pages\SplashPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\Tires.xaml">
+    <EmbeddedResource Update="Pages\NewParsingTires.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\UsedTires.xaml">

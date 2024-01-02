@@ -1,17 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:SearchTruckTires;assembly=SearchTruckTires" x:DataType="local:MainPage"
+             xmlns:local="clr-namespace:SearchTruckTires;assembly=SearchTruckTires" xmlns:local1="clr-namespace:SearchTruckTires.Pages" x:DataType="local:MainPage"
             x:Class="SearchTruckTires.MainPage"
             SelectedTabColor="Red"
             UnselectedTabColor="Yellow"
             BarBackgroundColor="DarkSlateGray"
             BackgroundColor="DarkSlateGray">
     <TabbedPage.Children>
-        <local:Tires></local:Tires>
-        <local:UsedTires></local:UsedTires>
-        <local:Disc></local:Disc>
+        <!--<local:NewParsingTires></local:NewParsingTires>-->
+        <!--<local:NewParsingDisc></local:NewParsingDisc>-->
+        <!--<local:UsedTires></local:UsedTires>-->
+        <local1:AddUsedTires></local1:AddUsedTires>
+        <local1:FindUsedTires></local1:FindUsedTires>
         <local:Basket></local:Basket>
-        <local:AboutProgram></local:AboutProgram>
+        <!--<local:AboutProgram></local:AboutProgram>-->
     </TabbedPage.Children>
 </TabbedPage>
+
+

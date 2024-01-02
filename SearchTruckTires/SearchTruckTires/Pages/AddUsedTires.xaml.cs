@@ -20,13 +20,13 @@ namespace SearchTruckTires.Pages
             PickerDiametr.ItemsSource = _diametrTire_array;
             buttonData = new Dictionary<string, string>
             {
-                {"ButtonTread", _imageTreadCash },
-                {"ButtonSide", _imageSideCash },
-                {"ButtonDOT", _imageDOTCash },
-                {"ButtonSerialNumber", _imageSerialNumberCash },
-                {"ButtonRepeir1", _imageRepeir1Cash },
-                {"ButtonRepeir2", _imageRepeir2Cash },
-                {"ButtonRepeir3", _imageRepeir3Cash }
+                {"ButtonTread", "imageTreadCash" },
+                {"ButtonSide", "imageSideCash" },
+                {"ButtonDOT", "imageDOTCash" },
+                {"ButtonSerialNumber", "imageSerialNumberCash" },
+                {"ButtonRepeir1", "imageRepeir1Cash" },
+                {"ButtonRepeir2", "imageRepeir2Cash" },
+                {"ButtonRepeir3", "imageRepeir3Cash" }
             };
         }
 
@@ -68,32 +68,30 @@ namespace SearchTruckTires.Pages
 
         private void BD_AddItem()
         {
-            using (SQLiteConnection sQLiteConnectDBTires = new SQLiteConnection(DB_Conekt.GetDatabasePath()))
+            using SQLiteConnection sQLiteConnectDBTires = new SQLiteConnection(DB_Conekt.GetDatabasePath());
+            _ = sQLiteConnectDBTires.CreateTable<ProduktDB>();
+            ProduktDB newItem = new ProduktDB
             {
-                sQLiteConnectDBTires.CreateTable<ProduktDB>();
-                ProduktDB newItem = new ProduktDB
-                {
-                    TitleTires = EnteryTitle.Text,
-                    ModelTires = EnteryModel.Text,
-                    PriseUsedTires = Convert.ToDecimal(EnteryPrise.Text),
-                    WidthTires = _wigthTires,
-                    HeightTires = _higthTires,
-                    DiametrTires = _diametrTires,
-                    SerialNumber = EnterySerialNumber.Text,
-                    DOT = EnteryDOT.Text,
-                    ResidualTreadDepth = EnteryResidualTreadDepth.Text,
-                    Description = EditorDescription.Text,
-                    ImageTread = buttonData["ButtonTread"],
-                    ImageSide = buttonData["ButtonSide"],
-                    ImageDOT = buttonData["ButtonDOT"],
-                    ImageSerialNumber = buttonData["ButtonSerialNumber"],
-                    ImageRepeir1 = buttonData["ButtonRepeir1"],
-                    ImageRepair2 = buttonData["ButtonRepeir2"],
-                    ImageRepair3 = buttonData["ButtonRepeir3"]
-                };
-                _ = sQLiteConnectDBTires.Insert(newItem);
-                sQLiteConnectDBTires.Close();
-            }
+                TitleTires = EnteryTitle.Text,
+                ModelTires = EnteryModel.Text,
+                PriseUsedTires = Convert.ToDecimal(EnteryPrise.Text),
+                WidthTires = _wigthTires,
+                HeightTires = _higthTires,
+                DiametrTires = _diametrTires,
+                SerialNumber = EnterySerialNumber.Text,
+                DOT = EnteryDOT.Text,
+                ResidualTreadDepth = EnteryResidualTreadDepth.Text,
+                Description = EditorDescription.Text,
+                ImageTread = buttonData["ButtonTread"],
+                ImageSide = buttonData["ButtonSide"],
+                ImageDOT = buttonData["ButtonDOT"],
+                ImageSerialNumber = buttonData["ButtonSerialNumber"],
+                ImageRepeir1 = buttonData["ButtonRepeir1"],
+                ImageRepair2 = buttonData["ButtonRepeir2"],
+                ImageRepair3 = buttonData["ButtonRepeir3"]
+            };
+            _ = sQLiteConnectDBTires.Insert(newItem);
+            sQLiteConnectDBTires.Close();
         }
 
         private void Save_Clicked(object sender, EventArgs e)
@@ -121,14 +119,6 @@ namespace SearchTruckTires.Pages
         }
 
         private readonly Dictionary<string, string> buttonData;
-
-        private readonly string _imageTreadCash;
-        private readonly string _imageSideCash;
-        private readonly string _imageSerialNumberCash;
-        private readonly string _imageDOTCash;
-        private readonly string _imageRepeir1Cash;
-        private readonly string _imageRepeir2Cash;
-        private readonly string _imageRepeir3Cash;
 
         private readonly string[] _weightTire_array = new string[]
         {

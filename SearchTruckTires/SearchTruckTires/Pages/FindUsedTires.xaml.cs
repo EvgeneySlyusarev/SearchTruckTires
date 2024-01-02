@@ -146,7 +146,11 @@ namespace SearchTruckTires.Pages
             {
                 listView.SelectedItem = null;
             }
-           
+        }
+
+        private void ButtonShipment_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -10,15 +10,7 @@ namespace SearchTruckTires.Pages
         public SplashPage()
         {
             InitializeComponent();
-            BackgroundImageSource = "@Resources/Drawable/WheelMark3.png";
-        }
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
-
-            await Task.Delay(2000);
-
-            Application.Current.MainPage = new NavigationPage(new MainPage());
+            BackgroundImageSource = "@Resources/Drawable/logo_parsing.png";
         }
     }
 }

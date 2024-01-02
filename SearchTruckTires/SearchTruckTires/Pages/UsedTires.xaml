@@ -8,7 +8,7 @@
             BarBackgroundColor="DarkSlateGray"
             BackgroundColor="DarkSlateGray">
     <TabbedPage.Children>
-        <local:AddUsedTires></local:AddUsedTires>
-        <local:FindUsedTires></local:FindUsedTires>
+        <!--<local:AddUsedTires></local:AddUsedTires>
+        <local:FindUsedTires></local:FindUsedTires>-->
     </TabbedPage.Children>
 </TabbedPage>

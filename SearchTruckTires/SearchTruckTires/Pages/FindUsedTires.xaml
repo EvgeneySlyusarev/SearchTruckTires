@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SearchTruckTires.Pages.FindUsedTires"
              Title="Поиск БУ ШИН">
+    
         <StackLayout>
         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
             <Button x:Name="ButtonDB_Download" HorizontalOptions="Center" Text="Скачать все из БД" Clicked="ButtonALL_DB_Download_Clicked" BackgroundColor="DarkSlateBlue" Margin="10,10,10,10"/>
@@ -53,6 +54,9 @@
                                 <StackLayout Grid.Column="2">
                                  <Image Source="{Binding ImageTread}" Aspect="AspectFit" HeightRequest="200" VerticalOptions="CenterAndExpand"/>
                                 </StackLayout>
+                            <StackLayout>
+                                <Button x:Name="ButtonShipment" Text="Oтгрузка" Clicked="ButtonShipment_Clicked"/>
+                            </StackLayout>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

@@ -6,26 +6,22 @@ namespace SearchTruckTires
 {
     public class Product
     {
-        public string Id { get => _id.ToString(); }
+        public string Id => _id.ToString();
 
-        public uint Count
-        {
-            get => _count;
-            set => _count = value;
-        }
+        public uint Count { get; set; }
 
-        public string Title { get => _title; }
-        public string PriceCash { get => _priceCash; }
-        public string PriceBank { get => _priceBank; }
-        public string ImageURL { get => _imageURL; }
+        public string Title => _title;
+        public string PriceCash => _priceCash; 
+        public string PriceBank => _priceBank;
+        public string ImageURL => _imageURL; 
 
-        public ImageSource Image { get => _imageSource; }
+        public ImageSource Image => _imageSource;
 
         public Product(string title, string priceCash, string priceBank, string imageURL)
         {
             _id = ++_idCounter;  // generation of unique id
 
-            _count = 1;
+            Count = 1;
 
             _title = title;
             _priceCash = priceCash;
@@ -44,9 +40,6 @@ namespace SearchTruckTires
 
         private readonly uint _id;
         private static uint _idCounter = uint.MaxValue;
-
-        private uint _count;
-
         private string _title;
         private string _priceCash;
         private string _priceBank;

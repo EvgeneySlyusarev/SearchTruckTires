@@ -1,4 +1,4 @@
-﻿using SearchTruckTires.Pages;
+﻿using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,8 +10,18 @@ namespace SearchTruckTires
         public MainPage()
         {
             InitializeComponent();
-            //NavigationPage navigationPage = new NavigationPage(new SplashPage());
-            //Children.Add(navigationPage);
+            ShowSplashPage();
+        }
+
+        private async void ShowSplashPage()
+        {
+            Pages.SplashPage splashPage = new Pages.SplashPage();
+            Application.Current.MainPage = new NavigationPage(this);
+            await Navigation.PushModalAsync(splashPage);
+            await Task.Delay(10000);
+            _ = await splashPage.FadeTo(0, 1000);
+            _ = await Navigation.PopModalAsync();
         }
     }
+
 }

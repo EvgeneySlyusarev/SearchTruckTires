@@ -23,11 +23,7 @@
                    Margin="10"
                    FontSize="Title"
                     HorizontalOptions="CenterAndExpand" />
-            <Label Text="Tel: +380676400122"
-                   TextColor="AliceBlue"
-                   Margin="10"
-                   FontSize="Title"
-                    HorizontalOptions="CenterAndExpand" />
+           <!--<Label Text="Tel: +380676400122" TextColor="AliceBlue" Margin="10" FontSize="Title" HorizontalOptions="CenterAndExpand" />-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
