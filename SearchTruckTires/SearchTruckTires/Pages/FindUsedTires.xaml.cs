@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -23,7 +24,7 @@ namespace SearchTruckTires.Pages
             PickerDiametr.ItemsSource = _diametrTire_array;
         }
 
-        private ObservableCollection<ProduktDB> _products;
+        private ObservableCollection<ProductDB> _products;
 
         private void PickerWight_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -49,31 +50,31 @@ namespace SearchTruckTires.Pages
 
         private void ButtonFindTiresSizes_Clicked(object sender, EventArgs e)
         {
-            _products = new ObservableCollection<ProduktDB>(GetFindTiresSizeFromDatabase());
+            _products = new ObservableCollection<ProductDB>(GetFindTiresSizeFromDatabase());
             ProductsListView.ItemsSource = _products;
         }
         private void ButtonALL_DB_Download_Clicked(object sender, EventArgs e)
         {
-            _products = new ObservableCollection<ProduktDB>(GetAllProduktsFromDatabase());
+            _products = new ObservableCollection<ProductDB>(GetAllProduktsFromDatabase());
             ProductsListView.ItemsSource = _products;
         }
         private void ButtonDB_DellAllItemDB_Clicked(object sender, EventArgs e)
         {
             using (SQLiteConnection sQLiteConnectDBTires = new SQLiteConnection(DB_Conekt.GetDatabasePath()))
             {
-                _ = sQLiteConnectDBTires.DeleteAll<ProduktDB>();
+                _ = sQLiteConnectDBTires.DeleteAll<ProductDB>();
             }
         }
 
-        private List<ProduktDB> GetFindTiresSizeFromDatabase()
+        private List<ProductDB> GetFindTiresSizeFromDatabase()
         {
             using SQLiteConnection sQLiteConnectDBTires = new SQLiteConnection(DB_Conekt.GetDatabasePath());
-            TableQuery<ProduktDB> filteredData = from item in sQLiteConnectDBTires.Table<ProduktDB>()
+            TableQuery<ProductDB> filteredData = from item in sQLiteConnectDBTires.Table<ProductDB>()
                                                      where item.WidthTires == _wigthTires && item.HeightTires == _higthTires && item.DiametrTires == _diametrTires
                                                      select item;
             return filteredData.ToList();
         }
-        private List<ProduktDB> GetAllProduktsFromDatabase()
+        private List<ProductDB> GetAllProduktsFromDatabase()
         {
             using SQLiteConnection sQLiteConnectDBTires = new SQLiteConnection(DB_Conekt.GetDatabasePath());
             // Получение всех элементов
@@ -82,7 +83,7 @@ namespace SearchTruckTires.Pages
             {
                 _ = DisplayAlert("Уведомление", "База данних не содержит данних.", "OK");
             }
-            List<ProduktDB> items = sQLiteConnectDBTires.Table<ProduktDB>().ToList();
+            List<ProductDB> items = sQLiteConnectDBTires.Table<ProductDB>().ToList();
             return items;
         }
 
@@ -119,38 +120,38 @@ namespace SearchTruckTires.Pages
             "00"
         };
         private readonly string[] _diametrTire_array = new string[]
-            {
-                "17,5",
-                "19,5",
-                "20",
-                "22,5",
-                "24"
-            };
+        {
+            "17,5",
+            "19,5",
+            "20",
+            "22,5",
+            "24"
+        };
 
         private string _wigthTires;
         private string _higthTires;
         private string _diametrTires;
 
-        private void ProductsListView_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            if (e.Item is ProduktDB selectedItem)
-            {
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    PhotoDetailPage photoDetailPage = new PhotoDetailPage(selectedItem);
-                    _ = Navigation.PushModalAsync(photoDetailPage);
-                });
-            }
 
-            if (sender is ListView listView)
+        private async void ButtonMorePhoto_Clicked(object sender, EventArgs e)
+        {
+            if (sender is Button button && button.CommandParameter is ProductDB productDB)
             {
-                listView.SelectedItem = null;
+                await Navigation.PushModalAsync(new PhotoDetailPage(productDB));
             }
         }
 
-        private void ButtonShipment_Clicked(object sender, EventArgs e)
+        private async void ProductsListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-
+            if (e.Item is ProductDB productDB)
+            {
+                bool result = await DisplayAlert("Добавить в корзину: - ", $"{productDB.TitleTires} {productDB.ModelTires} {productDB.WidthTires} {productDB.HeightTires}{"/"} {productDB.DiametrTires} ?", "Да", "Нет");
+                if (result)
+                {
+                    ProductDB copyProduct = productDB.Clone();
+                    TiresForShipment.Instance.ProductsDB.Add(copyProduct);
+                }
+            }
         }
     }
 }

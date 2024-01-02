@@ -1,8 +1,5 @@
 ﻿using SQLite;
-using Xamarin.Forms;
 using System.IO;
-using XAct.IO;
-using System.Collections.Generic;
 using System;
 
 namespace SearchTruckTires.DB_ConectServis
@@ -15,7 +12,7 @@ namespace SearchTruckTires.DB_ConectServis
             if (!databaseExists)
             {
                 SQLiteConnection sQLiteConnectDBTires = new SQLiteConnection(GetDatabasePath());
-                _ = sQLiteConnectDBTires.CreateTable<ProduktDB>();
+                _ = sQLiteConnectDBTires.CreateTable<ProductDB>();
             }
         }
         

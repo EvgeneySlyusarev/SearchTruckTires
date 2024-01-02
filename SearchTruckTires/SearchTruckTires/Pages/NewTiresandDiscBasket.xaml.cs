@@ -14,10 +14,7 @@ namespace SearchTruckTires
     {
         public static Basket Instance { get => _instance; }
 
-        public ObservableCollection<Product> Products
-        {
-            get => (ObservableCollection<Product>)ListViewBasket.ItemsSource;
-        }
+        public ObservableCollection<Product> Products => (ObservableCollection<Product>)ListViewBasket.ItemsSource;
 
         public uint ProductsCount { get => _productsCount; }
         public uint ProductsCostCash { get => _productsCostCash; }
@@ -131,6 +128,7 @@ namespace SearchTruckTires
         {
 
         }
+       
         private static Basket _instance = null;
 
         private uint _productsCount = 0;

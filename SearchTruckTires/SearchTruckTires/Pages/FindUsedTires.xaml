@@ -30,8 +30,8 @@
                                 <StackLayout Orientation="Vertical">
                                 </StackLayout>
                                     <Image Source="{Binding ImageTread}" Aspect="AspectFit" HeightRequest="140" VerticalOptions="CenterAndExpand"/>
-                                    <Button x:Name="ButtonShipment" Text="Oтгрузка" Clicked="ButtonShipment_Clicked"/>
-                                </StackLayout>
+                                <Button x:Name="MorePhotosButton" Text="More Photos" Clicked="ButtonMorePhoto_Clicked" CommandParameter="{Binding .}" />
+                            </StackLayout>
                                 <StackLayout Grid.Column="1" Margin="10,10,10,10">
                                     <Label Text="Tire Size" HorizontalOptions="Start"/>
                                     <Label Text="Title" HorizontalOptions="Start"/>

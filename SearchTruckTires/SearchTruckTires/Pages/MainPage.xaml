@@ -13,7 +13,7 @@
         <!--<local:UsedTires></local:UsedTires>-->
         <local1:AddUsedTires></local1:AddUsedTires>
         <local1:FindUsedTires></local1:FindUsedTires>
-        <local:Basket></local:Basket>
+        <local:TiresForShipment></local:TiresForShipment>
         <!--<local:AboutProgram></local:AboutProgram>-->
     </TabbedPage.Children>
 </TabbedPage>

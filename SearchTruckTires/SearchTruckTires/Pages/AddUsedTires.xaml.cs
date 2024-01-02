@@ -69,8 +69,8 @@ namespace SearchTruckTires.Pages
         private void BD_AddItem()
         {
             using SQLiteConnection sQLiteConnectDBTires = new SQLiteConnection(DB_Conekt.GetDatabasePath());
-            _ = sQLiteConnectDBTires.CreateTable<ProduktDB>();
-            ProduktDB newItem = new ProduktDB
+            _ = sQLiteConnectDBTires.CreateTable<ProductDB>();
+            ProductDB newItem = new ProductDB
             {
                 TitleTires = EnteryTitle.Text,
                 ModelTires = EnteryModel.Text,

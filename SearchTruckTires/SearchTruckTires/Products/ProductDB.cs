@@ -2,7 +2,7 @@
 
 namespace SearchTruckTires
 {
-    public class ProduktDB
+    public class ProductDB
     {
         [PrimaryKey, AutoIncrement]
         public string Id => _id.ToString();
@@ -24,7 +24,7 @@ namespace SearchTruckTires
         public string ImageRepair3 { get; set; }
         public string Description { get; set; }
 
-        public ProduktDB(string titleTires, string modelTires, decimal priseUsedTires, string widthTires,
+        public ProductDB(string titleTires, string modelTires, decimal priseUsedTires, string widthTires,
                          string heightTires, string diametrTires, string serialNumber, string DOT, string residualTreadDepth,
                          string description, string imageTread, string imageSide, string imageDOT, string imageSerialNumber,
                          string imageRepeir1, string imageRepair2, string imageRepair3)
@@ -50,10 +50,37 @@ namespace SearchTruckTires
             Description = description;
         }
 
-        public ProduktDB()
+        public ProductDB()
         {
         }
+        public ProductDB Clone()
+        {
+            return new ProductDB(this);
+        }
 
+        public ProductDB(ProductDB original)
+        {
+            _id = ++_idCounter;
+            TitleTires = original.TitleTires;
+            ModelTires = original.ModelTires;
+            PriseUsedTires = original.PriseUsedTires;
+            WidthTires = original.WidthTires;
+            HeightTires = original.HeightTires;
+            DiametrTires = original.DiametrTires;
+            SerialNumber = original.SerialNumber;
+            DOT = original.DOT;
+            ResidualTreadDepth = original.ResidualTreadDepth;
+            ImageTread = original.ImageTread;
+            ImageSide = original.ImageSide;
+            ImageDOT = original.ImageDOT;
+            ImageSerialNumber = original.ImageSerialNumber;
+            ImageRepeir1 = original.ImageRepeir1;
+            ImageRepair2 = original.ImageRepair2;
+            ImageRepair3 = original.ImageRepair3;
+            Description = original.Description;
+        }
+
+        
         private readonly uint _id;
         private static uint _idCounter = uint.MaxValue;
     }
