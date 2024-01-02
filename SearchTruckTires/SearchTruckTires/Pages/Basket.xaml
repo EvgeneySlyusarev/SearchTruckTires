@@ -4,7 +4,7 @@
              xmlns:searchtrucktires="clr-namespace:SearchTruckTires" 
              x:DataType="searchtrucktires:Product"
              x:Class="SearchTruckTires.Basket"
-             Title="КОРЗИНА">
+             Title="Tires for shipment">
     <ContentPage.Resources>
 
         <!-- Light colors -->

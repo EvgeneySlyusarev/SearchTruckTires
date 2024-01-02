@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SearchTruckTires.Pages.AddUsedTires"
-             Title="Добавить Бу шину">
+             Title="ADD Tires">
     <ScrollView>
         <StackLayout Margin="8" Spacing="2">
             <Entry x:Name="EnteryTitle" Placeholder="Название" BackgroundColor="WhiteSmoke" TextColor="Black"/>

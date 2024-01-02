@@ -10,7 +10,6 @@ namespace SearchTruckTires.Pages
         public PhotoDetailPage(ProduktDB selectedItem)
         {
             InitializeComponent();
-            backButton.Clicked += BackButton_Clicked;
             PhotoTread.Source = ImageSource.FromFile(selectedItem.ImageTread);
             PhotoSide.Source = ImageSource.FromFile(selectedItem.ImageSide);
             PhotoDot.Source = ImageSource.FromFile(selectedItem.ImageDOT);
@@ -18,10 +17,6 @@ namespace SearchTruckTires.Pages
             PhotoRepeir1.Source = ImageSource.FromFile(selectedItem.ImageRepeir1);
             PhotoRepeir2.Source = ImageSource.FromFile(selectedItem.ImageRepair2);
             PhotoRepeir3.Source = ImageSource.FromFile(selectedItem.ImageRepair3);
-        }
-        private async void BackButton_Clicked(object sender, EventArgs e)
-        {
-            _ = await Navigation.PopModalAsync();
         }
     }
 }

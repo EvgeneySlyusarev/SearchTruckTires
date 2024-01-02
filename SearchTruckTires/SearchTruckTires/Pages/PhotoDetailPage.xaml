@@ -20,7 +20,6 @@
             <Image x:Name="PhotoRepeir2" Aspect="AspectFit"/>
             <Label Text="Repeir3"/>
             <Image x:Name="PhotoRepeir3" Aspect="AspectFit"/>
-            <Button x:Name="backButton" Text="Назад" HorizontalOptions="Start" BackgroundColor="Red"/>
         </StackLayout>
     </ScrollView>
 </ContentPage>

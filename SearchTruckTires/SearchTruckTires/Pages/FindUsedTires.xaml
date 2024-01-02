@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SearchTruckTires.Pages.FindUsedTires"
-             Title="Поиск БУ ШИН">
+             Title="Find Tires">
     
         <StackLayout>
         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
@@ -27,6 +27,12 @@
                                     <ColumnDefinition Width="30*" />
                                 </Grid.ColumnDefinitions>
                                 <StackLayout Grid.Column="0" Margin="10,10,10,10">
+                                <StackLayout Orientation="Vertical">
+                                </StackLayout>
+                                    <Image Source="{Binding ImageTread}" Aspect="AspectFit" HeightRequest="140" VerticalOptions="CenterAndExpand"/>
+                                    <Button x:Name="ButtonShipment" Text="Oтгрузка" Clicked="ButtonShipment_Clicked"/>
+                                </StackLayout>
+                                <StackLayout Grid.Column="1" Margin="10,10,10,10">
                                     <Label Text="Tire Size" HorizontalOptions="Start"/>
                                     <Label Text="Title" HorizontalOptions="Start"/>
                                     <Label Text="Model" HorizontalOptions="Start"/>
@@ -34,33 +40,27 @@
                                     <Label Text="SerialNumber"  HorizontalOptions="Start"/>
                                     <Label Text="DOT" HorizontalOptions="Start"/>
                                     <Label Text="RTD" HorizontalOptions="Start"/>
+                                 </StackLayout>
+                            <StackLayout Grid.Column="2" Margin="10,10,10,10">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label x:Name="WidthTiresLabel" Text="{Binding WidthTires}"/>
+                                    <Label x:Name="HeightTiresLable" Text="{Binding HeightTires}"/>
+                                    <Label Text="/R"/>
+                                    <Label x:Name="DiametrTiresLable" Text="{Binding DiametrTires}"/>
                                 </StackLayout>
-                                <StackLayout Grid.Column="1" Margin="10,10,10,10">
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label x:Name="WidthTiresLabel" Text="{Binding WidthTires}"/>
-                                        <Label x:Name="HeightTiresLable" Text="{Binding HeightTires}"/>
-                                        <Label Text="/R"/>
-                                        <Label x:Name="DiametrTiresLable" Text="{Binding DiametrTires}"/>
-                                    </StackLayout>
-                                    <StackLayout>
-                                        <Label x:Name="TitleTiresLable" Text="{Binding TitleTires}"/>
-                                        <Label x:Name="ModelTiresLable" Text="{Binding ModelTires}"/>
-                                        <Label x:Name="PriseTiresLable" Text="{Binding PriseUsedTires}"/>
-                                        <Label x:Name="SerialNumberLable" Text="{Binding SerialNumber}"/>
-                                        <Label x:Name="DOT" Text="{Binding DOT}"/>
-                                        <Label x:Name="ResidualTreadDepthLable" Text="{Binding ResidualTreadDepth}"/>
-                                    </StackLayout>
+                                <StackLayout>
+                                    <Label x:Name="TitleTiresLable" Text="{Binding TitleTires}"/>
+                                    <Label x:Name="ModelTiresLable" Text="{Binding ModelTires}"/>
+                                    <Label x:Name="PriseTiresLable" Text="{Binding PriseUsedTires}"/>
+                                    <Label x:Name="SerialNumberLable" Text="{Binding SerialNumber}"/>
+                                    <Label x:Name="DOT" Text="{Binding DOT}"/>
+                                    <Label x:Name="ResidualTreadDepthLable" Text="{Binding ResidualTreadDepth}"/>
                                 </StackLayout>
-                                <StackLayout Grid.Column="2">
-                                 <Image Source="{Binding ImageTread}" Aspect="AspectFit" HeightRequest="200" VerticalOptions="CenterAndExpand"/>
-                                </StackLayout>
-                            <StackLayout>
-                                <Button x:Name="ButtonShipment" Text="Oтгрузка" Clicked="ButtonShipment_Clicked"/>
                             </StackLayout>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
-                </ListView.ItemTemplate>
+            </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
 </ContentPage>
