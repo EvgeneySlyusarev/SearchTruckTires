@@ -48,7 +48,7 @@
                                     <StackLayout Orientation="Vertical">
                                     </StackLayout>
                                     <Image Source="{Binding ImageTread}" Aspect="AspectFit" HeightRequest="140" VerticalOptions="CenterAndExpand"/>
-                                    <Button x:Name="ButtonShipment" Text="DELETE" Clicked="ButtonDellShipment_Clicked"/>
+                                    <Button x:Name="ButtonShipment" Text="DELETE" Clicked="ButtonDellShipment_Clicked" CommandParameter="{Binding .}"/>
                                 </StackLayout>
                                 <StackLayout Grid.Column="1" Margin="10,10,10,10">
                                     <Label Text="Tire Size" HorizontalOptions="Start"/>
@@ -80,7 +80,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button x:Name="RemoveSelectedItem" Text="Отправить" HorizontalOptions="FillAndExpand"/>
+            <Button x:Name="RemoveSelectedItems" Text="ОТГРУЗИТЬ" HorizontalOptions="FillAndExpand" Clicked="RemoveSelectedItems_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

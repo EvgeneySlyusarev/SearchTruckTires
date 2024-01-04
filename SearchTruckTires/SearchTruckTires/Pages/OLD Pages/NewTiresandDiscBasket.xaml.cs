@@ -1,10 +1,10 @@
-﻿using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using System.Collections.ObjectModel;
+﻿using SearchTruckTires.Resources.Values;
 using System;
-using System.Linq;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
-using SearchTruckTires.Resources.Values;
+using System.Linq;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace SearchTruckTires
 {
@@ -128,7 +128,7 @@ namespace SearchTruckTires
         {
 
         }
-       
+
         private static Basket _instance = null;
 
         private uint _productsCount = 0;

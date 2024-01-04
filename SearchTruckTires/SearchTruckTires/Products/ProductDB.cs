@@ -5,12 +5,13 @@ namespace SearchTruckTires
     public class ProductDB
     {
         [PrimaryKey, AutoIncrement]
-        public string Id => _id.ToString();
+        public int Id { get; set; }
+
         public string TitleTires { get; set; }
         public string ModelTires { get; set; }
         public decimal PriseUsedTires { get; set; }
         public string WidthTires { get; set; }
-        public string HeightTires { get; set; }
+        public string HeightTires { get; set; } 
         public string DiametrTires { get; set; }
         public string SerialNumber { get; set; }
         public string DOT { get; set; }
@@ -29,8 +30,7 @@ namespace SearchTruckTires
                          string description, string imageTread, string imageSide, string imageDOT, string imageSerialNumber,
                          string imageRepeir1, string imageRepair2, string imageRepair3)
         {
-            _id = ++_idCounter;  // generation of unique id
-
+            
             TitleTires = titleTires;
             ModelTires = modelTires;
             PriseUsedTires = priseUsedTires;
@@ -53,36 +53,6 @@ namespace SearchTruckTires
         public ProductDB()
         {
         }
-        public ProductDB Clone()
-        {
-            return new ProductDB(this);
-        }
-
-        public ProductDB(ProductDB original)
-        {
-            _id = ++_idCounter;
-            TitleTires = original.TitleTires;
-            ModelTires = original.ModelTires;
-            PriseUsedTires = original.PriseUsedTires;
-            WidthTires = original.WidthTires;
-            HeightTires = original.HeightTires;
-            DiametrTires = original.DiametrTires;
-            SerialNumber = original.SerialNumber;
-            DOT = original.DOT;
-            ResidualTreadDepth = original.ResidualTreadDepth;
-            ImageTread = original.ImageTread;
-            ImageSide = original.ImageSide;
-            ImageDOT = original.ImageDOT;
-            ImageSerialNumber = original.ImageSerialNumber;
-            ImageRepeir1 = original.ImageRepeir1;
-            ImageRepair2 = original.ImageRepair2;
-            ImageRepair3 = original.ImageRepair3;
-            Description = original.Description;
-        }
-
-        
-        private readonly uint _id;
-        private static uint _idCounter = uint.MaxValue;
     }
 }
 

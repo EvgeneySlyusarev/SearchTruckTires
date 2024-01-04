@@ -1,6 +1,6 @@
 ﻿using SQLite;
-using System.IO;
 using System;
+using System.IO;
 
 namespace SearchTruckTires.DB_ConectServis
 {
@@ -15,13 +15,21 @@ namespace SearchTruckTires.DB_ConectServis
                 _ = sQLiteConnectDBTires.CreateTable<ProductDB>();
             }
         }
-        
+
         public static string GetDatabasePath()
         {
             string databaseName = "DatabaseTires.db3";
             string databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), databaseName);
 
             return databasePath;
+
+
+            //// Для фотографий
+            //string photoPath = Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryPictures).AbsolutePath;
+
+            //// Для базы данных
+            //string dbPath = Path.Combine(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath, "your_app_name", "db_name.db");
+            ///data/user/0/com.companyname.searchtrucktires/files/DatabaseTires.db3
         }
         public static SQLiteConnection GetConnection()
         {

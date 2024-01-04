@@ -1,9 +1,9 @@
 ﻿using Fizzler.Systems.HtmlAgilityPack;
+using HtmlAgilityPack;
 using System;
+using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using HtmlAgilityPack;
-using System.Collections.ObjectModel;
 
 namespace SearchTruckTires
 {

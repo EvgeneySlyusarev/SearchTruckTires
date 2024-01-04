@@ -21,7 +21,7 @@ namespace SearchTruckTires
             ListViewTires.ItemsSource = _products;
             BindingContext = this;
             ListViewTires.HasUnevenRows = true;
-            
+
             pickerTires.ItemsSource = _tiresSizesStringArrey;
             _tiresSizeRating = new Dictionary<string, uint>();
             _RefreshTiresSizeRating();
@@ -149,4 +149,5 @@ namespace SearchTruckTires
             "425/65R22.5"
         };
 
-    }}
+    }
+}

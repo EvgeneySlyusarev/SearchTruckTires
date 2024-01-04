@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -70,8 +69,8 @@ namespace SearchTruckTires.Pages
         {
             using SQLiteConnection sQLiteConnectDBTires = new SQLiteConnection(DB_Conekt.GetDatabasePath());
             TableQuery<ProductDB> filteredData = from item in sQLiteConnectDBTires.Table<ProductDB>()
-                                                     where item.WidthTires == _wigthTires && item.HeightTires == _higthTires && item.DiametrTires == _diametrTires
-                                                     select item;
+                                                 where item.WidthTires == _wigthTires && item.HeightTires == _higthTires && item.DiametrTires == _diametrTires
+                                                 select item;
             return filteredData.ToList();
         }
         private List<ProductDB> GetAllProduktsFromDatabase()
@@ -148,8 +147,7 @@ namespace SearchTruckTires.Pages
                 bool result = await DisplayAlert("Добавить в корзину: - ", $"{productDB.TitleTires} {productDB.ModelTires} {productDB.WidthTires} {productDB.HeightTires}{"/"} {productDB.DiametrTires} ?", "Да", "Нет");
                 if (result)
                 {
-                    ProductDB copyProduct = productDB.Clone();
-                    TiresForShipment.Instance.ProductsDB.Add(copyProduct);
+                    TiresForShipment.Instance.selectedProducts.Add(productDB);
                 }
             }
         }

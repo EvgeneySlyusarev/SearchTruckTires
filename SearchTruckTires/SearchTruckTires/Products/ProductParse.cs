@@ -11,9 +11,9 @@ namespace SearchTruckTires
         public uint Count { get; set; }
 
         public string Title => _title;
-        public string PriceCash => _priceCash; 
+        public string PriceCash => _priceCash;
         public string PriceBank => _priceBank;
-        public string ImageURL => _imageURL; 
+        public string ImageURL => _imageURL;
 
         public ImageSource Image => _imageSource;
 

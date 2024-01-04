@@ -100,7 +100,7 @@ namespace SearchTruckTires.Pages
             // Сброс значений полей после сохранения
             EnteryTitle.Text = string.Empty;
             EnteryModel.Text = string.Empty;
-            EnteryPrise.Text = string.Empty; 
+            EnteryPrise.Text = string.Empty;
             PickerWight.SelectedItem = null;
             PickerHeight.SelectedItem = null;
             PickerDiametr.SelectedItem = null;
@@ -186,10 +186,5 @@ namespace SearchTruckTires.Pages
                 _diametrTires = PickerDiametr.Items[PickerDiametr.SelectedIndex].ToString();
             }
         }
-
-        private void ButtonTread_Clicked(object sender, EventArgs e)
-        {
-
-        }
     }
-} 
+}

@@ -43,7 +43,7 @@ namespace SearchTruckTires.Resources.Values
             {
                 _AddEntry("basketSize", "Products in the basket");
                 _AddEntry("costCash", "Order price by cash:");
-                _AddEntry("costBank",  "Order price by bank:");
+                _AddEntry("costBank", "Order price by bank:");
             }
             return true;
         }

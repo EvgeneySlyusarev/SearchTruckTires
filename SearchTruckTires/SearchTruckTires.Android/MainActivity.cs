@@ -8,7 +8,7 @@ namespace SearchTruckTires.Droid
 {
     [Activity(Label = "FindTires",
         Icon = "@mipmap/logo_parsing",
-        ScreenOrientation = ScreenOrientation.Portrait, 
+        ScreenOrientation = ScreenOrientation.Portrait,
         MainLauncher = true,
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
 
