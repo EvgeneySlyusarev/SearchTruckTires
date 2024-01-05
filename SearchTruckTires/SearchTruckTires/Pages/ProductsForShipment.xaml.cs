@@ -1,4 +1,5 @@
 ﻿using SearchTruckTires.DB_ConectServis;
+using SearchTruckTires.Pages;
 using SQLite;
 using System;
 using System.Collections.ObjectModel;
@@ -31,32 +32,33 @@ namespace SearchTruckTires
             ShipmentListView.HasUnevenRows = true;
             BindingContext = this;
         }
-        private void ButtonDellSelectedShipment_Clicked(object sender, EventArgs e)
+        private void DellSelectedItemFromShipment(object sender, EventArgs e)
         {
             if (sender is Button button && button.CommandParameter is ProductDB productDB)
             {
+                FindUsedTires.Instance._products.Add(productDB);
                 _ = selectedProducts.Remove(productDB);
+                
             }
         }
 
-        private void RemoveSelectedItems_Clicked(object sender, EventArgs e)
+        private void ShipmentSelectedItemsFromDB_Clicked(object sender, EventArgs e)
         {
             using SQLiteConnection sQLiteConnectDBTires = new SQLiteConnection(DB_Conekt.GetDatabasePath());
             if (selectedProducts != null && selectedProducts.Any())
             {
                 foreach (ProductDB product in selectedProducts)
                 {
-                    
-                    DeletingFilesFromProgramMemory(product.ImageTread);
-                    DeletingFilesFromProgramMemory(product.ImageSide);
-                    DeletingFilesFromProgramMemory(product.ImageSerialNumber);
-                    DeletingFilesFromProgramMemory(product.DOT);
-                    DeletingFilesFromProgramMemory(product.ImageRepeir1);
-                    DeletingFilesFromProgramMemory(product.ImageRepair2);
-                    DeletingFilesFromProgramMemory(product.ImageRepair3);
+                    DeletingFilesFromMemoryProgramy(product.ImageTread);
+                    DeletingFilesFromMemoryProgramy(product.ImageSide);
+                    DeletingFilesFromMemoryProgramy(product.ImageSerialNumber);
+                    DeletingFilesFromMemoryProgramy(product.DOT);
+                    DeletingFilesFromMemoryProgramy(product.ImageRepeir1);
+                    DeletingFilesFromMemoryProgramy(product.ImageRepair2);
+                    DeletingFilesFromMemoryProgramy(product.ImageRepair3);
                     _ = sQLiteConnectDBTires.Delete<ProductDB>(product.Id);
                 }
-                    _ = DisplayAlert("Уведомление", "Отгружено!", "OK");
+                _ = DisplayAlert("Уведомление", "Отгружено!", "OK");
             }
             else
             {
@@ -64,7 +66,7 @@ namespace SearchTruckTires
             }
         }
 
-        private void DeletingFilesFromProgramMemory(string filePathToDelete)
+        private void DeletingFilesFromMemoryProgramy(string filePathToDelete)
         {
             if (File.Exists(filePathToDelete))
             {

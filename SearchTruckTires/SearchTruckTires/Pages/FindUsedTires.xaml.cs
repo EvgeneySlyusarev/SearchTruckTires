@@ -3,6 +3,7 @@ using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -12,9 +13,13 @@ namespace SearchTruckTires.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FindUsedTires : ContentPage
     {
+        public static FindUsedTires Instance => _instance;
+
         public FindUsedTires()
         {
             InitializeComponent();
+            Debug.Assert(_instance == null);
+            _instance = this;
             ProductsListView.ItemsSource = _products;
             BindingContext = this;
             ProductsListView.HasUnevenRows = true;
@@ -23,7 +28,7 @@ namespace SearchTruckTires.Pages
             PickerDiametr.ItemsSource = _diametrTire_array;
         }
 
-        private ObservableCollection<ProductDB> _products;
+        public ObservableCollection<ProductDB> _products;
 
         private void PickerWight_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -131,6 +136,8 @@ namespace SearchTruckTires.Pages
         private string _higthTires;
         private string _diametrTires;
 
+        private static FindUsedTires _instance = null;
+
 
         private async void ButtonMorePhoto_Clicked(object sender, EventArgs e)
         {
@@ -148,6 +155,7 @@ namespace SearchTruckTires.Pages
                 if (result)
                 {
                     TiresForShipment.Instance.selectedProducts.Add(productDB);
+                    _ = _products.Remove(productDB);
                 }
             }
         }

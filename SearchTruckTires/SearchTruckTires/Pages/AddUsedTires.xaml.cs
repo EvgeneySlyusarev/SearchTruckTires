@@ -39,30 +39,38 @@ namespace SearchTruckTires.Pages
                 try
                 {
                     FileResult fileResult = await MediaPicker.CapturePhotoAsync(new MediaPickerOptions());
-                    string filePath = fileResult.FullPath;
 
-                    // Преобразование файла в массив байт
-                    byte[] fileBytes = await File.ReadAllBytesAsync(filePath);
-
-                    if (fileBytes != null && fileBytes.Length > 0)
+                    if (fileResult != null)
                     {
-                        // Преобразование массива байтов в SKBitmap
-                        SKBitmap originalBitmap = SKBitmap.Decode(fileBytes);
+                        string filePath = fileResult.FullPath;
 
-                        // Сохранение в формате JPEG
-                        using var image = SKImage.FromBitmap(originalBitmap);
-                        using var data = image.Encode(SKEncodedImageFormat.Jpeg, 75); // качество (для JPEG)
-                                               
-                        byte[] jpegBytes = data.ToArray();
+                        // Преобразование файла в массив байтов
+                        byte[] fileBytes = await File.ReadAllBytesAsync(filePath);
 
-                        string directory = FileSystem.AppDataDirectory;
-                        string uniqueFileName = $"photo_{DateTime.Now:yyyyMMddHHmmssfff}.jpeg";
-                        string filename = Path.Combine(directory, uniqueFileName);
-                        File.WriteAllBytes(filename, jpegBytes);
+                        if (fileBytes != null && fileBytes.Length > 0)
+                        {
+                            // Коррекция ориентации изображения
+                            byte[] correctedBytes = AdjustOrientation(fileBytes);
 
-                        ImageSource imageSource = ImageSource.FromFile(filename);
-                        buttonData[buttonName] = filename;
-                        button.Source = imageSource;
+                            if (correctedBytes != null)
+                            {
+                                string directory = FileSystem.AppDataDirectory;
+                                string uniqueFileName = $"photo_{DateTime.Now:yyyyMMddHHmmssfff}.jpeg";
+                                string filename = Path.Combine(directory, uniqueFileName);
+
+                                // Сохранение скорректированного изображения в формате JPEG
+                                File.WriteAllBytes(filename, correctedBytes);
+
+                                ImageSource imageSource = ImageSource.FromFile(filename);
+                                buttonData[buttonName] = filename;
+                                button.Source = imageSource;
+                            }
+                            else
+                            {
+                                // Ошибка при коррекции ориентации
+                                await DisplayAlert("Ошибка", "Не удалось скорректировать ориентацию изображения", "OK");
+                            }
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -71,7 +79,34 @@ namespace SearchTruckTires.Pages
                 }
             }
         }
+        public static byte[] AdjustOrientation(byte[] imageBytes)
+        {
+            try
+            {
+                using MemoryStream originalStream = new MemoryStream(imageBytes);
+                using SKBitmap originalBitmap = SKBitmap.Decode(originalStream);
+                using MemoryStream outputStream = new MemoryStream();
+                // Создаем новый битмап с фиксированной вертикальной ориентацией
+                using (SKBitmap verticalBitmap = new SKBitmap(originalBitmap.Width, originalBitmap.Height))
+                {
+                    using (SKCanvas canvas = new SKCanvas(verticalBitmap))
+                    {
+                        canvas.DrawBitmap(originalBitmap, 0, 0);
+                    }
 
+                    // Сохраняем измененное изображение
+                    _ = verticalBitmap.Encode(outputStream, SKEncodedImageFormat.Jpeg, 75);
+                }
+
+                return outputStream.ToArray();
+            }
+            catch (Exception ex)
+            {
+                // Обработка ошибок, например, логирование или выброс исключения
+                Console.WriteLine($"Ошибка при обработке изображения: {ex.Message}");
+                return null;
+            }
+        }
 
         private void BD_AddItem()
         {
