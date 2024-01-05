@@ -31,7 +31,7 @@ namespace SearchTruckTires
             ShipmentListView.HasUnevenRows = true;
             BindingContext = this;
         }
-        private void ButtonDellShipment_Clicked(object sender, EventArgs e)
+        private void ButtonDellSelectedShipment_Clicked(object sender, EventArgs e)
         {
             if (sender is Button button && button.CommandParameter is ProductDB productDB)
             {
@@ -56,13 +56,14 @@ namespace SearchTruckTires
                     DeletingFilesFromProgramMemory(product.ImageRepair3);
                     _ = sQLiteConnectDBTires.Delete<ProductDB>(product.Id);
                 }
-                _ = DisplayAlert("Уведомление", "Отгружено!", "OK");
+                    _ = DisplayAlert("Уведомление", "Отгружено!", "OK");
             }
             else
             {
                 _ = DisplayAlert("Уведомление", "Отгрузка не произошла отсутствуют или блок отгрузки", "OK");
             }
         }
+
         private void DeletingFilesFromProgramMemory(string filePathToDelete)
         {
             if (File.Exists(filePathToDelete))

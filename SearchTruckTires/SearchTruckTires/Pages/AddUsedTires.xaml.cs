@@ -1,4 +1,5 @@
 ﻿using SearchTruckTires.DB_ConectServis;
+using SkiaSharp;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -43,20 +44,25 @@ namespace SearchTruckTires.Pages
                     // Преобразование файла в массив байт
                     byte[] fileBytes = await File.ReadAllBytesAsync(filePath);
 
-                    if (fileResult != null)
+                    if (fileBytes != null && fileBytes.Length > 0)
                     {
-                        if (!string.IsNullOrEmpty(buttonName))
-                        {
-                            string directory = FileSystem.AppDataDirectory;
-                            string uniqueFileName = $"photo_{DateTime.Now:yyyyMMddHHmmssfff}.bmp";
-                            string filename = Path.Combine(directory, uniqueFileName);
+                        // Преобразование массива байтов в SKBitmap
+                        SKBitmap originalBitmap = SKBitmap.Decode(fileBytes);
 
-                            File.WriteAllBytes(filename, fileBytes);
+                        // Сохранение в формате JPEG
+                        using var image = SKImage.FromBitmap(originalBitmap);
+                        using var data = image.Encode(SKEncodedImageFormat.Jpeg, 75); // качество (для JPEG)
+                                               
+                        byte[] jpegBytes = data.ToArray();
 
-                            ImageSource imageSource = ImageSource.FromFile(filename);
-                            buttonData[buttonName] = filename;
-                            button.Source = imageSource;
-                        }
+                        string directory = FileSystem.AppDataDirectory;
+                        string uniqueFileName = $"photo_{DateTime.Now:yyyyMMddHHmmssfff}.jpeg";
+                        string filename = Path.Combine(directory, uniqueFileName);
+                        File.WriteAllBytes(filename, jpegBytes);
+
+                        ImageSource imageSource = ImageSource.FromFile(filename);
+                        buttonData[buttonName] = filename;
+                        button.Source = imageSource;
                     }
                 }
                 catch (Exception ex)
@@ -65,6 +71,7 @@ namespace SearchTruckTires.Pages
                 }
             }
         }
+
 
         private void BD_AddItem()
         {
