@@ -29,14 +29,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="EntityFramework" Version="6.4.4" />
-    <PackageReference Include="Fizzler.Systems.HtmlAgilityPack" Version="1.2.1" />
-	  <PackageReference Include="HtmlAgilityPack" Version="1.11.57" />
-	  <PackageReference Include="SixLabors.ImageSharp" Version="3.1.2" />
 	  <PackageReference Include="SkiaSharp" Version="2.88.6" />
     <PackageReference Include="sqlite-net-pcl" Version="1.9.141-beta" />
     <PackageReference Include="XAct.Core.PCL" Version="0.0.5014" />
-    <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2622" />
     <PackageReference Include="Xamarin.Essentials" Version="1.8.1" />
   </ItemGroup>
@@ -59,17 +54,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Pages\OLD Pages\NewTiresandDiscBasket.xaml.cs">
-      <DependentUpon>NewTiresandDiscBasket.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Pages\OLD Pages\NewParsingDisc.xaml.cs">
-      <DependentUpon>NewParsingDisc.xaml</DependentUpon>
-    </Compile>
     <Compile Update="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Pages\OLD Pages\NewParsingTires.xaml.cs">
-      <DependentUpon>NewParsingTires.xaml</DependentUpon>
     </Compile>
     <Compile Update="Pages\ProductsForShipment.xaml.cs">
       <DependentUpon>ProductsForShipment.xaml</DependentUpon>
@@ -77,16 +63,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Pages\OLD Pages\AboutProgram.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Pages\AddUsedTires.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Pages\OLD Pages\NewTiresandDiscBasket.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Pages\OLD Pages\NewParsingDisc.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\FindUsedTires.xaml">
@@ -98,13 +75,7 @@
     <EmbeddedResource Update="Pages\SplashPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\OLD Pages\NewParsingTires.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Pages\ProductsForShipment.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Pages\OLD Pages\UsedTires.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
