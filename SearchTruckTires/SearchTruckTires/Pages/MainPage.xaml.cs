@@ -19,7 +19,6 @@ namespace SearchTruckTires
             Application.Current.MainPage = new NavigationPage(this);
             await Navigation.PushModalAsync(splashPage);
             await Task.Delay(5000);
-           // _ = await splashPage.FadeTo(0, 1000);
             _ = await Navigation.PopModalAsync();
         }
     }
