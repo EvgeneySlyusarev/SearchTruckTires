@@ -49,27 +49,16 @@ namespace SearchTruckTires.Pages
 
                         if (fileBytes != null && fileBytes.Length > 0)
                         {
-                            // Коррекция ориентации изображения
-                            byte[] correctedBytes = AdjustOrientation(fileBytes);
+                            string directory = FileSystem.AppDataDirectory;
+                            string uniqueFileName = $"photo_{DateTime.Now:yyyyMMddHHmmssfff}.jpeg";
+                            string filename = Path.Combine(directory, uniqueFileName);
 
-                            if (correctedBytes != null)
-                            {
-                                string directory = FileSystem.AppDataDirectory;
-                                string uniqueFileName = $"photo_{DateTime.Now:yyyyMMddHHmmssfff}.jpeg";
-                                string filename = Path.Combine(directory, uniqueFileName);
+                            // Сохранение изображения в формате JPEG
+                            File.WriteAllBytes(filename, fileBytes);
 
-                                // Сохранение скорректированного изображения в формате JPEG
-                                File.WriteAllBytes(filename, correctedBytes);
-
-                                ImageSource imageSource = ImageSource.FromFile(filename);
-                                buttonData[buttonName] = filename;
-                                button.Source = imageSource;
-                            }
-                            else
-                            {
-                                // Ошибка при коррекции ориентации
-                                await DisplayAlert("Ошибка", "Не удалось скорректировать ориентацию изображения", "OK");
-                            }
+                            ImageSource imageSource = ImageSource.FromFile(filename);
+                            buttonData[buttonName] = filename;
+                            button.Source = imageSource;
                         }
                     }
                 }
@@ -79,34 +68,7 @@ namespace SearchTruckTires.Pages
                 }
             }
         }
-        public static byte[] AdjustOrientation(byte[] imageBytes)
-        {
-            try
-            {
-                using MemoryStream originalStream = new MemoryStream(imageBytes);
-                using SKBitmap originalBitmap = SKBitmap.Decode(originalStream);
-                using MemoryStream outputStream = new MemoryStream();
-                // Создаем новый битмап с фиксированной вертикальной ориентацией
-                using (SKBitmap verticalBitmap = new SKBitmap(originalBitmap.Width, originalBitmap.Height))
-                {
-                    using (SKCanvas canvas = new SKCanvas(verticalBitmap))
-                    {
-                        canvas.DrawBitmap(originalBitmap, 0, 0);
-                    }
 
-                    // Сохраняем измененное изображение
-                    _ = verticalBitmap.Encode(outputStream, SKEncodedImageFormat.Jpeg, 75);
-                }
-
-                return outputStream.ToArray();
-            }
-            catch (Exception ex)
-            {
-                // Обработка ошибок, например, логирование или выброс исключения
-                Console.WriteLine($"Ошибка при обработке изображения: {ex.Message}");
-                return null;
-            }
-        }
 
         private void BD_AddItem()
         {

@@ -14,6 +14,7 @@ namespace SearchTruckTires.Pages
     public partial class FindUsedTires : ContentPage
     {
         public static FindUsedTires Instance => _instance;
+        public ObservableCollection<ProductDB> _products;
 
         public FindUsedTires()
         {
@@ -27,8 +28,6 @@ namespace SearchTruckTires.Pages
             PickerHeight.ItemsSource = _hightTire_array;
             PickerDiametr.ItemsSource = _diametrTire_array;
         }
-
-        public ObservableCollection<ProductDB> _products;
 
         private void PickerWight_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -137,7 +136,6 @@ namespace SearchTruckTires.Pages
         private string _diametrTires;
 
         private static FindUsedTires _instance = null;
-
 
         private async void ButtonMorePhoto_Clicked(object sender, EventArgs e)
         {
