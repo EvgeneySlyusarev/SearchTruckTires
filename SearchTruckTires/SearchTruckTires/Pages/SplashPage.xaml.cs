@@ -9,7 +9,6 @@ namespace SearchTruckTires.Pages
         public SplashPage()
         {
             InitializeComponent();
-            BackgroundImageSource = "@Resources/Drawable/logo_parsing.png";
         }
     }
 }

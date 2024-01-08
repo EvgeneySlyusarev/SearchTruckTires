@@ -8,13 +8,9 @@
             BarBackgroundColor="DarkSlateGray"
             BackgroundColor="DarkSlateGray">
     <TabbedPage.Children>
-        <!--<local:NewParsingTires></local:NewParsingTires>-->
-        <!--<local:NewParsingDisc></local:NewParsingDisc>-->
-        <!--<local:UsedTires></local:UsedTires>-->
         <local1:AddUsedTires></local1:AddUsedTires>
         <local1:FindUsedTires></local1:FindUsedTires>
         <local:TiresForShipment></local:TiresForShipment>
-        <!--<local:AboutProgram></local:AboutProgram>-->
     </TabbedPage.Children>
 </TabbedPage>
 

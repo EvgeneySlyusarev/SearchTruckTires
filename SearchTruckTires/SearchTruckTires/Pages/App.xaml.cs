@@ -17,7 +17,6 @@ namespace SearchTruckTires
         public App()
         {
             InitializeComponent();
-            // Init user preferences
             Language = ELanguage.English;
             UserAppTheme = OSAppTheme.Dark;
             MainPage = new MainPage();
