@@ -1,5 +1,4 @@
 ﻿using SearchTruckTires.DB_ConectServis;
-using SkiaSharp;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -30,6 +29,8 @@ namespace SearchTruckTires.Pages
                 {"ButtonRepeir3", "imageRepeir3Cash" }
             };
         }
+
+
 
         private async void TakePhotoAsyncAndSave(object sender, EventArgs e)
         {

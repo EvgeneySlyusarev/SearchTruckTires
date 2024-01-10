@@ -58,6 +58,7 @@ namespace SearchTruckTires
                     DeletingFilesFromMemoryProgramy(product.ImageRepair3);
                     _ = sQLiteConnectDBTires.Delete<ProductDB>(product.Id);
                 }
+                selectedProducts.Clear();
                 _ = DisplayAlert("Уведомление", "Отгружено!", "OK");
             }
             else

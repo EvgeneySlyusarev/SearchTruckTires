@@ -19,20 +19,20 @@
         <ListView x:Name="ProductsListView" ItemTapped="ProductsListView_ItemTapped" HasUnevenRows = "True">
             <ListView.ItemTemplate>
                     <DataTemplate>
-                    <ViewCell>
+                        <ViewCell>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="30*" />
                                     <ColumnDefinition Width="30*" />
                                     <ColumnDefinition Width="30*" />
                                 </Grid.ColumnDefinitions>
-                                <StackLayout Grid.Column="0" Margin="10,10,10,10">
+                                <StackLayout Grid.Column="0">
                                 <StackLayout Orientation="Vertical">
                                 </StackLayout>
                                     <Image Source="{Binding ImageTread}" Aspect="AspectFit" HeightRequest="140" VerticalOptions="CenterAndExpand"/>
                                 <Button x:Name="MorePhotosButton" Text="More Photos" Clicked="ButtonMorePhoto_Clicked" CommandParameter="{Binding .}" />
                             </StackLayout>
-                                <StackLayout Grid.Column="1" Margin="10,10,10,10">
+                                <StackLayout Grid.Column="1">
                                     <Label Text="Tire Size" HorizontalOptions="Start"/>
                                     <Label Text="Title" HorizontalOptions="Start"/>
                                     <Label Text="Model" HorizontalOptions="Start"/>
@@ -41,7 +41,7 @@
                                     <Label Text="DOT" HorizontalOptions="Start"/>
                                     <Label Text="RTD" HorizontalOptions="Start"/>
                                  </StackLayout>
-                            <StackLayout Grid.Column="2" Margin="10,10,10,10">
+                            <StackLayout Grid.Column="2">
                                 <StackLayout Orientation="Horizontal">
                                     <Label x:Name="WidthTiresLabel" Text="{Binding WidthTires}"/>
                                     <Label x:Name="HeightTiresLable" Text="{Binding HeightTires}"/>

@@ -21,14 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Resources\Drawable\camera360.png" />
-    <None Remove="Resources\Drawable\stormers216_2021.200x200.jpg" />
-    <None Remove="Resources\Drawable\TiresBackground.png" />
-    <None Remove="Resources\Drawable\WheelMark1.png" />
-    <None Remove="Resources\Drawable\WheelMark2.png" />
-  </ItemGroup>
-
-  <ItemGroup>
 	  <PackageReference Include="SkiaSharp" Version="2.88.6" />
     <PackageReference Include="sqlite-net-pcl" Version="1.9.141-beta" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2622" />
@@ -42,14 +34,6 @@
     <Reference Include="Mono.Android">
       <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\MonoAndroid\v11.0\Mono.Android.dll</HintPath>
     </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Resources\Drawable\camera360.png" />
-    <Resource Include="Resources\Drawable\stormers216_2021.200x200.jpg" />
-    <Resource Include="Resources\Drawable\TiresBackground.png" />
-    <Resource Include="Resources\Drawable\WheelMark1.png" />
-    <Resource Include="Resources\Drawable\WheelMark2.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -80,17 +64,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Resources\Drawable\camera.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\Drawable\camera1.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\Drawable\DiscsBackground.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\Drawable\WheelMark3.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <Folder Include="Resources\" />
   </ItemGroup>
 </Project>
