@@ -22,7 +22,7 @@
                         <ViewCell>
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="30*" />
+                                    <ColumnDefinition Width="30*" />
                                     <ColumnDefinition Width="30*" />
                                     <ColumnDefinition Width="30*" />
                                 </Grid.ColumnDefinitions>

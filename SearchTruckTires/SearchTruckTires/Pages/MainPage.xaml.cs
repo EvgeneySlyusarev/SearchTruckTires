@@ -2,7 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace SearchTruckTires
+namespace SearchTruckTires.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : TabbedPage
@@ -15,7 +15,7 @@ namespace SearchTruckTires
 
         private async void ShowSplashPage()
         {
-            Pages.SplashPage splashPage = new Pages.SplashPage();
+            LoginPages splashPage = new Pages.LoginPages();
             Application.Current.MainPage = new NavigationPage(this);
             await Navigation.PushModalAsync(splashPage);
             await Task.Delay(5000);

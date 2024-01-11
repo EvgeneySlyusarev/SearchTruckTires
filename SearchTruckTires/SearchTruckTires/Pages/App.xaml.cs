@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using SearchTruckTires.Pages;
+using Xamarin.Forms;
 
 namespace SearchTruckTires
 {

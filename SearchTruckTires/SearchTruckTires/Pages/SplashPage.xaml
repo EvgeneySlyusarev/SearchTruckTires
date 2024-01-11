@@ -1,8 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:searchtrucktires="clr-namespace:SearchTruckTires" x:DataType="searchtrucktires:MainPage"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SearchTruckTires.Pages.SplashPage">
-    <StackLayout BackgroundColor="Black" HorizontalOptions="FillAndExpand">
-        <Image x:Name="LogoImage" Source="@Resources/Drawable/logo_parsing.png" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
-    </StackLayout>
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout VerticalOptions="FillAndExpand" BackgroundColor="Black">
+                <Image x:Name="LogoImage" Source="@Resources/Drawable/logo_parsing.png" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>

@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace SearchTruckTires.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SplashPage : ContentPage
+    public partial class RegistrationPage : ContentPage
     {
-        public SplashPage()
+        public RegistrationPage()
         {
             InitializeComponent();
         }

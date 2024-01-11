@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:searchtrucktires="clr-namespace:SearchTruckTires" 
              x:DataType="searchtrucktires:ProductDB"
-             x:Class="SearchTruckTires.TiresForShipment"
+             x:Class="SearchTruckTires.Pages.TiresForShipment"
              Title="Shipment">
     <ContentPage.Resources>
 

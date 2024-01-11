@@ -1,5 +1,4 @@
 ﻿using SearchTruckTires.DB_ConectServis;
-using SearchTruckTires.Pages;
 using SQLite;
 using System;
 using System.Collections.ObjectModel;
@@ -9,7 +8,7 @@ using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace SearchTruckTires
+namespace SearchTruckTires.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
 

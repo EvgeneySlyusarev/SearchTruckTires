@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:searchtrucktires="clr-namespace:SearchTruckTires"
+             x:DataType="searchtrucktires:MainPage"
+             x:Class="SearchTruckTires.Pages.LoginPages">
+    <StackLayout BackgroundColor="Black">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50*" />
+                <RowDefinition Height="25*" />
+                <RowDefinition Height="25*" />
+            </Grid.RowDefinitions>
+
+            <StackLayout Grid.Row="0">
+                <Image x:Name="LogoImage" Source="@Resources/Drawable/logo_parsing.png" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="1">
+                <Entry x:Name="EnteryName" Placeholder="@mail" BackgroundColor="AliceBlue"/>
+                <Entry x:Name="EnteryPassword" Placeholder="Password" BackgroundColor="AliceBlue"/>
+                <Button x:Name="ButtonLogin" Text="Login" Clicked="ButtonLogin_Clicked"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="2" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">
+                <Label Text="Registration" TextColor="Red" FontSize="Title">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="RegistrationLabel_Tapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+        </Grid>
+    </StackLayout>
+</ContentPage>
+
