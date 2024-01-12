@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System.Threading.Tasks;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace SearchTruckTires.Pages
@@ -11,18 +12,25 @@ namespace SearchTruckTires.Pages
             InitializeComponent();
         }
 
+        private void ButtonLogin_ClickedAsync()
+        {
+            _ = Navigation.PopModalAsync();
+        }
+
+        private async Task RegistrationLabel_TappedAsync()
+        {
+            RegistrationPage registrationPage = new RegistrationPage();
+            await Navigation.PushModalAsync(registrationPage);
+        }
+
         private void ButtonLogin_Clicked(object sender, System.EventArgs e)
         {
-            // Обработка логики входа
-            // Это может включать проверку учетных данных и навигацию на следующую страницу
-            DisplayAlert("Login", "Login button clicked", "OK");
+           ButtonLogin_ClickedAsync();
         }
 
         private void RegistrationLabel_Tapped(object sender, System.EventArgs e)
         {
-            // Обработка логики регистрации
-            // Это может включать переход к странице регистрации или другие действия
-            DisplayAlert("Registration", "Registration Label Clicked", "OK");
+            _ = RegistrationLabel_TappedAsync();
         }
     }
 }

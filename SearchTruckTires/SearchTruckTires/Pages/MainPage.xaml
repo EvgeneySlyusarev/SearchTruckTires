@@ -11,8 +11,6 @@
         <local:AddUsedTires></local:AddUsedTires>
         <local:FindUsedTires></local:FindUsedTires>
         <local:TiresForShipment></local:TiresForShipment>
-        <local:LoginPages></local:LoginPages>
-        <local:RegistrationPage></local:RegistrationPage>
     </TabbedPage.Children>
 </TabbedPage>
 

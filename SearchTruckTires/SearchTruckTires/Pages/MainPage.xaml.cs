@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace SearchTruckTires.Pages
@@ -15,11 +14,9 @@ namespace SearchTruckTires.Pages
 
         private async void ShowSplashPage()
         {
-            LoginPages splashPage = new Pages.LoginPages();
             Application.Current.MainPage = new NavigationPage(this);
-            await Navigation.PushModalAsync(splashPage);
-            await Task.Delay(5000);
-            _ = await Navigation.PopModalAsync();
+            LoginPages loginPage = new LoginPages();
+            await Navigation.PushModalAsync(loginPage);
         }
     }
 
