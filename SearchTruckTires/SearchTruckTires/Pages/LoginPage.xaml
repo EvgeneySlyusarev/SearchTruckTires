@@ -17,8 +17,8 @@
             </StackLayout>
 
             <StackLayout Grid.Row="1">
-                <Entry x:Name="EnteryName" Placeholder="@mail" BackgroundColor="AliceBlue"/>
-                <Entry x:Name="EnteryPassword" Placeholder="Password" BackgroundColor="AliceBlue"/>
+                <Entry x:Name="EnteryLogin" Placeholder="@mail" BackgroundColor="AliceBlue" PropertyChanged="EnteryLogin_PropertyChanged"/>
+                <Entry x:Name="EnteryPassword" Placeholder="Password" BackgroundColor="AliceBlue" PropertyChanged="EnteryPassword_PropertyChanged"/>
                 <Button x:Name="ButtonLogin" Text="Login" Clicked="ButtonLogin_Clicked"/>
             </StackLayout>
 

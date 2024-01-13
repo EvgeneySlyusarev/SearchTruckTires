@@ -14,7 +14,7 @@ namespace SearchTruckTires.Pages
     public partial class FindUsedTires : ContentPage
     {
         public static FindUsedTires Instance => _instance;
-        public ObservableCollection<ProductDB> _products;
+        public ObservableCollection<Product> _products;
 
         public FindUsedTires()
         {
@@ -53,31 +53,31 @@ namespace SearchTruckTires.Pages
 
         private void ButtonFindTiresSizes_Clicked(object sender, EventArgs e)
         {
-            _products = new ObservableCollection<ProductDB>(GetFindTiresSizeFromDatabase());
+            _products = new ObservableCollection<Product>(GetFindTiresSizeFromDatabase());
             ProductsListView.ItemsSource = _products;
         }
         private void ButtonALL_DB_Download_Clicked(object sender, EventArgs e)
         {
-            _products = new ObservableCollection<ProductDB>(GetAllProduktsFromDatabase());
+            _products = new ObservableCollection<Product>(GetAllProduktsFromDatabase());
             ProductsListView.ItemsSource = _products;
         }
         private void ButtonDB_DellAllItemDB_Clicked(object sender, EventArgs e)
         {
             using (SQLiteConnection sQLiteConnectDBTires = new SQLiteConnection(DB_Conekt.GetDatabasePath()))
             {
-                _ = sQLiteConnectDBTires.DeleteAll<ProductDB>();
+                _ = sQLiteConnectDBTires.DeleteAll<Product>();
             }
         }
 
-        private List<ProductDB> GetFindTiresSizeFromDatabase()
+        private List<Product> GetFindTiresSizeFromDatabase()
         {
             using SQLiteConnection sQLiteConnectDBTires = new SQLiteConnection(DB_Conekt.GetDatabasePath());
-            TableQuery<ProductDB> filteredData = from item in sQLiteConnectDBTires.Table<ProductDB>()
-                                                 where item.WidthTires == _wigthTires && item.HeightTires == _higthTires && item.DiametrTires == _diametrTires
-                                                 select item;
+            TableQuery<Product> filteredData = from item in sQLiteConnectDBTires.Table<Product>()
+                                               where item.WidthTires == _wigthTires && item.HeightTires == _higthTires && item.DiametrTires == _diametrTires
+                                               select item;
             return filteredData.ToList();
         }
-        private List<ProductDB> GetAllProduktsFromDatabase()
+        private List<Product> GetAllProduktsFromDatabase()
         {
             using SQLiteConnection sQLiteConnectDBTires = new SQLiteConnection(DB_Conekt.GetDatabasePath());
             // Получение всех элементов
@@ -86,7 +86,7 @@ namespace SearchTruckTires.Pages
             {
                 _ = DisplayAlert("Уведомление", "База данних не содержит данних.", "OK");
             }
-            List<ProductDB> items = sQLiteConnectDBTires.Table<ProductDB>().ToList();
+            List<Product> items = sQLiteConnectDBTires.Table<Product>().ToList();
             return items;
         }
 
@@ -139,7 +139,7 @@ namespace SearchTruckTires.Pages
 
         private async void ButtonMorePhoto_Clicked(object sender, EventArgs e)
         {
-            if (sender is Button button && button.CommandParameter is ProductDB productDB)
+            if (sender is Button button && button.CommandParameter is Product productDB)
             {
                 await Navigation.PushModalAsync(new PhotoDetailPage(productDB));
             }
@@ -147,7 +147,7 @@ namespace SearchTruckTires.Pages
 
         private async void ProductsListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            if (e.Item is ProductDB productDB)
+            if (e.Item is Product productDB)
             {
                 bool result = await DisplayAlert("Добавить в корзину: - ", $"{productDB.TitleTires} {productDB.ModelTires} {productDB.WidthTires} {productDB.HeightTires}{"/"} {productDB.DiametrTires} ?", "Да", "Нет");
                 if (result)

@@ -30,8 +30,6 @@ namespace SearchTruckTires.Pages
             };
         }
 
-
-
         private async void TakePhotoAsyncAndSave(object sender, EventArgs e)
         {
             if (sender is ImageButton button)
@@ -70,12 +68,11 @@ namespace SearchTruckTires.Pages
             }
         }
 
-
         private void BD_AddItem()
         {
             using SQLiteConnection sQLiteConnectDBTires = new SQLiteConnection(DB_Conekt.GetDatabasePath());
-            _ = sQLiteConnectDBTires.CreateTable<ProductDB>();
-            ProductDB newItem = new ProductDB
+            _ = sQLiteConnectDBTires.CreateTable<Product>();
+            Product newItem = new Product
             {
                 TitleTires = EnteryTitle.Text,
                 ModelTires = EnteryModel.Text,
@@ -120,7 +117,7 @@ namespace SearchTruckTires.Pages
             ButtonRepeir2.Source = ImageSource.FromFile("camera360.png");
             ButtonRepeir3.Source = ImageSource.FromFile("camera360.png");
             // Отображение уведомления
-            _ = DisplayAlert("Уведомление", "Данные успешно сохранены в базе данных.", "OK");
+            _ = DisplayAlert("Notification", "Data successfully saved to the database.", "OK");
         }
 
         private readonly Dictionary<string, string> buttonData;

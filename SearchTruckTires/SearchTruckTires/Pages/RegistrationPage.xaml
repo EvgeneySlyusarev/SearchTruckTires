@@ -17,7 +17,7 @@
                 <Entry x:Name="EnterySecondName" Placeholder="SecondName" BackgroundColor="AliceBlue" PropertyChanged="EnterySecondName_PropertyChanged"/>
                 <Entry x:Name="EnteryLogin" Placeholder="Login@mail" BackgroundColor="AliceBlue" PropertyChanged="EnteryLogin_PropertyChanged"/>
                 <Entry x:Name="EnteryPassword" Placeholder="Password" BackgroundColor="AliceBlue" PropertyChanged="EnteryPassword_PropertyChanged"/>
-                <Entry x:Name="RepeatPassword" Placeholder="RepeatPassword" BackgroundColor="AliceBlue" PropertyChanged="RepeatPassword_PropertyChanged"/>
+                <Entry x:Name="EnteryRepeatPassword" Placeholder="RepeatPassword" BackgroundColor="AliceBlue" PropertyChanged="RepeatPassword_PropertyChanged"/>
                 <Button x:Name="Registration" Text="Registration" Clicked="Registration_Clicked"/>
             </StackLayout>
         </Grid>

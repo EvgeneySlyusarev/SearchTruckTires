@@ -2,7 +2,7 @@
 
 namespace SearchTruckTires
 {
-    public class ProductDB
+    public class Product
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
@@ -25,7 +25,7 @@ namespace SearchTruckTires
         public string ImageRepair3 { get; set; }
         public string Description { get; set; }
 
-        public ProductDB(string titleTires, string modelTires, decimal priseUsedTires, string widthTires,
+        public Product(string titleTires, string modelTires, decimal priseUsedTires, string widthTires,
                          string heightTires, string diametrTires, string serialNumber, string DOT, string residualTreadDepth,
                          string description, string imageTread, string imageSide, string imageDOT, string imageSerialNumber,
                          string imageRepeir1, string imageRepair2, string imageRepair3)
@@ -50,7 +50,7 @@ namespace SearchTruckTires
             Description = description;
         }
 
-        public ProductDB()
+        public Product()
         {
         }
     }

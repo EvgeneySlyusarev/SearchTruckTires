@@ -16,7 +16,7 @@ namespace SearchTruckTires.Pages
     {
         public static TiresForShipment Instance { get => _instance; }
 
-        public ObservableCollection<ProductDB> selectedProducts = new ObservableCollection<ProductDB>();
+        public ObservableCollection<Product> selectedProducts = new ObservableCollection<Product>();
        
         public TiresForShipment()
         {
@@ -33,10 +33,10 @@ namespace SearchTruckTires.Pages
         }
         private void DellSelectedItemFromShipment(object sender, EventArgs e)
         {
-            if (sender is Button button && button.CommandParameter is ProductDB productDB)
+            if (sender is Button button && button.CommandParameter is Product product)
             {
-                FindUsedTires.Instance._products.Add(productDB);
-                _ = selectedProducts.Remove(productDB);
+                FindUsedTires.Instance._products.Add(product);
+                _ = selectedProducts.Remove(product);
                 
             }
         }
@@ -46,7 +46,7 @@ namespace SearchTruckTires.Pages
             using SQLiteConnection sQLiteConnectDBTires = new SQLiteConnection(DB_Conekt.GetDatabasePath());
             if (selectedProducts != null && selectedProducts.Any())
             {
-                foreach (ProductDB product in selectedProducts)
+                foreach (Product product in selectedProducts)
                 {
                     DeletingFilesFromMemoryProgramy(product.ImageTread);
                     DeletingFilesFromMemoryProgramy(product.ImageSide);
@@ -55,7 +55,7 @@ namespace SearchTruckTires.Pages
                     DeletingFilesFromMemoryProgramy(product.ImageRepeir1);
                     DeletingFilesFromMemoryProgramy(product.ImageRepair2);
                     DeletingFilesFromMemoryProgramy(product.ImageRepair3);
-                    _ = sQLiteConnectDBTires.Delete<ProductDB>(product.Id);
+                    _ = sQLiteConnectDBTires.Delete<Product>(product.Id);
                 }
                 selectedProducts.Clear();
                 _ = DisplayAlert("Уведомление", "Отгружено!", "OK");

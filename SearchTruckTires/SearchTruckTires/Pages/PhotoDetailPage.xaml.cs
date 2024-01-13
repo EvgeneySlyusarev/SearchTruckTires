@@ -6,7 +6,7 @@ namespace SearchTruckTires.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PhotoDetailPage : ContentPage
     {
-        public PhotoDetailPage(ProductDB selectedItem)
+        public PhotoDetailPage(Product selectedItem)
         {
             InitializeComponent();
             PhotoTread.Source = ImageSource.FromFile(selectedItem.ImageTread);
