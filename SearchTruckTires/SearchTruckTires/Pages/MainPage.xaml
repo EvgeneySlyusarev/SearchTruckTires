@@ -5,8 +5,8 @@
             x:Class="SearchTruckTires.Pages.MainPage"
             SelectedTabColor="Yellow"
             UnselectedTabColor="Red"
-            BarBackgroundColor="DarkSlateGray"
-            BackgroundColor="DarkSlateGray">
+            BarBackgroundColor="Black"
+            BackgroundColor="Black">
     <TabbedPage.Children>
         <local:AddUsedTires></local:AddUsedTires>
         <local:FindUsedTires></local:FindUsedTires>

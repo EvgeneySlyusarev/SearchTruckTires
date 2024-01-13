@@ -76,7 +76,7 @@ namespace SearchTruckTires.Pages
             {
                 TitleTires = EnteryTitle.Text,
                 ModelTires = EnteryModel.Text,
-                PriseUsedTires = Convert.ToDecimal(EnteryPrise.Text),
+                PriseUsedTires = Convert.ToDecimal(EnteryPrice.Text),
                 WidthTires = _wigthTires,
                 HeightTires = _higthTires,
                 DiametrTires = _diametrTires,
@@ -93,6 +93,7 @@ namespace SearchTruckTires.Pages
                 ImageRepair3 = buttonData["ButtonRepeir3"]
             };
             _ = sQLiteConnectDBTires.Insert(newItem);
+            newItem = null;
             sQLiteConnectDBTires.Close();
         }
 
@@ -102,7 +103,7 @@ namespace SearchTruckTires.Pages
             // Сброс значений полей после сохранения
             EnteryTitle.Text = string.Empty;
             EnteryModel.Text = string.Empty;
-            EnteryPrise.Text = string.Empty;
+            EnteryPrice.Text = string.Empty;
             PickerWight.SelectedItem = null;
             PickerHeight.SelectedItem = null;
             PickerDiametr.SelectedItem = null;
@@ -173,6 +174,10 @@ namespace SearchTruckTires.Pages
             {
                 _wigthTires = PickerWight.Items[PickerWight.SelectedIndex].ToString();
             }
+            else
+            {
+                _wigthTires = "---";
+            }
         }
         private void PickerHeight_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -180,12 +185,20 @@ namespace SearchTruckTires.Pages
             {
                 _higthTires = PickerHeight.Items[PickerHeight.SelectedIndex].ToString();
             }
+            else
+            {
+                _higthTires = "--";
+            }
         }
         private void PickerDiametr_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (PickerDiametr.SelectedIndex >= 0 && PickerDiametr.SelectedIndex < PickerDiametr.Items.Count)
             {
                 _diametrTires = PickerDiametr.Items[PickerDiametr.SelectedIndex].ToString();
+            }
+            else
+            {
+                _diametrTires = "--,-";
             }
         }
     }
