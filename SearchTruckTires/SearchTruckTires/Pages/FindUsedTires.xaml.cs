@@ -35,6 +35,10 @@ namespace SearchTruckTires.Pages
             {
                 _wigthTires = PickerWight.Items[PickerWight.SelectedIndex].ToString();
             }
+            else
+            {
+                _wigthTires = "---";
+            }
         }
         private void PickerHeight_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -42,12 +46,20 @@ namespace SearchTruckTires.Pages
             {
                 _higthTires = PickerHeight.Items[PickerHeight.SelectedIndex].ToString();
             }
+            else
+            {
+                _higthTires = "--";
+            }
         }
         private void PickerDiametr_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (PickerDiametr.SelectedIndex >= 0 && PickerDiametr.SelectedIndex < PickerDiametr.Items.Count)
             {
                 _diametrTires = PickerDiametr.Items[PickerDiametr.SelectedIndex].ToString();
+            }
+            else
+            {
+                _diametrTires = "--,-";
             }
         }
 
@@ -58,7 +70,7 @@ namespace SearchTruckTires.Pages
         }
         private void ButtonALL_DB_Download_Clicked(object sender, EventArgs e)
         {
-            _products = new ObservableCollection<Product>(GetAllProduktsFromDatabase());
+            _products = new ObservableCollection<Product>(GetAllProductsFromDatabase());
             ProductsListView.ItemsSource = _products;
         }
         private void ButtonDB_DellAllItemDB_Clicked(object sender, EventArgs e)
@@ -77,17 +89,50 @@ namespace SearchTruckTires.Pages
                                                select item;
             return filteredData.ToList();
         }
-        private List<Product> GetAllProduktsFromDatabase()
+
+        private List<Product> GetAllProductsFromDatabase()
         {
-            using SQLiteConnection sQLiteConnectDBTires = new SQLiteConnection(DB_Conekt.GetDatabasePath());
-            // Получение всех элементов
-            bool DB_Empty = File.Exists(DB_Conekt.GetDatabasePath());
-            if (!DB_Empty)
+            string databasePath = DB_Conekt.GetDatabasePath();
+            try
             {
-                _ = DisplayAlert("Уведомление", "База данних не содержит данних.", "OK");
+                if (!File.Exists(databasePath))
+                {
+                    using (SQLiteConnection sQLiteConnectDBTires = new SQLiteConnection(databasePath))
+                    {
+                        _ = sQLiteConnectDBTires.CreateTable<Product>();
+                    }
+
+                    _ = DisplayAlert("Notification", "The database has been created.", "OK");
+                    return new List<Product>();
+                }
+
+                using (SQLiteConnection sQLiteConnectDBTires = new SQLiteConnection(databasePath))
+                {
+                    var tableInfo = sQLiteConnectDBTires.GetTableInfo("Product");
+
+                    if (tableInfo.Count == 0)
+                    {
+                        _ = sQLiteConnectDBTires.CreateTable<Product>();
+
+                        _ = DisplayAlert("Notification", "The 'Product' table has been created.", "OK");
+                        return new List<Product>();
+                    }
+
+                    List<Product> items = sQLiteConnectDBTires.Table<Product>().ToList();
+
+                    if (items.Count == 0)
+                    {
+                        _ = DisplayAlert("Notification", "The 'Product' table does not contain any items.", "OK");
+                    }
+
+                    return items;
+                }
             }
-            List<Product> items = sQLiteConnectDBTires.Table<Product>().ToList();
-            return items;
+            catch (Exception ex)
+            {
+                _ = DisplayAlert("Error", $"An error occurred while working with the database: {ex.Message}", "OK");
+                return new List<Product>();
+            }
         }
 
         private readonly string[] _weightTire_array = new string[]
@@ -130,7 +175,7 @@ namespace SearchTruckTires.Pages
             "22,5",
             "24"
         };
-
+        
         private string _wigthTires;
         private string _higthTires;
         private string _diametrTires;
