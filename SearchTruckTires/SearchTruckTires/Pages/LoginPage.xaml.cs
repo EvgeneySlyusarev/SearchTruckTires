@@ -1,5 +1,6 @@
 ﻿using SearchTruckTires.DB_ConectServis;
 using SQLite;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -9,34 +10,40 @@ namespace SearchTruckTires.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPages : ContentPage
     {
+        private string _login = null;
+        private string _password = null;
+
         public LoginPages()
         {
             InitializeComponent();
         }
 
-        private string _login = null;
-        private string _password = null;
-
-        private void ButtonLogin_ClickedAsync()
+        private bool IsUserAuthenticated()
         {
             using SQLiteConnection sQLiteConnectDBTires = new SQLiteConnection(DB_Conekt.GetDatabasePath());
             TableQuery<User> filteredUser = from item in sQLiteConnectDBTires.Table<User>()
                                             where item.Login == _login && item.Password == _password
                                             select item;
-            if (filteredUser != null)
+            return filteredUser.Any();
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            OnBackButtonPressedEventHandler();
+            return base.OnBackButtonPressed();
+        }
+        private async void OnBackButtonPressedEventHandler()
+        {
+            if (!IsUserAuthenticated())
             {
-                _ = DisplayAlert("Notification", "Authorization successful.", "OK");
-                _ = Navigation.PopModalAsync();
+                await DisplayAlert("Error", "The user does not exist or the username and password are incorrect.", "OK");
+                return;
             }
-            else
-            {
-                _ = DisplayAlert("Error", "The user does not exist or the username and password are incorrect.", "OK");
-            }
-            
+            _ = await Navigation.PopModalAsync();
         }
         private void ButtonLogin_Clicked(object sender, System.EventArgs e)
         {
-            ButtonLogin_ClickedAsync();
+            OnBackButtonPressedEventHandler();
         }
 
         private async Task RegistrationLabel_TappedAsync()
@@ -58,7 +65,7 @@ namespace SearchTruckTires.Pages
         }
         private void EnteryLogin_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (EnteryPassword != null)
+            if (EnteryLogin != null)
             {
                 _login = EnteryLogin.Text;
             }
