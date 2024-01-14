@@ -1,6 +1,7 @@
 ﻿using SearchTruckTires.DB_ConectServis;
 using SQLite;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -58,17 +59,51 @@ namespace SearchTruckTires.Pages
 
         private void EnteryPassword_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (EnteryPassword != null)
+            if (EnteryPassword.Text != null)
             {
-                _password = EnteryPassword.Text;
+                if (IsValidInput(_password))
+                {
+                    EnteryPassword.BackgroundColor = Color.AliceBlue;
+                    _password = EnteryPassword.Text;
+                }
+                else
+                {
+                    EnteryPassword.BackgroundColor = Color.Pink;
+                    EnteryPassword.Text = null;
+                    _ = DisplayAlert("Error", "Please enter your password correctly (a-zA-Z0-9!@#$%^&*()_+]+$)", "OK");
+                }
+            }
+            else
+            {
+                EnteryPassword.BackgroundColor = Color.Pink;
             }
         }
         private void EnteryLogin_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (EnteryLogin != null)
+            if (EnteryLogin.Text != null)
             {
-                _login = EnteryLogin.Text;
+                if (IsValidInput(_login))
+                {
+                    EnteryLogin.BackgroundColor = Color.AliceBlue;
+                    _login = EnteryLogin.Text;
+                }
+                else
+                {
+                    EnteryLogin.BackgroundColor = Color.Pink;
+                    EnteryLogin.Text = null;
+                    _ = DisplayAlert("Error", "Login must be a valid email address", "OK");
+                }
             }
+            else
+            {
+                EnteryLogin.BackgroundColor = Color.Pink;
+            }
+        }
+
+        private static bool IsValidInput(string input)
+        {
+            string pattern = "^[a-zA-Z0-9!@#$%^&*()_+]+$";
+            return Regex.IsMatch(input, pattern);
         }
     }
 }
