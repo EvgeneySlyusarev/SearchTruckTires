@@ -80,7 +80,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button x:Name="RemoveSelectedItems" Text="ОТГРУЗИТЬ" HorizontalOptions="FillAndExpand" Clicked="ShipmentSelectedItemsFromDB_Clicked"/>
+            <Button x:Name="RemoveSelectedItems" Text="SHIP" HorizontalOptions="FillAndExpand" Clicked="ShipmentSelectedItemsFromDB_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

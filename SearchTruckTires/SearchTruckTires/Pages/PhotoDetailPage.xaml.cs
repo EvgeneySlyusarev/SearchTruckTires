@@ -52,7 +52,6 @@ namespace SearchTruckTires.Pages
             }
             catch (Exception ex)
             {
-                // Обработка ошибок, если возникают проблемы с загрузкой изображения
                 Console.WriteLine($"Exception: {ex.Message}");
                 return null;
             }

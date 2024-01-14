@@ -125,6 +125,9 @@ namespace SearchTruckTires.Pages
 
         private readonly string[] _weightTire_array = new string[]
         {
+            "175",
+            "185",
+            "195",
             "205",
             "215",
             "225",
@@ -137,10 +140,13 @@ namespace SearchTruckTires.Pages
             "295",
             "305",
             "315",
+            "355",
+            "365",
             "385",
             "425",
             "435",
-            "445"
+            "445",
+            "455"
         };
         private readonly string[] _hightTire_array = new string[]
         {
@@ -157,6 +163,7 @@ namespace SearchTruckTires.Pages
         };
         private readonly string[] _diametrTire_array = new string[]
             {
+                "16C",
                 "17,5",
                 "19,5",
                 "20",
@@ -174,10 +181,6 @@ namespace SearchTruckTires.Pages
             {
                 _wigthTires = PickerWight.Items[PickerWight.SelectedIndex].ToString();
             }
-            else
-            {
-                _wigthTires = "---";
-            }
         }
         private void PickerHeight_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -185,20 +188,12 @@ namespace SearchTruckTires.Pages
             {
                 _higthTires = PickerHeight.Items[PickerHeight.SelectedIndex].ToString();
             }
-            else
-            {
-                _higthTires = "--";
-            }
         }
         private void PickerDiametr_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (PickerDiametr.SelectedIndex >= 0 && PickerDiametr.SelectedIndex < PickerDiametr.Items.Count)
             {
                 _diametrTires = PickerDiametr.Items[PickerDiametr.SelectedIndex].ToString();
-            }
-            else
-            {
-                _diametrTires = "--,-";
             }
         }
     }

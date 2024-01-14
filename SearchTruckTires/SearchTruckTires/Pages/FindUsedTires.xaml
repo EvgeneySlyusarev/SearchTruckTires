@@ -30,7 +30,6 @@
                         </Grid.ColumnDefinitions>
                         <StackLayout Grid.Column="0">
                             <StackLayout Orientation="Vertical">
-                                <!-- Здесь можете разместить дополнительные элементы, если необходимо -->
                             </StackLayout>
                             <Image Source="{Binding ImageTread}" Aspect="AspectFit" HeightRequest="140" VerticalOptions="CenterAndExpand"/>
                             <Button x:Name="MorePhotosButton" Text="More Photos" CommandParameter="{Binding .}" Clicked="ButtonMorePhoto_Clicked" />

@@ -58,11 +58,11 @@ namespace SearchTruckTires.Pages
                     _ = sQLiteConnectDBTires.Delete<Product>(product.Id);
                 }
                 selectedProducts.Clear();
-                _ = DisplayAlert("Уведомление", "Отгружено!", "OK");
+                _ = DisplayAlert("Notification", "Shipped!", "OK");
             }
             else
             {
-                _ = DisplayAlert("Уведомление", "Отгрузка не произошла отсутствуют или блок отгрузки", "OK");
+                _ = DisplayAlert("Notification", "The shipment did not occur or the shipment block is missing", "OK");
             }
         }
 
@@ -76,12 +76,12 @@ namespace SearchTruckTires.Pages
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine($"Ошибка при удалении файла: {e.Message}");
+                    Console.WriteLine($"Error deleting file: {e.Message}");
                 }
             }
             else
             {
-                Console.WriteLine("Файл не существует.");
+                Console.WriteLine("File does not exist!");
             }
         }
 
