@@ -35,28 +35,28 @@
                             <Button x:Name="MorePhotosButton" Text="More Photos" CommandParameter="{Binding .}" Clicked="ButtonMorePhoto_Clicked" />
                         </StackLayout>
                         <StackLayout Grid.Column="1">
-                            <Label Text="Tire Size" HorizontalOptions="Start"/>
-                            <Label Text="Title" HorizontalOptions="Start"/>
-                            <Label Text="Model" HorizontalOptions="Start"/>
-                            <Label Text="Prise" HorizontalOptions="Start"/>
-                            <Label Text="SerialNumber" HorizontalOptions="Start"/>
-                            <Label Text="DOT" HorizontalOptions="Start"/>
-                            <Label Text="RTD" HorizontalOptions="Start"/>
+                            <Label Text="Tire Size" HorizontalOptions="Start" TextColor="AliceBlue"/>
+                            <Label Text="Title" HorizontalOptions="Start" TextColor="AliceBlue"/>
+                            <Label Text="Model" HorizontalOptions="Start" TextColor="AliceBlue"/>
+                            <Label Text="Prise" HorizontalOptions="Start" TextColor="AliceBlue"/>
+                            <Label Text="SerialNumber" HorizontalOptions="Start" TextColor="AliceBlue"/>
+                            <Label Text="DOT" HorizontalOptions="Start" TextColor="AliceBlue"/>
+                            <Label Text="RTD" HorizontalOptions="Start" TextColor="AliceBlue"/>
                         </StackLayout>
                         <StackLayout Grid.Column="2">
                             <StackLayout Orientation="Horizontal">
-                                <Label x:Name="WidthTiresLabel" Text="{Binding WidthTires}"/>
-                                <Label x:Name="HeightTiresLable" Text="{Binding HeightTires}"/>
-                                <Label Text="/R"/>
-                                <Label x:Name="DiametrTiresLable" Text="{Binding DiametrTires}"/>
+                                <Label x:Name="WidthTiresLabel" Text="{Binding WidthTires}" TextColor="AliceBlue"/>
+                                <Label x:Name="HeightTiresLable" Text="{Binding HeightTires}" TextColor="AliceBlue"/>
+                                <Label Text="/R" TextColor="AliceBlue"/>
+                                <Label x:Name="DiametrTiresLable" Text="{Binding DiametrTires}" TextColor="AliceBlue"/>
                             </StackLayout>
                             <StackLayout>
-                                <Label x:Name="TitleTiresLable" Text="{Binding TitleTires}"/>
-                                <Label x:Name="ModelTiresLable" Text="{Binding ModelTires}"/>
-                                <Label x:Name="PriseTiresLable" Text="{Binding PriseUsedTires}"/>
-                                <Label x:Name="SerialNumberLable" Text="{Binding SerialNumber}"/>
-                                <Label x:Name="DOT" Text="{Binding DOT}"/>
-                                <Label x:Name="ResidualTreadDepthLable" Text="{Binding ResidualTreadDepth}"/>
+                                <Label x:Name="TitleTiresLable" Text="{Binding TitleTires}" TextColor="AliceBlue"/>
+                                <Label x:Name="ModelTiresLable" Text="{Binding ModelTires}" TextColor="AliceBlue"/>
+                                <Label x:Name="PriseTiresLable" Text="{Binding PriseUsedTires}" TextColor="AliceBlue"/>
+                                <Label x:Name="SerialNumberLable" Text="{Binding SerialNumber}" TextColor="AliceBlue"/>
+                                <Label x:Name="DOT" Text="{Binding DOT}" TextColor="AliceBlue"/>
+                                <Label x:Name="ResidualTreadDepthLable" Text="{Binding ResidualTreadDepth}" TextColor="AliceBlue"/>
                             </StackLayout>
                         </StackLayout>
                     </Grid>

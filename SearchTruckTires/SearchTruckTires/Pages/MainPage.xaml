@@ -6,7 +6,8 @@
             SelectedTabColor="Yellow"
             UnselectedTabColor="Red"
             BarBackgroundColor="Black"
-            BackgroundColor="Black">
+            BackgroundColor="DarkSlateGray">
+            
     <TabbedPage.Children>
         <local:AddUsedTires></local:AddUsedTires>
         <local:FindUsedTires></local:FindUsedTires>
